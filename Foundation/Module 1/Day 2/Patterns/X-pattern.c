@@ -6,11 +6,7 @@ int main()
     {
         for (int j = 1; j <= 7; j++)
         {
-            if (i == 4 && j == 4)
-            {
-                printf("* ");
-            }
-            else if (i == j || j == (8 - i))
+            if (i == j || j == (8 - i))
             {
                 printf("* ");
             }

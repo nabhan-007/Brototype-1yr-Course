@@ -3,6 +3,11 @@ void messUp(int *x)
     *x = 99;
 }
 
+// void messUp(int x)
+// {
+//     x = 99;
+// }
+
 int main()
 {
     int original = 5;
