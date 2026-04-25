@@ -1,15 +1,15 @@
 #include <stdio.h>
 
 /*
-        *          
-      *   * 
-    *       * 
-  *           * 
-*               * 
-  *           * 
-    *       * 
-      *   * 
-        * 
+        1
+      1   2
+    1       2
+  1           2
+1               2
+  1           2
+    1       2
+      1   2
+        1
 */
 
 int main()
@@ -25,9 +25,13 @@ int main()
         }
         for (int k = 1; k <= ((i * 2) - 1); k++)
         {
-            if (k == 1 || k == (2 * i - 1))
+            if (k == 1)
             {
-                printf("* ");
+                printf("1 ");
+            }
+            else if (k == (2 * i - 1))
+            {
+                printf("2 ");
             }
             else
             {
@@ -46,9 +50,13 @@ int main()
         }
         for (int k = 1; k <= (((number_of_rows - i) * 2) - 1); k++)
         {
-            if (k == 1 || k == (((number_of_rows - i) * 2) - 1))
+            if (k == 1)
             {
-                printf("* ");
+                printf("1 ");
+            }
+            else if (k == (((number_of_rows - i) * 2) - 1))
+            {
+                printf("2 ");
             }
             else
             {

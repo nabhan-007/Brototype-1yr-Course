@@ -1,21 +1,20 @@
 #include <stdio.h>
 
 /*
-        *          
-      *   * 
-    *       * 
-  *           * 
-*               * 
-  *           * 
-    *       * 
-      *   * 
-        * 
+        1          
+      1 0 1 
+    1 0 1 0 1 
+  1 0 1 0 1 0 1 
+1 0 1 0 1 0 1 0 1 
+  1 0 1 0 1 0 1 
+    1 0 1 0 1 
+      1 0 1 
+        1 
 */
 
 int main()
 {
     int number_of_rows = 5;
-
     // First half of a diamond is a pyramid
     for (int i = 1; i <= number_of_rows; i++)
     {
@@ -27,11 +26,16 @@ int main()
         {
             if (k == 1 || k == (2 * i - 1))
             {
-                printf("* ");
+                printf("1 ");
+            }
+            else if (k % 2 == 0)
+            {
+                printf("0 ");
             }
             else
             {
-                printf("  ");
+                printf("1 ");
+                // printf("%d,%d ", i, k);
             }
         }
         printf("\n");
@@ -48,11 +52,16 @@ int main()
         {
             if (k == 1 || k == (((number_of_rows - i) * 2) - 1))
             {
-                printf("* ");
+                printf("1 ");
+            }
+            else if (k % 2 == 0)
+            {
+                printf("0 ");
             }
             else
             {
-                printf("  ");
+                printf("1 ");
+                // printf("%d,%d ", i, k);
             }
         }
         printf("\n");

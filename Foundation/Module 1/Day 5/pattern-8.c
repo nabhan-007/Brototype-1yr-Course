@@ -1,20 +1,22 @@
 #include <stdio.h>
 
 /*
-        *          
-      *   * 
-    *       * 
-  *           * 
-*               * 
-  *           * 
-    *       * 
-      *   * 
-        * 
+        A
+      1 1 1
+    B B B B B
+  2 2 2 2 2 2 2
+C C C C C C C C C
+  3 3 3 3 3 3 3
+    D D D D D
+      4 4 4
+        E
 */
 
 int main()
 {
     int number_of_rows = 5;
+    int num = 1;
+    char alphabet = 'A';
 
     // First half of a diamond is a pyramid
     for (int i = 1; i <= number_of_rows; i++)
@@ -25,14 +27,22 @@ int main()
         }
         for (int k = 1; k <= ((i * 2) - 1); k++)
         {
-            if (k == 1 || k == (2 * i - 1))
+            if (i % 2 != 0)
             {
-                printf("* ");
+                printf("%c ", alphabet);
             }
             else
             {
-                printf("  ");
+                printf("%d ", num);
             }
+        }
+        if (i % 2 != 0)
+        {
+            alphabet += 1;
+        }
+        else
+        {
+            num += 1;
         }
         printf("\n");
     }
@@ -46,14 +56,22 @@ int main()
         }
         for (int k = 1; k <= (((number_of_rows - i) * 2) - 1); k++)
         {
-            if (k == 1 || k == (((number_of_rows - i) * 2) - 1))
+            if (i % 2 != 0)
             {
-                printf("* ");
+                printf("%d ", num);
             }
             else
             {
-                printf("  ");
+                printf("%c ", alphabet);
             }
+        }
+        if (i % 2 != 0)
+        {
+            num += 1;
+        }
+        else
+        {
+            alphabet += 1;
         }
         printf("\n");
     }
