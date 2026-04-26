@@ -8,6 +8,6 @@ int main() {
     scanf("%s", name); // Can also use `gets(name);` but, UNSAFE!!
 
     printf("%s %s\n", prefix, name);
-    
+
     return 0;
 }
