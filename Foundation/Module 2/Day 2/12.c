@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main()
+{
+    int myArray[100] = {12, 7, 16, 9, 20, 11, 8};
+    int items = 7, sum = 0;
+
+    printf("Old Array: ");
+    for (int i = 0; i < items; i++)
+    {
+        printf("%d ", myArray[i]);
+    }
+
+    for (int i = 0; i < items; i++)
+    {
+        if (myArray[i] % 4 == 0)
+        {
+            myArray[i] = 0;
+        }
+    }
+
+    printf("\nNew Array: ");
+    for (int i = 0; i < items; i++)
+    {
+        printf("%d ", myArray[i]);
+        sum += myArray[i];
+    }
+    printf("\nSum: %d", sum);
+
+    return 0;
+}
