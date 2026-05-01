@@ -1,9 +1,3 @@
-// Ai Code : NOT CLEAR
-// Ai Code : NOT CLEAR
-// Ai Code : NOT CLEAR
-// Ai Code : NOT CLEAR
-// Ai Code : NOT CLEAR
-
 /*
 Write a C program to delete TWO elements after every odd number in an array: {5, 10, 15, 8, 7, 20, 9, 12, 18}.
 */
@@ -22,22 +16,20 @@ int main()
     }
 
     // delete TWO elements after every odd number
-    // THE SIMPLE WAY: Just overwrite the array as you go
-    int newLength = 0;
-
     for (int i = 0; i < length; i++)
     {
-        myArray[newLength] = myArray[i]; // Keep the current number
-        newLength++;                     // Move the write position up
-
-        // If it's an odd number, aggressively skip the next two elements
         if (myArray[i] % 2 != 0)
         {
-            i += 2; // The loop's i++ will handle moving past them entirely
+            for (int j = i; j < length; j++)
+            {
+                myArray[j + 1] = myArray[j + 3];
+            }
+            if (length - i > 2)
+            {
+                length -= 2;
+            }
         }
     }
-
-    length = newLength; // Update your official length
 
     printf("\nNew Array: ");
     for (int i = 0; i < length; i++)
