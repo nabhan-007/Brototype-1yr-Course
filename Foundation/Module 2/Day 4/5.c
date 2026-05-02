@@ -17,7 +17,7 @@ int main()
     // sorting array in ascending order
     for (int i = 0; i < length; i++)
     {
-        for (int j = 0; j < length - 1; j++)
+        for (int j = 0; j < length - i - 1; j++)
         {
             if (myArray[j] > myArray[j + 1])
             {
