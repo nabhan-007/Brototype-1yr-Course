@@ -51,7 +51,6 @@ int main()
     // reverse the remaining array
     for (int i = 0; i < (length / 2); i++)
     {
-        printf("\n%d - %d", myArray[i], myArray[(length - 1) - i]);
         int temp = myArray[i];
         myArray[i] = myArray[(length - 1) - i];
         myArray[(length - 1) - i] = temp;

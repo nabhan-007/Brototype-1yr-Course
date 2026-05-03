@@ -1,7 +1,6 @@
 /*
 Write a C program to reverse an array in-place (without using extra arrays). Array: {5, 10, 15, 20, 25}
 */
-
 #include <stdio.h>
 
 int main()
@@ -16,8 +15,8 @@ int main()
     }
 
     // reverse an array in-place
-    int start = 0, end = length - 1;
-    int times_to_run = length / 2; // if odd the `int` will ignore the decimals
+    int start = 0, end = length - 1; // Two pointers to swap the elements
+    int times_to_run = length / 2;   // if odd the `int` will ignore the decimals
 
     for (int i = 0; i < times_to_run; i++)
     {
