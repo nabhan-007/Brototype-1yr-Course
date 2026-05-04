@@ -7,7 +7,7 @@ int main()
     // Calculating sum of all the odd integers in `myArray`
     for (int i = 0; i < 6; i++)
     {
-        if (myArray[i] % 2 == 1)
+        if (myArray[i] % 2 != 0)
         {
             sum += myArray[i];
         }

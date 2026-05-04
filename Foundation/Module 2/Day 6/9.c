@@ -5,6 +5,8 @@ Write a C program to find all prime numbers in an array and replace them with 0,
 
 int isPrime(int num)
 {
+    if (num <= 1)
+        return 0;
     for (int i = 2; i < num; i++)
     {
         if (num % i == 0)

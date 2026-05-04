@@ -14,4 +14,5 @@ int main()
     }
 
     printf("The Smallest Number in the Array: %d", smallestNum);
+    return 0;
 }

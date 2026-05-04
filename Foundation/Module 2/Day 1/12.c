@@ -2,7 +2,8 @@
 
 int main()
 {
-    int largestNum = 0, myArray[6] = {12, 25, 8, 30, 15, 20};
+    int myArray[6] = {12, 25, 8, 30, 15, 20};
+    int largestNum = myArray[0];
 
     for (int i = 0; i < 6; i++)
     {
@@ -13,4 +14,5 @@ int main()
     }
 
     printf("The Largest Even Number in the Array: %d", largestNum);
+    return 0;
 }

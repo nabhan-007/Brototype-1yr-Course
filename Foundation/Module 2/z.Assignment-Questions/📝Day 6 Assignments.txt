@@ -1,0 +1,52 @@
+﻿📝 Assignments (Day 6)
+________________
+
+
+Question 6.1
+Write a C program to replace all multiples of 4 with 0, then find the sum of remaining (non-zero) elements. Array: {12, 7, 16, 9, 20, 11, 8}.
+________________
+
+
+Question 6.2
+Write a C program to delete next three elements that come immediately after a multiple of 4. Array: {6, 10, 8, 15, 12, 7, 18, 20}.
+________________
+
+
+Question 6.3
+Write a C program to replace all prime numbers with -1, then delete all negative numbers, then reverse the remaining array. Array: {7, 12, 13, 18, 11, 20, 9}.
+________________
+
+
+Question 6.4
+Write a C program to find the average of all elements. If average > 15, delete all odd numbers. If average <= 15, delete all even numbers. Array: {10, 12, 8, 20, 15, 18}.
+________________
+
+
+Question 6.5
+Write a C program to display an array after skipping one element next to each multiple of 5. Array: {5, 10, 15, 8, 20, 7, 25, 12, 30}.
+________________
+
+
+Question 6.6
+Write a C program to separate even and odd numbers into two different arrays, then print the array that has more elements. Array: {12, 7, 18, 9, 24, 11, 30, 5}.
+________________
+
+
+Question 6.7
+Write a C program to replace all elements at ODD positions with 0 if the element is EVEN. Array: {10, 15, 8, 7, 20, 9, 12}.
+________________
+
+
+Question 6.8
+Write a C program to delete two elements after every odd number. Array: {5, 10, 15, 8, 7, 20, 9, 12, 18}.
+________________
+
+
+Question 6.9
+Write a C program to find all prime numbers in an array and replace them with 0, then find the sum of the array. Array: {5, 8, 13, 9, 4, 17}.
+________________
+
+
+Question 6.10
+Write a C program to delete all unique elements from an array (keep only duplicate values). Array: {10, 15, 10, 20, 15, 30, 25}.
+________________

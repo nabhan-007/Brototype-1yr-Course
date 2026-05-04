@@ -1,0 +1,168 @@
+﻿________________
+
+
+📘 C THEORY QUESTION SET (FOUNDATION )
+________________
+
+
+1️⃣ Basics of C Programming
+1. What is C programming language? Why do we use C?
+2. Why is C called a structured programming language?
+3. What are the features of C?
+4. What are the advantages of C language?
+5. Difference between compiled and interpreted languages.
+6. What is a compiler?
+7. What is an interpreter?
+8. What is the role of the compiler in C?
+9. What is source code, object code, and executable file?
+10. What is an error? Explain types of errors in C (syntax, runtime, logical).
+11. What are error codes in C?
+________________
+
+
+2️⃣ Program Structure & Preprocessor
+12. What is the structure of a C program?
+13. What is #include?
+14. What are preprocessor directives?
+15. Types of preprocessor directives.
+16. What is #define?
+17. What is main() function?
+18. Why is main() compulsory?
+19. Can main() take parameters?
+20. What is int main()?
+21. Why do we write return 0; in main?
+22. What happens if we don’t write return 0;?
+________________
+
+
+3️⃣ Variables, Identifiers & Keywords
+23. What is a variable?
+24. Why do we use variables?
+25. What are identifiers?
+26. Rules for naming identifiers.
+27. Difference between variables and identifiers.
+28. What are keywords?
+29. Can keywords be used as identifiers? Why?
+30. Difference between declaration and initialization.
+31. Difference between global and local variables.
+32. What is scope of a variable?
+33. What is lifetime of a variable?
+________________
+
+
+4️⃣ Data Types & Size
+34. What are data types in C?
+35. Types of data types in C.
+36. Difference between primitive and non-primitive data types.
+37. Difference between int, float, double, and char.
+38. Difference between float and double.
+39. What is sizeof operator?
+40. How does sizeof work internally?
+________________
+
+
+5️⃣ Operators (Very Important)
+41. What is an operator?
+42. Types of operators in C.
+43. Arithmetic operators.
+44. Assignment operators.
+45. Arithmetic assignment operators.
+46. Relational operators.
+47. Logical operators.
+48. Bitwise operators.
+49. Unary operators.
+50. Ternary operator.
+51. Difference between logical and bitwise operators.
+52. Explain pre-increment and post-increment operators with example.
+53. Operator precedence.
+________________
+
+
+6️⃣ Escape Sequences
+54. What is an escape sequence?
+55. Common escape sequences (\n, \t, \r, \\, \").
+56. Why do we use escape sequences?
+________________
+
+
+7️⃣ Conditional Statements
+57. What is a conditional statement?
+58. What is if statement?
+59. What is if–else statement?
+60. Explain else–if ladder.
+61. What is nested if?
+62. What is a switch statement?
+63. Why is break used in switch?
+64. What happens if break is not used in switch?
+65. Difference between switch and if–else ladder.
+66. What are jumping statements?
+67. Types of jumping statements.
+68. Explain break with example.
+69. Explain continue with example.
+________________
+
+
+8️⃣ Loops
+70. What is a loop?
+71. Why do we use loops?
+72. What is entry-controlled loop?
+73. What is exit-controlled loop?
+74. Difference between entry-controlled and exit-controlled loops.
+75. Explain for loop.
+76. Explain while loop.
+77. Explain do–while loop.
+78. Difference between for and while loop.
+79. Difference between while and do–while loop.
+80. When should we use do–while loop?
+________________
+
+
+9️⃣ Arrays (🔥 Focus Area)
+81. What is an array?
+82. Why do we use arrays?
+83. What is array indexing?
+84. What is the first index of an array?
+85. What is the last index of an array?
+86. How is memory allocated for arrays?
+87. Can array store different data types? Why?
+88. Difference between homogeneous and heterogeneous arrays.
+89. What is a static array?
+90. What is a dynamic array?
+91. Difference between static and dynamic array.
+92. What is a sparse array?
+93. What are different types of arrays?
+94. What is a one-dimensional array?
+95. What is a two-dimensional array?
+96. Explain indexing in 2D array.
+97. What is a multidimensional array?
+98. What is the first index in a multidimensional array?
+99. Can array index be negative? Why?
+100. What happens if array index goes out of bounds?
+________________
+
+
+🔟 Strings
+101. What is a string in C?
+102. How is string stored in memory?
+103. Difference between character array and string.
+104. What is null character (\0)?
+105. Difference between array and string.
+________________
+
+
+1️⃣1️⃣ Functions
+106. What is a function in C?
+107. Why do we use functions?
+108. Types of functions.
+109. What is function declaration?
+110. What is function definition?
+111. What is function invocation?
+112. Difference between argument and parameter.
+113. What is pass by value?
+114. What is pass by reference?
+115. Difference between pass by value and pass by reference.
+116. Can a function return a value?
+117. Different return types of functions.
+118. Can a function return an array? Explain.
+119. What happens if function has no return statement?
+________________

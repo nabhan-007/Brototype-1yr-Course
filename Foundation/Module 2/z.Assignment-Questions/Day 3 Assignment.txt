@@ -1,0 +1,67 @@
+﻿📝 Assignments (Day 3)
+________________
+
+
+Assignment 3.1
+Write a C program to delete an element from an array at a specified position.
+________________
+
+
+Assignment 3.2
+Write a C program to delete all even numbers from an array: {12, 7, 18, 9, 24, 11, 30}.
+________________
+
+
+Assignment 3.3
+Write a C program to delete all odd numbers from an array: {10, 15, 8, 21, 30, 9, 12}.
+________________
+
+
+Assignment 3.4
+Write a C program to delete all multiples of 3 from an array: {12, 15, 8, 9, 20, 7, 30}.
+________________
+
+
+Assignment 3.5
+Write a C program to delete all multiples of 5 from an array: {10, 15, 8, 20, 7, 30, 12}.
+________________
+
+
+Assignment 3.6
+Write a C program to delete all prime numbers from an array: {7, 12, 13, 18, 11, 20, 9}.
+________________
+
+
+
+
+
+
+
+
+________________
+
+
+Assignment 3.7
+Write a C program to delete ONE element after every multiple of 5 in an array: {5, 10, 15, 8, 20, 7, 25, 12}.
+________________
+
+
+Assignment 3.8
+Write a C program to Skip TWO elements after every multiple of 5 in an array: {5, 10, 15, 8, 20, 7, 25, 12, 30}.
+________________
+
+
+Assignment 3.9
+Write a C program to delete TWO elements after every odd number in an array: {5, 10, 15, 8, 7, 20, 9, 12, 18}.
+________________
+
+
+
+
+Assignment 3.10
+Write a C program to delete the lowest element from an array: {12, 7, 18, 5, 22, 9, 14}.
+________________
+
+
+Assignment 3.11
+Write a C program to Skip One elements after every even number  in an array: {5, 10, 15, 8, 20, 7, 25, 12, 30}.

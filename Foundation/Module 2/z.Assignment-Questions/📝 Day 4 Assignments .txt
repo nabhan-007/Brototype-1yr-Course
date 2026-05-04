@@ -1,0 +1,70 @@
+﻿📝 Assignments (Day 4)
+________________
+
+
+Assignment 4.1
+Write a C program to reverse an array in-place (without using extra arrays). Array: {5, 10, 15, 20, 25}
+________________
+
+
+Assignment 4.2
+Write a C program to reverse an array using a while loop. Array: {5, 8, 12, 3}
+________________
+
+
+Assignment 4.3
+Write a C program to sort an array in ascending order (without using built-in functions). Array: {5, 2, 8, 1, 9}
+________________
+
+
+Assignment 4.4
+Write a C program to sort an array in descending order. Array: {12, 5, 18, 3, 20}
+________________
+
+
+Assignment 4.5
+Write a C program to sort an array, then count the number of unique elements. Array: {4, 5, 4, 6, 6, 7, 8}
+________________
+
+
+
+
+
+
+
+
+
+
+Assignment 4.6
+Write a C program to find and print all unique elements in an array (elements that appear only once): {10, 15, 10, 20, 15, 30}.
+________________
+
+
+Assignment 4.7
+Write a C program to identify and print all duplicate elements in an array: {10, 15, 10, 20, 15, 30, 10}.
+________________
+
+
+Assignment 4.8
+Write a C program to count the frequency of only odd numbers in an array: {12, 7, 18, 9, 24, 11, 9, 7}.
+________________
+
+
+Assignment 4.9
+Write a C program to replace all duplicate numbers with -1 in an array: {10, 15, 10, 20, 15, 30}.
+________________
+
+
+Assignment 4.10
+Write a C program to check if all elements in an array are unique: {10, 20, 30, 40, 50}.
+________________
+
+
+Assignment 4.11
+Write a C program to find the average of all unique array elements: {10, 15, 10, 20, 15, 30}.
+________________
+
+
+Assignment 4.12
+Write a C program to delete all unique elements from an array (keep only duplicates): {10, 15, 10, 20, 15, 30, 25}.
+________________

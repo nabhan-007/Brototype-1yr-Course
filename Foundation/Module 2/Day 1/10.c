@@ -2,7 +2,8 @@
 
 int main()
 {
-    int largestNum = 0, myArray[7] = {12, 45, 23, 67, 34, 89, 10};
+    int myArray[7] = {12, 45, 23, 67, 34, 89, 10};
+    int largestNum = myArray[0];
 
     for (int i = 0; i < 7; i++)
     {
@@ -13,4 +14,5 @@ int main()
     }
 
     printf("The Largest Number in the Array: %d", largestNum);
+    return 0;
 }

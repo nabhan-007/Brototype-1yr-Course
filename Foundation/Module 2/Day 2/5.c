@@ -14,7 +14,7 @@ int main()
     // Odd numbers to `0`
     for (int i = 0; i < items; i++)
     {
-        if (myArray[i] % 2 == 1)
+        if (myArray[i] % 2 != 0)
         {
             myArray[i] = 0;
         }

@@ -1,0 +1,76 @@
+﻿📝 Assignments (Day 2)
+
+
+________________
+
+
+Assignment 2.1
+Write a C program to insert an element at the beginning of an array.
+________________
+
+
+Assignment 2.2
+Write a C program to add a new element at the end of an array.
+________________
+
+
+Assignment 2.3
+Write a C program to insert an element at a specified position in an array.
+________________
+
+
+Assignment 2.4
+Write a C program to replace all even numbers with 0 in an array: {12, 7, 18, 9, 24, 11}.
+________________
+
+
+Assignment 2.5
+Write a C program to replace all odd numbers with 0 in an array: {10, 15, 8, 21, 30, 9}.
+________________
+
+
+Assignment 2.6
+Write a C program to replace all multiples of 3 with 0 in an array: {6, 15, 10, 9, 30, 25}.
+________________
+
+
+Assignment 2.7
+Write a C program to replace all multiples of 5 with 0 in an array: {10, 15, 22, 30, 45, 18}.
+________________
+
+
+Assignment 2.8
+Write a C program to replace all multiples of 3 with 0 and all multiples of 5 with 1 in an array: {6, 15, 10, 9, 30, 25}. (If a number is multiple of both, replace with 1)
+________________
+
+
+Assignment 2.9
+Write a C program to replace all prime numbers with -1 in an array: {7, 12, 13, 18, 11, 20}.
+________________
+
+
+Assignment 2.10
+Write a C program to replace all prime numbers with 0 and all even numbers with 1 in an array: {5, 8, 13, 18, 7, 20}.
+________________
+
+
+Assignment 2.11
+Write a C program to replace all even numbers with 1 in an array, then find the sum of all elements: {10, 15, 8, 21, 30, 9}.
+________________
+
+
+Assignment 2.12
+Write a C program to replace all multiples of 4 with 0 in an array, then find the sum of remaining (non-zero) elements: {12, 7, 16, 9, 20, 11, 8}.
+________________
+
+
+Assignment 2.13
+Write a C program to replace all odd numbers with 0 in an array, then count how many zeros are in the final array: {10, 15, 8, 21, 30, 9, 12}.
+________________
+
+
+Assignment 2.13
+
+Prepare your progress video for today. Record it and upload it to YouTube as an unlisted video
+
+Progress Video Upload Instructions

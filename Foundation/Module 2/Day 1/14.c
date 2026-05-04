@@ -20,4 +20,5 @@ int main()
         }
     }
     printf("Number of elements are greater than the average of all elements in the array: %d", count);
+    return 0;
 }

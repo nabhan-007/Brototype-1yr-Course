@@ -15,8 +15,9 @@ int main()
     }
 
     // reverse an array in-place
-    int start = 0, end = length - 1; // Two pointers to swap the elements
-    int times_to_run = length / 2;   // if odd the `int` will ignore the decimals
+    int start = 0;                 // Left pointer to swap the elements
+    int end = length - 1;          // Right pointer to swap the elements
+    int times_to_run = length / 2; // if odd the `int` will ignore the decimals
 
     for (int i = 0; i < times_to_run; i++)
     {

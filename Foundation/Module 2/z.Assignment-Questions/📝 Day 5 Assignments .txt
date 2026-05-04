@@ -1,0 +1,57 @@
+﻿📝 Assignments (Day 5)
+________________
+
+
+Assignment 5.1
+Write a C program to replace all multiples of 3 with 0, then find the sum of all elements: {6, 15, 10, 9, 30, 25}.
+________________
+
+
+Assignment 5.2
+Write a C program to delete all odd numbers from an array, then find the sum of remaining elements: {10, 15, 8, 21, 30, 9, 12}.
+________________
+
+
+Assignment 5.3
+Write a C program to delete all even numbers from an array, then find the average of remaining elements: {10, 15, 8, 21, 30, 9, 12}.
+________________
+
+
+Assignment 5.4
+Write a C program to reverse an array, then delete all multiples of 3: {12, 15, 8, 9, 20, 7, 30}.
+________________
+
+
+Assignment 5.5
+Write a C program to replace all prime numbers with -1, then delete all negative numbers: {7, 12, 13, 18, 11, 20, 9}.
+________________
+
+
+Assignment 5.6
+Write a C program to find the sum of all elements. If sum > 100, delete all odd numbers. If sum <= 100, delete all even numbers. Array: {10, 15, 8, 22, 7, 30, 12}.
+________________
+
+
+Assignment 5.7
+Write a C program to separate even and odd elements into two different arrays: {12, 7, 18, 9, 24, 11, 30}.
+________________
+
+
+Assignment 5.8
+Write a C program to count even numbers and count prime numbers in an array: {10, 7, 13, 18, 11, 20, 9}.
+________________
+
+
+Assignment 5.9
+Write a C program to merge two arrays into a single array: arr1 = {10, 20, 30}, arr2 = {40, 50, 60}.
+________________
+
+
+Assignment 5.10
+Write a C program to merge two unsorted arrays and remove all duplicates: arr1 = {10, 20, 30}, arr2 = {20, 40, 30}.
+________________
+
+
+Assignment 5.11
+Write a C program to delete repeating elements from an array: {10, 15, 10, 20, 15, 30, 10}.
+________________

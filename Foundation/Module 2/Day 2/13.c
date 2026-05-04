@@ -13,9 +13,13 @@ int main()
 
     for (int i = 0; i < items; i++)
     {
-        if (myArray[i] % 2 == 1)
+        if (myArray[i] % 2 != 0)
         {
             myArray[i] = 0;
+        }
+        // Another if to count `0` that's in the orginal array
+        if (myArray[i] == 0)
+        {
             count += 1;
         }
     }
