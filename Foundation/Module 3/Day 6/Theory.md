@@ -7,12 +7,15 @@
 ## Pillar 1 — 🔒 Encapsulation
 
 ### Definition
+
 **Encapsulation** is the bundling of data (fields) and methods into a single unit (class), while **restricting direct access** to the data from outside using access modifiers.
 
 ### Real-World Analogy
+
 An **ATM machine** — you can deposit or withdraw money, but you cannot directly touch the internal cash vault. Access is controlled through a defined interface (buttons/card).
 
 ### How it's Achieved
+
 - Make fields `private`.
 - Provide `public` getter/setter methods with validation logic.
 
@@ -45,6 +48,7 @@ class ATM {
 ```
 
 ### Key Benefits
+
 - ✅ Data protection — no accidental corruption.
 - ✅ Validation logic in setters.
 - ✅ Internal changes don't break external code.
@@ -54,12 +58,15 @@ class ATM {
 ## Pillar 2 — 🧬 Inheritance
 
 ### Definition
+
 **Inheritance** allows a child class to **acquire properties and methods** of a parent class, enabling code reuse and a logical class hierarchy.
 
 ### Real-World Analogy
+
 A **Developer is an Employee**. They share common traits (name, salary) but have specialized roles (tech stack, team). You don't rewrite "employee basics" for every role.
 
 ### How it's Achieved
+
 Using the `extends` keyword.
 
 ```java
@@ -103,9 +110,11 @@ class TeamLead extends Developer {
 ## Pillar 3 — 🎭 Polymorphism
 
 ### Definition
+
 **Polymorphism** ("many forms") allows the **same method name** to behave differently depending on the context — either at compile time (overloading) or runtime (overriding).
 
 ### Real-World Analogy
+
 A **printer** can `print(document)`, `print(photo)`, or `print(webpage)`. Same action name, different behavior based on input.
 
 ### Compile-Time Polymorphism — Method Overloading
@@ -152,14 +161,17 @@ The JVM decides which method to call **at runtime** based on the actual object t
 ## Pillar 4 — 🎭 Abstraction
 
 ### Definition
+
 **Abstraction** is the process of **hiding complex implementation details** and exposing only the essential interface. Users interact with *what* something does, not *how* it does it.
 
 ### Real-World Analogy
+
 **Payment apps** — When you pay via UPI or card, you just tap "Pay". You don't know the underlying bank communication, encryption, and routing happening behind the scenes.
 
 ### How it's Achieved
 
 #### Using Abstract Classes
+
 ```java
 abstract class PaymentMethod {
     String holderName;
@@ -187,6 +199,7 @@ class CardPayment extends PaymentMethod {
 ```
 
 #### Using Interfaces (100% Abstraction)
+
 ```java
 interface Flyable {
     void fly();  // All methods implicitly abstract

@@ -33,6 +33,7 @@ Java represents exceptions as **objects** of classes that extend `Throwable`. Wh
 **Exception Handling** is the mechanism to **detect, handle, and recover** from exceptions so the program can continue running instead of crashing.
 
 ### Why is it Important?
+
 - ✅ **Prevents crashes** — Program keeps running even after encountering an error.
 - ✅ **Meaningful error messages** — Users see friendly messages, not raw stack traces.
 - ✅ **Resource cleanup** — Ensures files, connections, etc. are properly closed even if errors occur.
@@ -46,6 +47,7 @@ Java represents exceptions as **objects** of classes that extend `Throwable`. Wh
 A **try-catch** block lets you test a piece of code for exceptions and handle them gracefully.
 
 ### Syntax
+
 ```java
 try {
     // Code that might throw an exception
@@ -55,6 +57,7 @@ try {
 ```
 
 ### How it Works
+
 1. Code inside the `try` block executes normally.
 2. If an exception occurs, execution **jumps immediately** to the matching `catch` block.
 3. The `catch` block handles the exception.
@@ -72,6 +75,7 @@ System.out.println("Program is still running.");
 ```
 
 **Output:**
+
 ```
 Error: Cannot divide by zero!
 Program is still running.
@@ -96,6 +100,7 @@ try {
 ```
 
 ### Purpose of `finally`
+
 - ✅ **Guaranteed cleanup** — Closing files, database connections, or streams.
 - ✅ **Certainty** — You know this block will always run, no matter what.
 - It runs even if the `catch` block throws another exception.
@@ -108,11 +113,13 @@ try {
 The **`throw`** keyword is used to **manually throw an exception** from your code.
 
 ### Syntax
+
 ```java
 throw new ExceptionType("Error message");
 ```
 
 ### Use Case — Custom Validation
+
 ```java
 void validateAge(int age) {
     if (age < 0) {
@@ -123,6 +130,7 @@ void validateAge(int age) {
 ```
 
 > **`throw` vs `throws`:**
+>
 > - `throw` — Used inside a method to **actually throw** an exception.
 > - `throws` — Used in the method signature to **declare** that a method might throw an exception.
 
@@ -137,7 +145,9 @@ void riskyMethod() throws IOException {  // declares it may throw
 ## 7. Important Java Keywords
 
 ### a) `this`
+
 Refers to the **current object** — used to distinguish instance variables from local parameters.
+
 ```java
 class Student {
     String name;
@@ -150,7 +160,9 @@ class Student {
 ---
 
 ### b) `super`
+
 Refers to the **parent class** — used to call parent constructors or methods.
+
 ```java
 class Manager extends Employee {
     Manager(String name) {
@@ -167,6 +179,7 @@ class Manager extends Employee {
 ---
 
 ### c) `final`
+
 Used to make something **unchangeable or non-overridable**.
 
 | Applied To | Effect |
@@ -183,6 +196,7 @@ PI = 3.0;  // ❌ Compile error
 ---
 
 ### d) `static`
+
 Makes a field or method belong to the **class itself**, not to any individual object. All objects share the same static member.
 
 ```java
@@ -204,6 +218,7 @@ System.out.println(Counter.count); // Output: 2
 ---
 
 ### e) `abstract`
+
 Used to declare a class or method that is **incomplete** and must be implemented by subclasses.
 
 ```java

@@ -9,6 +9,7 @@
 Think of a TV remote — you press a button to change the channel. You don't need to know how the signal is transmitted internally. The complexity is hidden; only the necessary interface is shown.
 
 In Java, abstraction is achieved using:
+
 - **Abstract classes** (`abstract` keyword)
 - **Interfaces** (`interface` keyword)
 
@@ -25,6 +26,7 @@ class UPIPayment extends PaymentMethod {
 ```
 
 ### Benefits of Abstraction
+
 - ✅ Reduces complexity — users interact with a simple interface.
 - ✅ Increases security — internal details are hidden.
 - ✅ Promotes loose coupling — components depend on interfaces, not implementations.
@@ -120,6 +122,7 @@ c2.calculateFee(); // Output: Offline fee: ₹15000
 **Encapsulation** is the OOP principle of **bundling data (fields) and the methods that operate on that data inside a single class**, while **restricting direct access** to the fields from outside.
 
 It is achieved by:
+
 1. Making fields `private`.
 2. Providing `public` getter and setter methods to read and modify the data.
 
@@ -140,6 +143,7 @@ class BankAccount {
 ```
 
 ### Benefits of Encapsulation
+
 - ✅ **Data Protection** — Fields can't be directly modified from outside.
 - ✅ **Validation** — Setters can validate data before assigning (e.g., no negative balance).
 - ✅ **Flexibility** — Internal implementation can change without affecting external code.
@@ -176,7 +180,9 @@ class Example {
 **Getters** and **Setters** are `public` methods used to **read** and **write** `private` fields respectively.
 
 ### Getter
+
 Returns the value of a private field.
+
 ```java
 public String getName() {
     return this.name;
@@ -184,7 +190,9 @@ public String getName() {
 ```
 
 ### Setter
+
 Sets/updates the value of a private field, often with validation.
+
 ```java
 public void setMarks(int marks) {
     if (marks >= 0 && marks <= 100) {
@@ -196,6 +204,7 @@ public void setMarks(int marks) {
 ```
 
 ### Full Example
+
 ```java
 class Student {
     private int marks;
@@ -215,6 +224,7 @@ class Student {
 ```
 
 ### Purpose
+
 - **Getters** provide **read-only** controlled access to private data.
 - **Setters** provide **write** access with optional **validation logic**.
 - Together, they enforce **encapsulation** while keeping data accessible in a controlled way.

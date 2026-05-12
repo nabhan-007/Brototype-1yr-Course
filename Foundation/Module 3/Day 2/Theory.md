@@ -20,6 +20,7 @@ class Dog extends Animal {
 `Dog` inherits `name` and `eat()` from `Animal` without rewriting them.
 
 ### Why is it Used?
+
 - ✅ **Code Reusability** — Write once in the parent, reuse in all children.
 - ✅ **Avoid Duplication** — No need to copy common logic across classes.
 - ✅ **Logical Hierarchy** — Represents real-world "is-a" relationships (e.g., a `Manager` *is an* `Employee`).
@@ -32,6 +33,7 @@ class Dog extends Animal {
 ## 2. Types of Inheritance
 
 ### a) Single Inheritance
+
 One child class inherits from **one parent class**.
 
 ```
@@ -46,6 +48,7 @@ class Manager extends Employee { ... }
 ---
 
 ### b) Multilevel Inheritance
+
 A class inherits from a child, which itself inherits from a parent — forming a **chain**.
 
 ```
@@ -61,6 +64,7 @@ class Admin extends Staff { ... }
 ---
 
 ### c) Hierarchical Inheritance
+
 **Multiple child classes** inherit from the **same parent class**.
 
 ```
@@ -78,6 +82,7 @@ class CurrentAccount extends Account { ... }
 ---
 
 ### d) Hybrid Inheritance
+
 A **combination** of two or more types of inheritance.
 
 > ⚠️ Java does **not** support hybrid (or multiple) inheritance directly through classes to avoid ambiguity (the "Diamond Problem"). It can be achieved through **interfaces**.
@@ -110,6 +115,7 @@ class Circle extends Shape {
 ```
 
 ### Why is it Important?
+
 - ✅ **Flexibility** — One interface, multiple implementations.
 - ✅ **Extensibility** — Add new classes without changing existing code.
 - ✅ **Cleaner Code** — Reduces `if-else` chains by letting the object decide its behavior.
@@ -182,6 +188,7 @@ class Manager extends Employee {
 The **`super`** keyword refers to the **parent class** of the current object. It is used to:
 
 ### a) Call the parent class constructor
+
 ```java
 class Employee {
     String name;
@@ -200,6 +207,7 @@ class Manager extends Employee {
 ```
 
 ### b) Call a parent class method (especially after overriding it)
+
 ```java
 class Manager extends Employee {
     @Override
@@ -211,6 +219,7 @@ class Manager extends Employee {
 ```
 
 ### c) Access a parent class field (when shadowed by a child field)
+
 ```java
 class Parent { int x = 10; }
 class Child extends Parent {
