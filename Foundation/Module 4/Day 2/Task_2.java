@@ -12,6 +12,15 @@
 // ============================================
 public class Task_2 {
     public static void main(String[] args) {
-        // Write your code here
+        int n = 5;
+
+        for (int i = n; i > 0; i--) {
+            char alphabet = 'A';
+
+            for (int j = 0; j < i; j++) {
+                System.out.print(alphabet++);
+            }
+            System.out.println();
+        }
     }
 }
