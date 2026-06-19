@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Hello World</title>
+  </head>
+  <body>
+    <div class="box">
+      <h1>Hello World</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+        magnam ipsa nihil, dignissimos quae, provident nostrum dolore impedit
+        modi ullam fugiat. Cupiditate accusamus nisi laboriosam, aut nam
+        excepturi qui nihil! Corrupti ducimus officiis deleniti quam iste sint
+        temporibus eaque mollitia accusamus earum repellendus autem, animi quis.
+        Dicta libero dignissimos maxime tenetur consectetur nostrum provident
+        beatae laboriosam sed? Alias, rem officiis! Enim reiciendis molestiae
+        architecto deleniti, voluptatem explicabo nam dolorum adipisci optio
+        magni porro ea ut exercitationem, excepturi modi ipsam. Blanditiis sit
+        facere natus impedit accusamus recusandae consectetur saepe enim
+        aliquid? Alias libero inventore aperiam distinctio pariatur, est rem
+        doloribus enim quos vitae soluta ad tempora vero. Expedita aliquam
+        libero laboriosam nobis est beatae corporis tenetur, odit minima sunt,
+        quae vel? Recusandae, obcaecati dolores corporis rem corrupti natus
+        veniam odio aspernatur id perferendis dignissimos tempore nostrum quam
+        numquam vel vero nam minima, illum iste repellendus amet ipsam ea
+        eligendi necessitatibus. Ad.
+      </p>
+    </div>
+    <div class="pagination">
+      <a href="#<"><</a>
+      <a href="index.html" class="active">1</a>
+      <a href="#2">2</a>
+      <a href="#3">3</a>
+      <a href="#4">4</a>
+      <a href="#5">5</a>
+      <a href="#>">></a>
+      <script>
+        const pageLinks = document.querySelectorAll(".pagination a");
+
+        pageLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            const text = this.innerText.trim();
+
+            // CASE 1: It's an arrow click (< or >)
+            if (text === "<" || text === ">") {
+              e.preventDefault(); // Stop hash jump if needed
+
+              // Find the currently active page number
+              const currentActive = document.querySelector(
+                ".pagination a.active",
+              );
+              if (!currentActive) return;
+
+              if (text === "<") {
+                // Move to the previous element if it's a number
+                const prevElement = currentActive.previousElementSibling;
+                if (prevElement && prevElement.innerText !== "<") {
+                  prevElement.click();
+                }
+              } else if (text === ">") {
+                // Move to the next element if it's a number
+                const nextElement = currentActive.nextElementSibling;
+                if (nextElement && nextElement.innerText !== ">") {
+                  nextElement.click();
+                }
+              }
+            }
+            // CASE 2: It's a regular page number click
+            else {
+              document
+                .querySelector(".pagination a.active")
+                ?.classList.remove("active");
+              this.classList.add("active");
+            }
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>

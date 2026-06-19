@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>YouTube.com Clone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/general.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/video.css" />
+  <link rel="stylesheet" href="styles/sidebar.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="left-section">
+      <img class="hamburger-menu" src="icons/hamburger-menu.svg" />
+      <img class="youtube-logo" src="icons/youtube-logo.svg" />
+    </div>
+    <div class="middle-section">
+      <input class="search-bar" type="text" placeholder="Search" />
+      <button class="search-button">
+        <img class="search-icon" src="icons/search.svg" />
+        <div class="tooltip">Search</div>
+      </button>
+      <!-- Put position absolute inside position relative -->
+      <button class="voice-search-button">
+        <img class="voice-search-icon" src="icons/voice-search-icon.svg" />
+        <div class="tooltip">Search with your voice</div>
+      </button>
+    </div>
+    <div class="right-section">
+      <div class="upload-icon-container">
+        <img class="upload-icon" src="icons/upload.svg" />
+        <div class="tooltip">Create</div>
+      </div>
+      <img class="youtube-apps-icon" src="icons/youtube-apps.svg" />
+      <div class="notifications-icon-container">
+        <img class="notifications-icon" src="icons/notifications.svg" />
+        <div class="notifications-count">3</div>
+      </div>
+      <img class="current-user-picture" src="channel-pictures/my-channel.jpeg" />
+    </div>
+  </header>
+
+  <nav class="sidebar">
+    <div class="sidebar-link">
+      <img src="icons/home.svg" />
+      <div>Home</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="icons/explore.svg" />
+      <div>Explore</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="icons/subscriptions.svg" />
+      <div>Subscriptions</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="icons/originals.svg" />
+      <div>Originals</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="icons/youtube-music.svg" />
+      <div>YouTube Music</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="icons/library.svg" />
+      <div>Library</div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="video-grid">
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="thumbnails/thumbnail-1.webp" />
+          <div class="video-time">14:20</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="channel-pictures/channel-1.jpeg" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              Talking Tech and AI with Google CEO Sundar Pichai!
+            </p>
+            <p class="video-author">Marques Brownlee</p>
+            <p class="video-stats">3.4M views &#183; 6 months ago</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="thumbnails/thumbnail-2.webp" />
+          <div class="video-time">8:22</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="channel-pictures/channel-2.jpeg" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">Try Not To Laugh Challenge #9</p>
+            <p class="video-author">Markiplier</p>
+            <p class="video-stats">19M views &#183; 4 years ago</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="thumbnails/thumbnail-3.webp" />
+          <div class="video-time">9:13</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="channel-pictures/channel-3.jpeg" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              Crazy Tik Toks Taken Moments Before DISASTER
+            </p>
+            <p class="video-author">SSSniperWolf</p>
+            <p class="video-stats">12M views &#183; 1 year ago</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="thumbnails/thumbnail-4.webp" />
+          <div class="video-time">22:09</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="channel-pictures/channel-4.jpeg" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              The Simplest Math Problem No One Can Solve - Collatz Conjecture
+            </p>
+            <p class="video-author">Veritasium</p>
+            <p class="video-stats">18M views &#183; 4 months ago</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="thumbnails/thumbnail-5.webp" />
+          <div class="video-time">11:17</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="channel-pictures/channel-5.jpeg" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              Kadane's Algorithm to Maximum Sum Subarray Problem
+            </p>
+            <p class="video-author">CS Dojo</p>
+            <p class="video-stats">519K views &#183; 5 years ago</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="thumbnails/thumbnail-6.webp" />
+          <div class="video-time">19:59</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="channel-pictures/channel-6.jpeg" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              Anything You Can Fit In The Circle I’ll Pay For
+            </p>
+            <p class="video-author">MrBeast</p>
+            <p class="video-stats">141M views &#183; 1 year ago</p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail"
+            src="https://i.ytimg.com/vi/s7aOJYueEtI/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLAwRqMeZrc5q4Z5KxhCLl5xvm1MUw" />
+          <div class="video-time">41:31</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture"
+              src="https://yt3.ggpht.com/a_1U9tYmozHPhZhsLiqqQ_XcYbhlmG_X1fsTdBWAHBjLmRN0haiv1xa_owiit7p8xyKDlMF1LXw=s68-c-k-c0x00ffffff-no-rj" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              I Investigated India’s Biggest Smartphone Controversy
+            </p>
+            <p class="video-author">Mrwhosetheboss</p>
+            <p class="video-stats">3.3M views &#183; 1 day ago</p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail"
+            src="https://i.ytimg.com/vi/vHVR-7zURnw/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLA8Ssl5U9pkNzJNWBqxw2-hFLXHXA" />
+          <div class="video-time">35:42</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture"
+              src="https://yt3.ggpht.com/DhUOPt5NbK6U3joWo8XvIlDT35UGyG3B1b5ugL8ltx19vcy8_8MOp_w8viSnvDviB-SXZl4wnw=s68-c-k-c0x00ffffff-no-rj" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              This Is How Developers Host Portfolio Websites for FREE!
+            </p>
+            <p class="video-author">Brototype Malayalam</p>
+            <p class="video-stats">77k views &#183; 4 months ago</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail"
+            src="https://i.ytimg.com/vi/rI8KCz_vtXw/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLAazt7-qEjawysacz5uTCb4rqJ2OQ" />
+          <div class="video-time">7:44</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture"
+              src="https://yt3.ggpht.com/xDKovgI5LuRjuFO6JCli70wTTZy4KuNWNd9jmHNU61XEzeOFeQDRkp-kca9U-svcrPm03Q2W2Q=s68-c-k-c0x00ffffff-no-rj" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              Microsoft is Finally FIXING Windows!
+            </p>
+            <p class="video-author">Sillycorns</p>
+            <p class="video-stats">206k views &#183; 3 days ago</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail"
+            src="https://i.ytimg.com/vi/Lj4LMlGr4og/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLAc9GZHzPkj_NV_EqhmLOmBkW9P1w" />
+          <div class="video-time">6:10</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture"
+              src="https://yt3.ggpht.com/e9Tv2HS3X6lzdqoG0jAsudM0HkhpQyd24EKWjvf_MuWP_KVg68jZvVeIHYlxl7jyUtF_mlK3gg=s68-c-k-c0x00ffffff-no-rj" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              Is Charging While Using Your Phone Killing the Battery?
+            </p>
+            <p class="video-author">HTX Studio</p>
+            <p class="video-stats">3.6m views &#183; 11 months ago</p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail"
+            src="https://i.ytimg.com/vi/mk_wdHePbtQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLDxjFqD9MPIvR1la07d1B5k7gzBdA" />
+          <div class="video-time">11:03</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture"
+              src="https://yt3.ggpht.com/qu4TmIaYUlS41-dJ9gZ7DUR3nilvmB5_11i6OKSdvNnBNiyOusZP1bMN6ICnuxtjFBb6ioKgRQ=s68-c-k-c0x00ffffff-no-rj" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              The Hidden Tech Behind an NBA Broadcast!
+            </p>
+            <p class="video-author">Marques Brownlee</p>
+            <p class="video-stats">1.2m views &#183; 3 days ago</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail"
+            src="https://i.ytimg.com/vi/-9A9Z6SSGZo/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLDS_cxEOwi0TKxRKs2m8c12YDf8uw" />
+          <div class="video-time">8:02</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture"
+              src="https://yt3.ggpht.com/L8-IS0dpyAiTPscKbpr7V0GXHSrAVzL-StsX43gKTxVchxJhPFcZIjMKFSXDfTGN-qstgt8VNg=s68-c-k-c0x00ffffff-no-rj-mo" />
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              ഇന്ത്യ | Episode - 3। India
+            </p>
+            <p class="video-author">Cinemagic</p>
+            <p class="video-stats">41k views &#183; 9 days ago</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

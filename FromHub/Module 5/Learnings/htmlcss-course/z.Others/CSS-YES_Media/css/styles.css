@@ -1,0 +1,50 @@
+body {
+  --w: 500px;
+  --h: 500px;
+}
+
+.hello {
+  width: var(--w);
+  height: var(--h);
+  border-style: dotted;
+
+  /* 1. Turn the div into a flex container */
+  display: flex;
+  /* 2. Center vertically (top to bottom) */
+  align-items: center;
+  /* 3. Center horizontally (left to right) */
+  justify-content: center;
+
+  transition: border-radius 3s;
+
+  position: relative;
+  animation: move 5s;
+}
+
+.hello:hover {
+  border-radius: 0px 5000px 5000px 0px;
+  background-image: linear-gradient(to bottom right, yellow, red);
+}
+
+@keyframes move {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  25% {
+    left: 100px;
+    top: 0px;
+  }
+  50% {
+    left: 100px;
+    top: 100px;
+  }
+  75% {
+    left: 0px;
+    top: 100px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}

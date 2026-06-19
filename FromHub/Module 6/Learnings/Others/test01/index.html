@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Anchor Positioning Demo</title>
+    <style>
+      /* Reset & Center the Demo */
+      body {
+        font-family: system-ui, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #0f172a;
+        margin: 0;
+        gap: 20px;
+      }
+
+      /* 1. THE ANCHOR ELEMENT */
+      .anchor-btn {
+        /* Give the anchor a global dash-dashed name */
+        anchor-name: --my-button;
+
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      /* 1. Hide the tooltip by default */
+      .tooltip {
+        position: absolute;
+        position-anchor: --my-button;
+        position-area: right center; /* Switched to center for better right-side alignment */
+        width: anchor-size(--my-button width);
+        box-sizing: border-box;
+        padding: 8px;
+        margin-left: 10px; /* Pushes it away from the button horizontally */
+        background-color: #1e293b;
+        color: #f8fafc;
+        font-size: 14px;
+        text-align: center;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+
+        /* Use visibility to completely hide it from the DOM rendering tree */
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      /* 2. Show it on hover cleanly */
+      .anchor-btn:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="anchor-btn">
+      Hover Me
+      <div class="tooltip">I'm anchored!</div>
+    </button>
+    <!-- Hello World -->
+  </body>
+</html>

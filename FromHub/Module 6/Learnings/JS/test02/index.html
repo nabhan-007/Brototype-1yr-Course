@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Text Properties Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <h1>DOM Text Properties</h1>
+        <p>
+          A live, interactive explorer for <code>innerHTML</code>,
+          <code>innerText</code>, and <code>textContent</code>.
+        </p>
+      </header>
+
+      <section class="playground">
+        <div class="target-container">
+          <div class="target-header">
+            <h2>The Target Element</h2>
+            <div class="controls">
+              <button id="toggle-css-btn" class="modern-btn">
+                Show Hidden Text
+              </button>
+              <button id="reset-btn" class="modern-btn outline">
+                Reset HTML
+              </button>
+            </div>
+          </div>
+          <!-- The target element we will inspect and modify -->
+          <div id="target-element" class="target-box">
+            Hello
+            <span class="secret-text" style="display: none"
+              >Secret Hidden Text</span
+            >
+            <br />
+            Welcome!
+          </div>
+        </div>
+
+        <div class="grid-container">
+          <!-- innerHTML Column -->
+          <div class="property-card" id="card-innerhtml">
+            <div class="card-header">
+              <h3>innerHTML</h3>
+              <span class="badge">Parses Tags</span>
+            </div>
+            <p class="description">
+              Gets or sets the full HTML markup contained within the element.
+            </p>
+
+            <div class="io-section">
+              <h4>GET (What you read)</h4>
+              <pre><code id="output-innerhtml"></code></pre>
+            </div>
+
+            <div class="io-section">
+              <h4>SET (What you write)</h4>
+              <textarea
+                id="input-innerhtml"
+                rows="3"
+                placeholder="Type HTML here..."
+              ></textarea>
+              <button class="action-btn" onclick="setProp('innerHTML')">
+                Apply innerHTML
+              </button>
+            </div>
+          </div>
+
+          <!-- innerText Column -->
+          <div class="property-card" id="card-innertext">
+            <div class="card-header">
+              <h3>innerText</h3>
+              <span class="badge">Visual Text</span>
+            </div>
+            <p class="description">
+              Gets or sets the visible text, respecting CSS styling like
+              display:none.
+            </p>
+
+            <div class="io-section">
+              <h4>GET (What you read)</h4>
+              <pre><code id="output-innertext"></code></pre>
+            </div>
+
+            <div class="io-section">
+              <h4>SET (What you write)</h4>
+              <textarea
+                id="input-innertext"
+                rows="3"
+                placeholder="Type text here..."
+              ></textarea>
+              <button class="action-btn" onclick="setProp('innerText')">
+                Apply innerText
+              </button>
+            </div>
+          </div>
+
+          <!-- textContent Column -->
+          <div class="property-card" id="card-textcontent">
+            <div class="card-header">
+              <h3>textContent</h3>
+              <span class="badge">Raw Text</span>
+            </div>
+            <p class="description">
+              Gets or sets all text from the DOM tree, ignoring all CSS.
+            </p>
+
+            <div class="io-section">
+              <h4>GET (What you read)</h4>
+              <pre><code id="output-textcontent"></code></pre>
+            </div>
+
+            <div class="io-section">
+              <h4>SET (What you write)</h4>
+              <textarea
+                id="input-textcontent"
+                rows="3"
+                placeholder="Type raw text here..."
+              ></textarea>
+              <button class="action-btn" onclick="setProp('textContent')">
+                Apply textContent
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

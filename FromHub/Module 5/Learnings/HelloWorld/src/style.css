@@ -1,0 +1,30 @@
+body {
+  background-color: rgb(67, 67, 67);
+  color: aqua;
+}
+
+i {
+  color: chartreuse;
+}
+
+a {
+  color: aquamarine;
+}
+
+.list-container {
+  display: flex; /* Aligns the lists horizontally */
+
+  background-color: darkslategray;
+}
+
+.image-container img {
+  width: 48%;
+  height: auto; /* Keeps them from getting distorted */
+  padding: 1%;
+  float: left;
+}
+
+.vertical-vdieo {
+  width: 25%;
+  height: auto;
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="typography text-3xl font-bold underline">Hello world!</h1>
+
+    <div class="flex justify-between items-center bg-gray-200 p-4">
+      <span>Logo</span>
+      <nav class="flex gap-4">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+
+    <div class="flex h-32">
+      <div class="bg-sky-50 w-screen h-32"></div>
+      <div class="bg-sky-100 w-screen h-32"></div>
+      <div class="bg-sky-200 w-screen h-32"></div>
+      <div class="bg-sky-300 w-screen h-32"></div>
+      <div class="bg-sky-400 w-screen h-32"></div>
+      <div class="bg-sky-500 w-screen h-32"></div>
+      <div class="bg-sky-600 w-screen h-32"></div>
+      <div class="bg-sky-700 w-screen h-32"></div>
+      <div class="bg-sky-800 w-screen h-32"></div>
+      <div class="bg-sky-900 w-screen h-32"></div>
+      <div class="bg-sky-950 w-screen h-32"></div>
+    </div>
+    <hr />
+    <div class="flex h-32">
+      <div class="bg-sky-950 flex-1"></div>
+      <div class="bg-sky-900 flex-1"></div>
+      <div class="bg-sky-800 flex-1"></div>
+      <div class="bg-sky-700 flex-1"></div>
+      <div class="bg-sky-600 flex-1"></div>
+      <div class="bg-sky-500 flex-1"></div>
+      <div class="bg-sky-400 flex-1"></div>
+      <div class="bg-sky-300 flex-1"></div>
+      <div class="bg-sky-200 flex-1"></div>
+      <div class="bg-sky-100 flex-1"></div>
+      <div class="bg-sky-50 flex-1"></div>
+    </div>
+    <hr />
+    <div
+      class="flex items-center gap-4 rounded-lg bg-white p-6 shadow-md outline outline-black/5 dark:bg-gray-800"
+    >
+      <span
+        class="inline-flex shrink-0 rounded-full border border-pink-300 bg-pink-100 p-2 dark:border-pink-300/10 dark:bg-pink-400/10"
+      >
+        <svg class="size-6 stroke-pink-700 dark:stroke-pink-500">
+          <!-- ... -->
+        </svg>
+      </span>
+      <div>
+        <p class="text-gray-700 dark:text-gray-400">
+          <span class="font-medium text-gray-950 dark:text-white"
+            >Tom Watson</span
+          >
+          mentioned you in
+          <span class="font-medium text-gray-950 dark:text-white"
+            >Logo redesign</span
+          >
+        </p>
+        <time class="mt-1 block text-gray-500" datetime="9:37">9:37am</time>
+      </div>
+    </div>
+    <hr />
+    <button class="border-2 border-blue-500 rounded-md p-2">
+      Border Button
+    </button>
+
+    <button class="outline outline-2 outline-red-500 p-2">
+      Outline Button
+    </button>
+    <hr />
+  </body>
+</html>

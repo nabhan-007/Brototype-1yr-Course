@@ -1,0 +1,73 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: tomato;
+}
+
+h1::first-letter {
+  font-size: larger;
+}
+h1 {
+  margin: 10px;
+  padding: 10px;
+  font-family: "Times New Roman", Times, serif;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  border: 2px solid blue;
+  /* max-width: max-content; */
+}
+
+.box h1 {
+  border: 2px solid red;
+  width: auto;
+  margin: 20px;
+  padding: 10px;
+  margin-bottom: 0px;
+}
+
+.box h1:hover {
+  box-shadow: 3px 3px 5px yellow;
+}
+.box h1:active {
+  text-shadow: 3px 3px 5px yellow;
+}
+
+.box p {
+  border: 2px solid red;
+  border-top: 0px;
+  margin: 20px;
+  padding: 10px;
+  width: auto;
+  margin-top: 0px;
+}
+.box p::first-letter {
+  padding-left: 30px;
+}
+.box p:hover {
+  box-shadow: 3px 3px 5px yellow;
+}
+.box p:active {
+  text-shadow: 3px 3px 5px yellow;
+}
+
+.pagination {
+  text-align: center;
+  font-size: 1.5em;
+}
+.pagination a {
+  text-decoration: none;
+  color: rgb(64, 42, 19);
+  padding: 5px;
+  /* display: inline-block; */
+  font-weight: bold;
+  background-color: rgb(173, 173, 173);
+  border-radius: 10px;
+}
+.pagination a.active {
+  background-color: rgb(255, 213, 0);
+}

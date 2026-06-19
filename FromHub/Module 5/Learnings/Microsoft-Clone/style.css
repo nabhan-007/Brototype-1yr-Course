@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  height: 54px;
+  background-color: #fff;
+}
+
+.nav-left,
+.nav-right,
+.nav-links,
+.nav-utils {
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  gap: 20px;
+}
+.nav-left {
+  gap: 24px;
+}
+
+a {
+  text-decoration: none;
+  color: #262626;
+  font-size: 13px;
+}
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo img {
+  width: 108px;
+  margin-top: 4px;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  display: flex;
+  align-items: center;
+  background-color: #f4f4f4; /* Microsoft's subtle off-white */
+  padding: 0 5%;
+  min-height: 500px;
+}
+
+.hero-content {
+  flex: 1; /* This forces the left div to take exactly half the space */
+  padding: 80px;
+  max-width: 45%;
+}
+
+.hero-content h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* The Microsoft Blue CTA Button */
+.btn-primary {
+  display: inline-block;
+  background-color: #0067b8;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 2px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* This override prevents the global underline rule you set earlier */
+.btn-primary:hover {
+  background-color: #005da6;
+  text-decoration: none;
+}
+
+.hero-image {
+  flex: 1; /* This forces the right div to take exactly half the space */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+.hero {
+  background-image: url(images/Hero-Desktop-M365-Icon-Bounce-Premium_VP5-1920x600.avif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}

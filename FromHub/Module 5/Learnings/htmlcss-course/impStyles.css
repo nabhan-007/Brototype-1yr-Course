@@ -1,0 +1,120 @@
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
+:root {
+  --bg-color: #0f0f12;
+  --text-color: #f1f1f1;
+  --accent-color: #ff4500; /* Vibrant Tomato Red */
+  --highlight-color: #ffd500; /* Gold */
+  --card-bg: #1e1e24;
+  --btn-bg: #33333a;
+
+  --font-heading: "Times New Roman", Times, serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  padding: 40px 20px;
+}
+
+/* ==========================================================================
+   2. CONTENT BOX COMPONENT
+   ========================================================================== */
+.box {
+  max-width: 700px;
+  margin: 0 auto 40px auto; /* Centers the container */
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.box h1 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  padding: 25px 25px 10px 25px;
+  transition: text-shadow 0.3s ease;
+}
+
+.box h1::first-letter {
+  font-size: 1.3em;
+}
+
+.box h1:hover {
+  text-shadow: 0 0 10px var(--highlight-color);
+}
+
+.box p {
+  padding: 0 25px 25px 25px;
+  color: #cccccc;
+  text-align: justify;
+}
+
+.box p::first-letter {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+/* ==========================================================================
+   3. PAGINATION COMPONENT
+   ========================================================================== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Modern way to space elements without margins */
+}
+
+.pagination a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--btn-bg);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover state for links & numbers */
+.pagination a:hover {
+  background-color: #44444c;
+  transform: translateY(-2px);
+}
+
+/* Active Page State */
+.pagination a.active {
+  background-color: var(--highlight-color);
+  color: #000000;
+}
+
+/* Arrow Specific Styling (First and Last Children) */
+.pagination a:first-child,
+.pagination a:last-child {
+  background-color: transparent;
+  color: var(--accent-color);
+  font-size: 1.3rem;
+}
+
+.pagination a:first-child:hover,
+.pagination a:last-child:hover {
+  background-color: transparent;
+  color: var(--highlight-color);
+}

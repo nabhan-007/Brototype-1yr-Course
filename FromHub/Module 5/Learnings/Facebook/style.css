@@ -1,0 +1,258 @@
+/* 1. Global Reset & Box-Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Main Page Layout */
+body {
+  font-family:
+    "SF Pro Display", "Inter", "Segoe UI", Roboto, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Horizontal Split Container */
+.container {
+  display: flex;
+  flex: 1; /* Allow it to grow to fill screen, but content can push it taller */
+  width: 100%;
+  max-width: 1500px; /* Extremely wide to allow natural un-congested flow */
+  margin: 0 auto;
+  padding: 60px 40px; /* Add vertical padding so elements can breathe and scroll */
+}
+
+/* 3. Left Section Styles */
+.left-section {
+  width: 55%; /* Take slightly more space to fit the massive collage */
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch; /* Stretch to fill vertical space */
+  border-right: 1px solid #eaebec;
+  padding-right: 40px;
+}
+
+/* GRID LAYOUT: Let content naturally determine height (no absolute positioning congestion) */
+.left-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: max-content 1fr; /* Text gets as much space as it needs, image takes the rest */
+  grid-template-rows: auto 1fr; /* Logo row, Text row */
+  gap: 0 40px; /* Horizontal gap between text and image */
+  padding-top: 20px;
+}
+
+/* Logo at Top Left */
+.logo-container {
+  grid-column: 1;
+  grid-row: 1;
+  margin-bottom: 120px; /* Natural spacing to push text down without absolute position */
+}
+
+.fb-logo {
+  width: 44px;
+  height: 44px;
+}
+
+/* Heading at Bottom Left */
+.left-heading {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end; /* Sit at the very bottom of the grid row */
+  font-size: 68px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1c1e21;
+  letter-spacing: -2px;
+  white-space: nowrap; /* Prevent awkward text wrapping */
+}
+
+.blue-text {
+  color: #0866ff;
+}
+
+.black-dot {
+  color: #1c1e21;
+}
+
+/* Collage at Right (Spans both rows!) */
+.collage-container {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center; /* Vertically center the massive image */
+  justify-content: flex-end;
+  margin-left: -40px; /* Pull it slightly left so it beautifully overlaps the empty space above the text */
+}
+
+.collage-image {
+  width: 125%;
+}
+
+/* 4. Right Section Styles */
+.right-section {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Form naturally centers vertically in the massive available space */
+  padding-left: 60px;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-title {
+  font-size: 22px; /* Slightly larger heading */
+  font-weight: 700;
+  color: #1c1e21;
+  margin-bottom: 24px;
+}
+
+/* 5. Login Form & Child Elements */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+}
+
+/* Input Fields */
+.input-field {
+  width: 100%;
+  height: 52px;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #dcdfe3;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #1d2129;
+  outline: none;
+}
+
+.input-field::placeholder {
+  color: #8c939d;
+}
+
+.input-field:focus {
+  border-color: #0866ff;
+}
+
+/* Log In Button */
+.btn-login {
+  width: 100%;
+  height: 48px;
+  background-color: #0866ff;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn-login:hover {
+  background-color: #0055d4;
+}
+
+/* Forgotten Password Link */
+.forgot-password {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b4f56;
+  text-decoration: none;
+  text-align: center;
+  margin: 4px 0;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Divider Line */
+.divider {
+  border: 0;
+}
+
+/* Create New Account Button */
+.btn-create {
+  width: 100%;
+  height: 48px;
+  background-color: transparent;
+  border: 1px solid #0866ff;
+  color: #0866ff;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.btn-create:hover {
+  background-color: #f0f7ff;
+}
+
+/* 6. Footer (Meta Logo Container) */
+.meta-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.meta-logo {
+  width: 60px;
+  height: auto;
+}
+
+/* 7. Bottom Navigation Footer Section */
+.main-footer {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 40px; /* Massive footer padding */
+  color: #8c939d;
+  font-size: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer-languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 15px;
+  margin-bottom: 12px;
+}
+
+.footer-languages a,
+.footer-links a {
+  color: #8c939d;
+  text-decoration: none;
+}
+
+.footer-languages a:hover,
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.active-lang {
+  color: #4b4f56 !important;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 15px;
+  line-height: 1.6;
+}
+
+.footer-copyright {
+  margin-top: 15px;
+  font-size: 11px;
+}

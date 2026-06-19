@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOMContentLoaded vs Load Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      img {
+        display: block;
+        margin: 20px auto;
+        max-width: 300px;
+      }
+      #dom,
+      #load {
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Event Timing Demo</h1>
+    <p id="dom">Waiting for DOMContentLoaded...</p>
+    <p id="load">Waiting for window load...</p>
+
+    <!-- Large images to slow down full load -->
+    <img src="https://picsum.photos/2000/1200?random=1" alt="Big Image 1" />
+    <img src="https://picsum.photos/2000/1200?random=2" alt="Big Image 2" />
+    <img src="https://picsum.photos/2000/1200?random=3" alt="Big Image 3" />
+
+    <script>
+      // Fires as soon as the DOM is parsed (images may still be loading)
+      document.addEventListener("DOMContentLoaded", function () {
+        const domStatus = document.getElementById("dom");
+        domStatus.textContent = "✅ DOMContentLoaded fired (DOM ready)";
+        domStatus.style.color = "blue";
+        console.log("DOMContentLoaded event fired.");
+      });
+
+      // Fires only when ALL resources (images, styles, etc.) are finished
+      window.addEventListener("load", function () {
+        const loadStatus = document.getElementById("load");
+        loadStatus.textContent = "✅ Window load fired (everything loaded)";
+        loadStatus.style.color = "green";
+        console.log("Window load event fired.");
+      });
+    </script>
+  </body>
+</html>
