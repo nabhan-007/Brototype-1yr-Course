@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click Count</title>
+  </head>
+  <body>
+    <button id="clickMe">Click Me</button>
+
+    <script>
+      function clickWithCount() {
+        let count = 0;
+        document
+          .getElementById("clickMe")
+          .addEventListener("click", (event) => {
+            console.log(`Times ${++count}`);
+          });
+      }
+      clickWithCount(); // Forms clousure. Can see it in devtools.
+    </script>
+  </body>
+</html>
