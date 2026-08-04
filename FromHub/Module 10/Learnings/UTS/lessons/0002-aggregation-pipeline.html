@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2: Aggregation Pipeline</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<h1>Lesson 2: Aggregation Pipeline</h1>
+<p><strong>Mission tie-in:</strong> Aggregation is a favourite practical exam topic &mdash; expect "write a pipeline that groups and sorts."</p>
+
+<h2>1. The Pipeline Concept</h2>
+<p>Documents flow through stages. Each stage transforms and passes to the next:</p>
+<pre><code>db.collection.aggregate([
+  { $stage1: ... },
+  { $stage2: ... },
+  { $stage3: ... }
+])</code></pre>
+<p>Order matters &mdash; <code>$match</code> first to reduce documents early, <code>$sort</code> before <code>$group</code> for accurate <code>$first</code>/<code>$last</code>.</p>
+
+<h2>2. Core Stages</h2>
+
+<h3>$match — Filter (like WHERE)</h3>
+<pre><code>db.orders.aggregate([
+  { $match: { status: "delivered", total: { $gte: 50 } } }
+])</code></pre>
+<p>Same syntax as <code>find()</code>. Put <code>$match</code> as early as possible.</p>
+
+<h3>$group — Group + Aggregate (like GROUP BY)</h3>
+<pre><code>db.orders.aggregate([
+  { $group: { _id: "$status", count: { $sum: 1 }, avgTotal: { $avg: "$total" } } }
+])</code></pre>
+
+<p><code>_id</code> is the grouping field. Prefix with <code>$</code> to reference a field.</p>
+
+<h3>$sort — Reorder</h3>
+<pre><code>{ $sort: { avgTotal: -1 } }   // -1 = descending, 1 = ascending</code></pre>
+
+<h3>$project — Reshape</h3>
+<pre><code>{ $project: { name: 1, priceWithTax: { $multiply: ["$price", 1.18] }, _id: 0 } }</code></pre>
+
+<h3>$unwind — Flatten Arrays</h3>
+<pre><code>// Input doc: { name: "Order1", items: ["a", "b", "c"] }
+{ $unwind: "$items" }
+// Output: 3 docs, one per item</code></pre>
+
+<h3>$lookup — Join Collections</h3>
+<pre><code>db.orders.aggregate([
+  {
+    $lookup: {
+      from: "customers",
+      localField: "customerId",
+      foreignField: "_id",
+      as: "customer"
+    }
+  }
+])
+// Adds a "customer" array field with matched docs</code></pre>
+
+<h2>3. Practical: Build a Report</h2>
+<p>Imagine a collection <code>sales</code>:</p>
+<pre><code>db.sales.insertMany([
+  { product: "Laptop", category: "Electronics", amount: 1200, date: ISODate("2026-01-15") },
+  { product: "Mouse", category: "Electronics", amount: 25, date: ISODate("2026-01-16") },
+  { product: "Shirt", category: "Clothing", amount: 35, date: ISODate("2026-01-17") },
+  { product: "Laptop", category: "Electronics", amount: 1300, date: ISODate("2026-02-01") },
+  { product: "Shoes", category: "Clothing", amount: 80, date: ISODate("2026-02-05") }
+])</code></pre>
+
+<p><strong>Task:</strong> Write a pipeline that:</p>
+<ol>
+<li>Filters sales for Electronics only</li>
+<li>Groups by product name</li>
+<li>Calculates total amount per product</li>
+<li>Sorts by total descending</li>
+</ol>
+
+<details><summary>Solution</summary>
+<pre><code>db.sales.aggregate([
+  { $match: { category: "Electronics" } },
+  { $group: { _id: "$product", totalSales: { $sum: "$amount" }, count: { $sum: 1 } } },
+  { $sort: { totalSales: -1 } }
+])</code></pre>
+</details>
+
+<!-- ───── Quiz ───── -->
+<div class="quiz">
+<h3>Quick Quiz</h3>
+
+<p><strong>1.</strong> Which stage filters documents early? Why put it first?</p>
+<details><summary>Answer</summary>
+<p><code>$match</code>. Putting it first reduces the number of documents flowing through later stages, making the pipeline faster.</p>
+</details>
+
+<p><strong>2.</strong> What's the difference between <code>$group</code> and <code>$sort</code>?</p>
+<details><summary>Answer</summary>
+<p><code>$group</code> aggregates documents by a key (reduces count). <code>$sort</code> reorders documents (same count).</p>
+</details>
+
+<p><strong>3.</strong> Write a pipeline to get the average sale amount per category.</p>
+<details><summary>Answer</summary>
+<pre><code>db.sales.aggregate([
+  { $group: { _id: "$category", avgAmount: { $avg: "$amount" } } }
+])</code></pre>
+</details>
+
+<p><strong>4.</strong> What does <code>$unwind</code> do?</p>
+<details><summary>Answer</summary>
+<p>Deconstructs an array field — creates one output document per array element.</p>
+</details>
+
+<p><strong>5.</strong> How is <code>$lookup</code> similar to SQL JOIN?</p>
+<details><summary>Answer</summary>
+<p>Both combine documents from two collections based on a matching field. <code>$lookup</code> adds the joined data as an array field.</p>
+</details>
+</div>
+
+<h2>4. Exam Practice</h2>
+<ol>
+<li>Open <code>mongosh</code>, create <code>exam_orders</code> with fields: customer, items (array), total, date</li>
+<li>Insert 5-10 varied documents</li>
+<li>Build a pipeline: filter → group → sort → limit</li>
+<li>Write a <code>$lookup</code> pipeline joining two collections</li>
+<li>Use <code>$unwind</code> on an array field</li>
+<li>Verbally explain what each stage does as you write</li>
+</ol>
+
+<h2>Reference</h2>
+<p>See the <a href="../reference/glossary.html">Glossary</a> for all aggregation stages.</p>
+<p><strong>Primary source:</strong> <a href="https://www.mongodb.com/docs/manual/aggregation/" target="_blank">MongoDB Aggregation Docs</a></p>
+
+<p><em>Ask me follow-up questions. What's unclear?</em></p>
+</body>
+</html>

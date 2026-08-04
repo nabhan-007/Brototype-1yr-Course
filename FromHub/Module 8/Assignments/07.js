@@ -15,8 +15,5 @@ function extractDetails(obj) {
 }
 
 extractDetails({
-  user: {
-    name: "Alice",
-    age: 22,
-  },
+  user: { name: "Alice", age: 22 },
 });

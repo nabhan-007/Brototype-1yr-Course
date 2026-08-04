@@ -1,0 +1,96 @@
+    <link rel="stylesheet" href="/styles/userLogin.css">
+
+
+<div class="login-container">
+  <div class="login-box">
+    <div class="login-header">
+      <h1>Welcome Back</h1>
+      <p>Please login to your account</p>
+    </div>
+
+    {{#if error}}
+    <div class="alert alert-error">
+      {{error}}
+    </div>
+    {{/if}}
+
+    {{#if success}}
+    <div class="alert alert-success">
+      {{success}}
+    </div>
+    {{/if}}
+
+    <form id="login-form" action="/user/login" method="POST" class="login-form">
+      <div class="form-group">
+        
+        <input type="hidden" id="message" value="{{message}}">
+        <label for="email">Email Address</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          value="{{{email}}}"
+          placeholder="Enter your email"
+          
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="Enter your password"
+          
+        >
+      </div>
+
+      <button type="submit" class="btn-login">Login</button>
+    </form>
+
+    <div class="login-footer">
+      <p>Don't have an account? <a href="/user/register">Sign up</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. HANDLE MESSAGE ALERT & URL CLEANUP
+    const messageInput = document.getElementById("message");
+    
+    if (messageInput && messageInput.value.trim() !== "") {
+        // Show the SweetAlert
+        Swal.fire({
+            text: messageInput.value,
+            timer: 3000
+        });
+
+        // IMMEDIATELY clean the URL if a query string exists
+        if (window.location.search.length > 0) {
+            const cleanUrl = window.location.pathname;
+            window.history.replaceState(null, null, cleanUrl);
+        }
+        
+        // Clear the hidden input so it doesn't fire again on back-button
+        messageInput.value = "";
+    }
+
+    // 2. HANDLE FORM VALIDATION
+    const loginForm = document.getElementById("login-form");
+    loginForm.addEventListener("submit", (e) => {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!email || !password) {
+            e.preventDefault(); // Stop the form
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "All fields are required!",
+            });
+        }
+    });
+});
+</script>

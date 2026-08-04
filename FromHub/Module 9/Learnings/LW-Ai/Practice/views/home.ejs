@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; margin: 0; }
+    .home-container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; width: 400px; }
+    h1 { color: #333; }
+    p { color: #666; font-size: 16px; }
+    .user-info { background: #e8f5e9; padding: 15px; border-radius: 4px; margin: 20px 0; }
+    button { padding: 12px 30px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+    button:hover { background: #d32f2f; }
+  </style>
+</head>
+<body>
+  <div class="home-container">
+    <h1>Welcome, <%= user.username %>!</h1>
+    <div class="user-info">
+      <p>You are logged in as <strong><%= user.username %></strong></p>
+    </div>
+    <form action="/logout" method="POST">
+      <button type="submit">Signout</button>
+    </form>
+  </div>
+</body>
+</html>

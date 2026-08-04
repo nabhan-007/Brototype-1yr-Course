@@ -7,7 +7,7 @@ Output → Logs error properly
 
 async function getData() {
   try {
-    let response = await fetch("https://invalid-url");
+    let response = await fetch("https://bad-url");
 
     let output = await response.json();
 

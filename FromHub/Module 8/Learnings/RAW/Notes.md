@@ -108,3 +108,5 @@ data.then((res) => console.log(res));
 - where ever an execution context is created; a `this` keyword is created for it. Even for the functional execution context. In case of `GEC` : `this ==== window`
 
 - `Undefind` and `Not Defind (RefernceError)` : Both different.
+
+---

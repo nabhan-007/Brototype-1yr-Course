@@ -1,0 +1,274 @@
+<link rel="stylesheet" href="/styles/adminDashboard.css">
+<div class="admin-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-logo">◈ TERMINAL.v1</div>
+        <nav class="nav-menu">
+            <a href="/admin/dashboard" class="nav-link active">▤ User Management</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/admin/logout" class="logout-btn">⏻ LOGOUT</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="content-header">
+    <div>
+        <h1>User Database</h1>
+        <p>Credential Management & Access Control</p>
+    </div>
+    <div class="search-container" style="margin-left: auto; margin-right: 20px;">
+        <input type="text" id="userSearch" placeholder="🔍 Search by email..." 
+               onkeyup="filterUsers()" 
+               style="padding: 10px; border-radius: 5px; border: 1px solid #334155; background: #1e293b; color: white; width: 250px;">
+    </div>
+    <button class="btn-primary" onclick="toggleModal('addModal', true)">+ Add New User</button>
+</header>
+
+        <div class="table-card">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th width="80px">Index</th>
+                        <th>User Email</th>
+                        <th>Status</th>
+                        <th class="actions">Management</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                    <tr>
+                        <td class="index-cell"></td>
+                        <td class="email-cell">{{this.email}}</td>
+                        <td>
+                            {{#if this.isBlocked}}
+                                <span class="badge blocked">BLOCKED</span>
+                            {{else}}
+                                <span class="badge active">ACTIVE</span>
+                            {{/if}}
+                        </td>
+                        <td class="actions">
+                            <button class="btn-icon edit" onclick="openEditModal('{{this._id}}', '{{this.email}}')">Edit</button>
+                            
+                            {{!-- {{#if this.isBlocked}}
+                                <button class="btn-icon unblock" onclick="handleAction('unblock', '{{this._id}}')">Unblock</button>
+                            {{else}}
+                                <button class="btn-icon block" onclick="handleAction('block', '{{this._id}}')">Block</button>
+                            {{/if}} --}}
+
+                            <button class="btn-icon delete" onclick="handleAction('delete', '{{this._id}}')">Delete</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<div id="addModal" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-x" onclick="toggleModal('addModal', false)">&times;</span>
+        <h3>Initialize User</h3>
+        <form action="/admin/add-user" method="POST" onsubmit="return validateAddPassword()">
+            <div class="form-group">
+                <input type="email" name="email" id="addEmail" placeholder="Email Address" value="{{email}}">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="addPassword" placeholder="Access Password" >
+            </div>
+            <div class="form-group">
+                <input type="password" id="confirmAddPassword" placeholder="Confirm Access Password" >
+                <small id="addPasswordError" style="color: #f43f5e; display: none; font-weight: bold; margin-top: 5px;"></small>
+            </div>
+            <button type="submit" class="btn-primary full">Create User</button>
+        </form>
+    </div>
+</div>
+
+<div id="editModal" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-x" onclick="toggleModal('editModal', false)">&times;</span>
+        <h3>Update User</h3>
+        
+        <form action="/admin/edit-user" method="POST" onsubmit="return validateEditPassword()">
+            <input type="hidden" name="id" id="id">
+            
+            <div class="form-group">
+                <label>System Email</label>
+                <input type="email" name="email" id="editEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label>New Password (Optional)</label>
+                <input type="password" name="password" id="editPassword" placeholder="New Password">
+            </div>
+
+            <div class="form-group">
+                <label>Confirm New Password</label>
+                <input type="password" id="confirmEditPassword" placeholder="Confirm Password">
+                <small id="passwordError" style="color: #f43f5e; display: none; font-weight: bold; margin-top: 5px;">Passwords do not match!</small>
+            </div>
+
+            <button type="submit" class="btn-primary full">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    
+    function toggleModal(id, show) {
+    document.getElementById(id).style.display = show ? 'flex' : 'none';
+    if (!show) {
+        // Reset Edit Modal errors
+        document.getElementById('passwordError').style.display = 'none';
+        document.getElementById('confirmEditPassword').value = "";
+        
+        // Reset Add Modal errors/fields
+        if(document.getElementById('addPasswordError')) {
+            document.getElementById('addPasswordError').style.display = 'none';
+            document.getElementById('addPassword').value = "";
+            document.getElementById('confirmAddPassword').value = "";
+        }
+    }
+}
+
+    // TASK: OPEN EDIT MODAL & PRE-FILL
+    function openEditModal(id, email) {
+        document.getElementById('id').value = id;
+        document.getElementById('editEmail').value = email;
+        toggleModal('editModal', true);
+    }
+
+    // TASK: CLIENT-SIDE PASSWORD VALIDATION
+    function validateEditPassword() {
+    const pass = document.getElementById('editPassword').value;
+    const confirm = document.getElementById('confirmEditPassword').value;
+    const errorMsg = document.getElementById('passwordError');
+
+    // 1. Reset error message visibility
+    errorMsg.style.display = 'none';
+
+    // 2. If the admin didn't type anything, let them submit (only email changes)
+    if (pass === "") {
+        return true;
+    }
+
+    // 3. TASK: Check Minimum Length (8 characters)
+    if (pass.length < 8) {
+        errorMsg.innerText = "Password must be at least 8 characters long!";
+        errorMsg.style.display = 'block';
+        return false;
+    }
+
+    // 4. TASK: Check if they match
+    if (pass !== confirm) {
+        errorMsg.innerText = "Passwords do not match!";
+        errorMsg.style.display = 'block';
+        return false;
+    }
+
+    return true;
+}
+
+function validateAddPassword() {
+    const pass = document.getElementById('addPassword').value;
+    const confirm = document.getElementById('confirmAddPassword').value;
+    const errorMsg = document.getElementById('addPasswordError');
+
+    errorMsg.style.display = 'none';
+
+    // 1. Check Minimum Length
+    if (pass.length < 8) {
+        errorMsg.innerText = "Password must be at least 8 characters long!";
+        errorMsg.style.display = 'block';
+        return false;
+    }
+
+    // 2. Check if they match
+    if (pass !== confirm) {
+        errorMsg.innerText = "Passwords do not match!";
+        errorMsg.style.display = 'block';
+        return false;
+    }
+
+    return true;
+}
+
+    // TASK: SWEETALERT CONFIRMATIONS
+   
+
+    function handleAction(type, id) {
+    Swal.fire({
+        title: `Confirm ${type}?`,
+        text: `Are you sure you want to ${type} this user?`,
+        icon: type === 'delete' ? 'warning' : 'question',
+        background: '#1e293b',
+        color: '#fff',
+        showCancelButton: true,
+        confirmButtonColor: type === 'delete' ? '#f43f5e' : '#38bdf8'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // CHANGED: From '/admin/${type}-user?id=${id}' to '/admin/${type}-user/${id}'
+            window.location.href = `/admin/${type}-user/${id}`;
+        }
+    });
+}
+
+function filterUsers() {
+    
+    const input = document.getElementById("userSearch");
+    const filter = input.value.toLowerCase();
+    
+    const table = document.querySelector(".user-table");
+    const tr = table.getElementsByTagName("tr");
+
+
+    for (let i = 1; i < tr.length; i++) {
+       
+        const emailCell = tr[i].getElementsByTagName("td")[1];
+        
+        if (emailCell) {
+            const emailText = emailCell.textContent || emailCell.innerText;
+            
+           
+            if (emailText.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = ""; // Show row
+            } else {
+                tr[i].style.display = "none"; // Hide row
+            }
+        }
+    }
+}
+</script>
+
+<script>
+    // Handle Success Messages
+    {{#if message}}
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '{{message}}',
+        background: '#1e293b',
+        color: '#fff',
+        timer: 3000
+    });
+    {{/if}}
+
+    // Handle Error Messages
+    {{#if error}}
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: '{{error}}',
+        background: '#1e293b',
+        color: '#fff'
+    });
+    {{/if}}
+
+    // Clean URL after showing alerts
+    if (window.location.search.length > 0) {
+        window.history.replaceState(null, null, window.location.pathname);
+    }
+</script>

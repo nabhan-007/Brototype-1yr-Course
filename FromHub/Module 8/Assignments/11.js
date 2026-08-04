@@ -13,6 +13,7 @@ function* evenNumbers(n) {
 
 let output = evenNumbers(4);
 
-for (let number of output) {
-  console.log(number);
-}
+console.log(output.next().value);
+console.log(output.next().value);
+console.log(output.next().value);
+console.log(output.next().value);

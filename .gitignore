@@ -1,4 +1,10 @@
-.vscode
+# Ignore all hidden files and directories (starting with .)
+.*
+
+# But keep the .gitignore file itself
+!.gitignore
+
+# Others
 *.obj
 *.ilk
 *.exe

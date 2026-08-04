@@ -1,0 +1,48 @@
+/* Minimalist Welcome Page CSS */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e8f1ce; /* Clean white background */
+}
+
+.welcome-container {
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+h1 {
+    font-size: 3rem;
+    color:rgb(68, 68, 72);
+    margin-bottom: 10px;
+    font-weight: 300; /* Light weight for a modern look */
+}
+
+p {
+    color: #777;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.simple-logout {
+    text-decoration: none;
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.simple-logout:hover {
+    background-color: #4a90e2;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

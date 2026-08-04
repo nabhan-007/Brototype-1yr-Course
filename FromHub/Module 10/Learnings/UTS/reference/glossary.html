@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MongoDB Glossary &mdash; Exam Reference</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.term { font-weight: 600; color: var(--accent); }
+.tag {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 600;
+  padding: .15em .5em;
+  border-radius: 99px;
+  margin-left: .4em;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.tag-theory { background: #dbeafe; color: #1e40af; }
+.tag-practical { background: #dcfce7; color: #166534; }
+.tag-arch { background: #f3e8ff; color: #6b21a8; }
+</style>
+</head>
+<body>
+
+<h1>MongoDB Glossary &mdash; Exam Cheat Sheet</h1>
+<p>All concepts from the checklist, compressed. <span class="tag tag-theory">Theory</span> <span class="tag tag-practical">Practical</span> <span class="tag tag-arch">Architecture</span></p>
+
+<!-- ───── Phase 1 ───── -->
+<h2>Phase 1: Foundation</h2>
+
+<p><span class="term">Database</span> <span class="tag tag-theory">Theory</span><br>
+An organized collection of structured data. Apps need DBs for persistence (data survives restart), retrieval (query by any field), and scaling (handle millions of users).</p>
+
+<p><span class="term">SQL vs NoSQL</span> <span class="tag tag-theory">Theory</span></p>
+<table>
+<thead><tr><th>SQL</th><th>NoSQL</th></tr></thead>
+<tbody>
+<tr><td>Tables, rows, columns</td><td>Collections, documents, fields</td></tr>
+<tr><td>Fixed schema (ALTER required)</td><td>Dynamic schema (different fields per doc)</td></tr>
+<tr><td>Vertical scaling (bigger server)</td><td>Horizontal scaling (more servers)</td></tr>
+<tr><td>ACID compliant by default</td><td>BASE (eventual consistency)</td></tr>
+<tr><td>MySQL, PostgreSQL, SQLite</td><td>MongoDB, Redis, Cassandra, Neo4j</td></tr>
+</tbody>
+</table>
+
+<p><span class="term">Vertical vs Horizontal Scaling</span> <span class="tag tag-theory">Theory</span><br>
+<strong>Vertical</strong> = buy a bigger machine (more RAM/CPU). Has a ceiling.<br>
+<strong>Horizontal</strong> = add more cheap machines. No ceiling, but needs software support (sharding).</p>
+
+<p><span class="term">Why MongoDB?</span> <span class="tag tag-theory">Theory</span><br>
+Document-oriented (JSON-like data), schema-flexible, horizontal scaling via sharding, rich query language + indexing, large ecosystem.</p>
+
+<!-- ───── Phase 2 ───── -->
+<h2>Phase 2: NoSQL Deep Dive</h2>
+
+<p><span class="term">NoSQL Database Types</span> <span class="tag tag-theory">Theory</span></p>
+<table>
+<thead><tr><th>Type</th><th>Examples</th><th>Use Case</th></tr></thead>
+<tbody>
+<tr><td>Key-Value</td><td>Redis, DynamoDB</td><td>Caching, sessions</td></tr>
+<tr><td>Document</td><td><strong>MongoDB</strong>, CouchDB</td><td>General purpose, flexible schema</td></tr>
+<tr><td>Column-Family</td><td>Cassandra, HBase</td><td>Time-series, wide data</td></tr>
+<tr><td>Graph</td><td>Neo4j, ArangoDB</td><td>Relationships, social networks</td></tr>
+</tbody>
+</table>
+
+<p><span class="term">ACID vs BASE</span> <span class="tag tag-theory">Theory</span></p>
+<table>
+<thead><tr><th>ACID (SQL)</th><th>BASE (NoSQL)</th></tr></thead>
+<tbody>
+<tr><td><strong>A</strong>tomicity &mdash; all or nothing</td><td><strong>B</strong>asically <strong>A</strong>vailable</td></tr>
+<tr><td><strong>C</strong>onsistency &mdash; data always valid</td><td><strong>S</strong>oft state &mdash; may change over time</td></tr>
+<tr><td><strong>I</strong>solation &mdash; concurrent txns don't interfere</td><td><strong>E</strong>ventual consistency &mdash; will converge</td></tr>
+<tr><td><strong>D</strong>urability &mdash; committed txns survive crashes</td><td></td></tr>
+</tbody>
+</table>
+
+<p><span class="term">CAP Theorem</span> <span class="tag tag-theory">Theory</span><br>
+You can pick <strong>only 2 of 3</strong>:</p>
+<ul>
+<li><strong>C</strong>onsistency &mdash; every read gets the latest write</li>
+<li><strong>A</strong>vailability &mdash; every request gets a response (even if stale)</li>
+<li><strong>P</strong>artition Tolerance &mdash; system works despite network failures</li>
+</ul>
+<p>MongoDB chooses <strong>CP</strong> (Consistency + Partition Tolerance). During a network partition, MongoDB stops accepting writes on one side to maintain consistency.</p>
+
+<p><span class="term">Transactions in MongoDB</span> <span class="tag tag-theory">Theory</span><br>
+Multi-document ACID transactions <em>supported since v4.0</em>. Use when you need atomic updates across multiple documents/collections. <strong>Don't overuse</strong> &mdash; they add overhead. Prefer embedded documents for simple atomic operations.</p>
+
+<!-- ───── Phase 3 ───── -->
+<h2>Phase 3: Setup &amp; Shell</h2>
+
+<p><span class="term">mongod</span> <span class="tag tag-practical">Practical</span><br>
+The MongoDB server process. Default port: <strong>27017</strong>. Start with <code>mongod</code>, stop with <kbd>Ctrl+C</kbd> or <code>db.shutdownServer()</code>.</p>
+
+<p><span class="term">mongosh</span> <span class="tag tag-practical">Practical</span><br>
+The MongoDB Shell (REPL). Connect with <code>mongosh</code>.</p>
+<table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>show dbs</code></td><td>List all databases</td></tr>
+<tr><td><code>use mydb</code></td><td>Switch to (or create) database</td></tr>
+<tr><td><code>show collections</code></td><td>List collections in current DB</td></tr>
+<tr><td><code>db</code></td><td>Show current database name</td></tr>
+</tbody>
+</table>
+
+<!-- ───── Phase 4 ───── -->
+<h2>Phase 4: Architecture</h2>
+
+<p><span class="term">Document</span> <span class="tag tag-arch">Architecture</span><br>
+A single record &mdash; JSON-like key-value pairs. Stored in BSON internally.</p>
+
+<p><span class="term">Collection</span> <span class="tag tag-arch">Architecture</span><br>
+A group of documents (analogous to a table in SQL). Collections do <strong>not</strong> enforce a schema.</p>
+
+<p><span class="term">Database → Collection → Document → Field</span> <span class="tag tag-arch">Architecture</span></p>
+
+<p><span class="term">ObjectId</span> <span class="tag tag-arch">Architecture</span><br>
+Auto-generated <code>_id</code> field. 12 bytes:</p>
+<table>
+<thead><tr><th>Bytes</th><th>Content</th></tr></thead>
+<tbody>
+<tr><td>4</td><td>Timestamp (seconds since Unix epoch)</td></tr>
+<tr><td>5</td><td>Machine + Process ID</td></tr>
+<tr><td>3</td><td>Counter (incrementing)</td></tr>
+</tbody>
+</table>
+
+<p><span class="term">JSON vs BSON</span> <span class="tag tag-arch">Architecture</span><br>
+JSON = human-readable text. BSON = binary representation, faster to parse, supports more types (Date, ObjectId, Binary, Decimal128, etc.). MongoDB stores data as BSON internally.</p>
+
+<p><span class="term">WiredTiger</span> <span class="tag tag-arch">Architecture</span><br>
+The default storage engine. Features: document-level locking, compression, journaling for crash recovery.</p>
+
+<p><span class="term">Capped Collections</span> <span class="tag tag-arch">Architecture</span><br>
+Fixed-size collections that auto-remove oldest documents when full. Useful for logs, messages.</p>
+
+<p><span class="term">TTL Indexes</span> <span class="tag tag-arch">Architecture</span><br>
+Index with <code>expireAfterSeconds</code>. MongoDB auto-deletes documents after specified time. Useful for session data, temporary records.</p>
+
+<p><span class="term">GridFS</span> <span class="tag tag-arch">Architecture</span><br>
+Store files > 16 MB by splitting into chunks (default 255 KB each). Two collections: <code>fs.files</code> (metadata) and <code>fs.chunks</code> (binary).</p>
+
+<p><span class="term">Replica Set</span> <span class="tag tag-arch">Architecture</span></p>
+<ul>
+<li><strong>Primary</strong> &mdash; accepts all writes, replicates to secondaries</li>
+<li><strong>Secondary</strong> &mdash; read-only copies; can become primary on failover</li>
+<li><strong>Arbiter</strong> &mdash; votes in elections but stores no data (lightweight)</li>
+<li><strong>Failover</strong> &mdash; if primary goes down, secondaries elect a new primary automatically</li>
+</ul>
+
+<p><span class="term">Sharding</span> <span class="tag tag-arch">Architecture</span></p>
+<ul>
+<li><strong>Shard</strong> &mdash; a server holding a subset of data</li>
+<li><strong>Shard Key</strong> &mdash; the field MongoDB uses to distribute documents across shards (choose high cardinality, evenly distributed)</li>
+<li><strong>mongos</strong> &mdash; router that directs queries to the right shard</li>
+<li>Shard when data exceeds a single server's capacity</li>
+</ul>
+
+<!-- ───── Phase 5 ───── -->
+<h2>Phase 5: CRUD Operations</h2>
+
+<p><span class="term">Insert</span> <span class="tag tag-practical">Practical</span></p>
+<pre><code>db.users.insertOne({ name: "Alice", age: 30 })
+db.users.insertMany([
+  { name: "Bob", age: 25 },
+  { name: "Charlie", age: 35 }
+])</code></pre>
+
+<p><span class="term">Read (Query)</span> <span class="tag tag-practical">Practical</span></p>
+<pre><code>db.users.findOne({ name: "Alice" })
+db.users.find({ age: { $gt: 25 } })          // age > 25
+db.users.find({}, { name: 1, _id: 0 })        // projection (only name)
+db.users.find().limit(5).sort({ age: -1 })     // pagination + sort</code></pre>
+
+<p><span class="term">Query Operators</span> <span class="tag tag-practical">Practical</span></p>
+<table>
+<thead><tr><th>Operator</th><th>Meaning</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><code>$gt</code></td><td>Greater than</td><td><code>{ age: { $gt: 25 } }</code></td></tr>
+<tr><td><code>$lt</code></td><td>Less than</td><td><code>{ age: { $lt: 30 } }</code></td></tr>
+<tr><td><code>$gte</code> / <code>$lte</code></td><td>Greater/less or equal</td><td><code>{ age: { $gte: 18 } }</code></td></tr>
+<tr><td><code>$in</code></td><td>Matches any in array</td><td><code>{ status: { $in: ["A","B"] } }</code></td></tr>
+<tr><td><code>$ne</code></td><td>Not equal</td><td><code>{ status: { $ne: "deleted" } }</code></td></tr>
+<tr><td><code>$and</code> / <code>$or</code></td><td>Logical AND / OR</td><td><code>{ $or: [{ age: 25 }, { name: "Bob" }] }</code></td></tr>
+<tr><td><code>$regex</code></td><td>Pattern match</td><td><code>{ name: { $regex: "^A" } }</code></td></tr>
+</tbody>
+</table>
+
+<p><span class="term">Update</span> <span class="tag tag-practical">Practical</span></p>
+<pre><code>db.users.updateOne(
+  { name: "Alice" },
+  { $set: { age: 31 } }
+)
+db.users.updateMany(
+  { age: { $lt: 30 } },
+  { $inc: { age: 1 } }     // increment by 1
+)
+db.users.replaceOne(
+  { name: "Bob" },
+  { name: "Bob", age: 26, city: "NYC" }  // replaces entire doc
+)</code></pre>
+
+<p><span class="term">Update Operators</span> <span class="tag tag-practical">Practical</span></p>
+<table>
+<thead><tr><th>Operator</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>$set</code></td><td>Set/add a field</td></tr>
+<tr><td><code>$unset</code></td><td>Remove a field</td></tr>
+<tr><td><code>$inc</code></td><td>Increment/decrement a number</td></tr>
+<tr><td><code>$push</code></td><td>Add element to array</td></tr>
+<tr><td><code>$pull</code></td><td>Remove element from array</td></tr>
+</tbody>
+</table>
+
+<p><span class="term">Upsert</span> <span class="tag tag-practical">Practical</span><br>
+Update if exists, insert if not:</p>
+<pre><code>db.users.updateOne(
+  { name: "Dave" },
+  { $set: { age: 28 } },
+  { upsert: true }
+)</code></pre>
+
+<p><span class="term">Delete</span> <span class="tag tag-practical">Practical</span></p>
+<pre><code>db.users.deleteOne({ name: "Charlie" })
+db.users.deleteMany({ age: { $lt: 20 } })
+db.users.findOneAndDelete({ name: "Bob" })   // delete &amp; return doc</code></pre>
+
+<p><span class="term">Bulk Writes</span> <span class="tag tag-practical">Practical</span></p>
+<pre><code>db.users.bulkWrite([
+  { insertOne: { document: { name: "Eve", age: 22 } } },
+  { updateOne: { filter: { name: "Alice" }, update: { $set: { age: 32 } } } },
+  { deleteOne: { filter: { name: "Bob" } } }
+])</code></pre>
+
+<!-- ───── Phase 6 ───── -->
+<h2>Phase 6: Aggregation Framework</h2>
+
+<p><span class="term">Pipeline concept</span> <span class="tag tag-practical">Practical</span><br>
+Documents pass through stages sequentially. Each stage transforms data and passes it to the next.</p>
+
+<pre><code>db.orders.aggregate([
+  { $match: { status: "shipped" } },      // filter
+  { $group: { _id: "$product", total: { $sum: "$quantity" } } },  // group
+  { $sort: { total: -1 } },                // sort descending
+  { $limit: 5 }                            // top 5
+])</code></pre>
+
+<p><span class="term">Key Stages</span> <span class="tag tag-practical">Practical</span></p>
+<table>
+<thead><tr><th>Stage</th><th>Purpose</th><th>Like SQL</th></tr></thead>
+<tbody>
+<tr><td><code>$match</code></td><td>Filter documents</td><td>WHERE</td></tr>
+<tr><td><code>$group</code></td><td>Group by field + compute</td><td>GROUP BY</td></tr>
+<tr><td><code>$sort</code></td><td>Reorder documents</td><td>ORDER BY</td></tr>
+<tr><td><code>$project</code></td><td>Reshape (select/compute fields)</td><td>SELECT</td></tr>
+<tr><td><code>$limit</code> / <code>$skip</code></td><td>Pagination</td><td>LIMIT / OFFSET</td></tr>
+<tr><td><code>$unwind</code></td><td>Flatten array into individual docs</td><td>&mdash;</td></tr>
+<tr><td><code>$lookup</code></td><td>Join with another collection</td><td>JOIN</td></tr>
+<tr><td><code>$addFields</code></td><td>Add computed fields</td><td>&mdash;</td></tr>
+</tbody>
+</table>
+
+<p><span class="term">Accumulators (inside $group)</span> <span class="tag tag-practical">Practical</span></p>
+<table>
+<thead><tr><th>Accumulator</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>$sum</code></td><td>Sum of values</td></tr>
+<tr><td><code>$avg</code></td><td>Average</td></tr>
+<tr><td><code>$min</code> / <code>$max</code></td><td>Minimum / Maximum</td></tr>
+<tr><td><code>$first</code> / <code>$last</code></td><td>First / Last in group</td></tr>
+<tr><td><code>$count</code></td><td>Count documents</td></tr>
+</tbody>
+</table>
+
+<p><span class="term">$lookup example</span> <span class="tag tag-practical">Practical</span></p>
+<pre><code>db.orders.aggregate([
+  {
+    $lookup: {
+      from: "customers",
+      localField: "customerId",
+      foreignField: "_id",
+      as: "customer"
+    }
+  }
+])</code></pre>
+
+<!-- ───── Phase 7 ───── -->
+<h2>Phase 7: Schema Design &amp; Indexes</h2>
+
+<p><span class="term">Dynamic Schema</span> <span class="tag tag-arch">Architecture</span><br>
+Documents in the same collection can have different fields. No ALTER TABLE needed.</p>
+
+<p><span class="term">Embedding vs Referencing</span> <span class="tag tag-arch">Architecture</span></p>
+<table>
+<thead><tr><th></th><th>Embedding</th><th>Referencing</th></tr></thead>
+<tbody>
+<tr><td><strong>How</strong></td><td>Nest related data inside the doc</td><td>Store an ID linking to another doc</td></tr>
+<tr><td><strong>Use when</strong></td><td>Data accessed together, 1-to-few</td><td>1-to-many, many-to-many, data grows independently</td></tr>
+<tr><td><strong>Pros</strong></td><td>Single query, atomic updates</td><td>No duplication, data stays manageable</td></tr>
+<tr><td><strong>Cons</strong></td><td>Doc size limit (16 MB), duplication</td><td>Requires joins ($lookup), multiple queries</td></tr>
+</tbody>
+</table>
+
+<p><span class="term">Indexes</span> <span class="tag tag-practical">Practical</span><br>
+Speed up reads. Without index → <strong>COLLSCAN</strong> (scans every doc). With index → <strong>IXSCAN</strong> (jumps to data).</p>
+
+<pre><code>db.users.createIndex({ name: 1 })              // single-field asc
+db.users.createIndex({ age: -1, name: 1 })     // compound (age desc, name asc)
+db.users.createIndex({ description: "text" })  // full-text search
+db.users.createIndex({ location: "2dsphere" }) // geospatial
+</code></pre>
+
+<p><span class="term">Index Types</span> <span class="tag tag-practical">Practical</span></p>
+<table>
+<thead><tr><th>Type</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td>Single-field</td><td>Query on one field</td></tr>
+<tr><td>Compound</td><td>Query on multiple fields</td></tr>
+<tr><td>Text</td><td>Full-text search (<code>$text</code>)</td></tr>
+<tr><td>Geospatial (<code>2dsphere</code>)</td><td>Location queries (<code>$near</code>)</td></tr>
+<tr><td>TTL</td><td>Auto-delete after time</td></tr>
+</tbody>
+</table>
+
+<p><span class="term">Covered Query</span> <span class="tag tag-arch">Architecture</span><br>
+A query answered <strong>entirely from the index</strong> &mdash; no documents need to be read. Check with <code>db.users.find(...).explain()</code>.</p>
+
+<p><span class="term">explain()</span> <span class="tag tag-practical">Practical</span></p>
+<pre><code>db.users.find({ age: { $gt: 25 } }).explain("executionStats")</code></pre>
+
+<p><span class="term">Index Best Practices</span> <span class="tag tag-arch">Architecture</span></p>
+<ul>
+<li>Index frequently-queried fields</li>
+<li>Don't over-index (slows writes)</li>
+<li>Use <code>explain()</code> to verify</li>
+<li>Compound indexes support queries with multiple fields</li>
+<li>Order matters in compound indexes (equality → sort → range)</li>
+</ul>
+
+<!-- ───── Phase 8 ───── -->
+<h2>Phase 8: Backups</h2>
+
+<pre><code>mongodump --db mydb --out ./backup    // export
+mongorestore --db mydb ./backup/mydb  // import</code></pre>
+
+<hr>
+<p><em>Tip: open <code>mongosh</code> and practice each command. Say everything out loud as you type &mdash; it builds oral fluency.</em></p>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="/styles/userLogin.css">
+
+
+<div class="login-container">
+  <div class="login-box">
+    <div class="login-header">
+      <h1>Create Account</h1>
+      <p>Please fill in the details to register</p>
+    </div>
+
+    <form id="register-form" action="/user/register" method="POST" class="login-form">
+
+      <div class="form-group">
+        
+        <input type="text" id="message" value="{{{message}}}"name="message" hidden>
+        <label for="email">Email Address</label>
+        <input 
+          type="text" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email"
+          value="{{email}}"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="Create a password"
+          
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input 
+          type="password" 
+          id="confirmPassword" 
+          name="confirmPassword" 
+          placeholder="Confirm your password"
+          
+        >
+      </div>
+
+      <button type="submit" class="btn-login">Register</button>
+    </form>
+
+    <div class="login-footer">
+      <p>Already have an account? <a href="/user/login">Login</a></p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const messageInput = document.getElementById("message");
+
+    if (messageInput && messageInput.value) {
+        Swal.fire({
+            text: messageInput.value
+        });
+
+        // ✅ prevent alert on refresh
+        messageInput.value = "";
+    }
+});
+</script>
+
+
+<script>
+    document.getElementById("register-form").addEventListener("submit",(e)=>{
+        
+        const email= document.getElementById("email").value.trim()
+        const password=document.getElementById("password").value.trim()
+        const confirmPassword=document.getElementById("confirmPassword").value.trim()
+        const emailRegex=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        e.preventDefault();
+    
+        if (!email || !password || !confirmPassword) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "no field should be empty",
+                
+            });
+            return
+        }
+
+        if(!emailRegex.test(email)){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "enter a valid email",
+                
+            });
+            return
+        }
+        if(password!==confirmPassword){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "password do not match",
+                
+            });
+            return
+        }
+        if(password.length<8){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "password is too short, minimum 8 characters needed",
+                
+            });
+            return
+        }
+      e.target.submit()
+
+
+    })
+</script>
