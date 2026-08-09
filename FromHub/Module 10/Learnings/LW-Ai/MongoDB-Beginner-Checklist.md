@@ -161,24 +161,24 @@
   - [x] Filtering with query operators (`$gt`, `$lt`, `$in`, `$ne`, etc.)
   - [x] Projection — select specific fields
   - [x] `limit()`, `sort()`, `skip()` — control results
-  - [ ] **View Collection** — read-only virtual collection based on an aggregation pipeline
+  - [x] **View Collection** — read-only virtual collection based on an aggregation pipeline
 
 - [x] **Update**
   - [x] `updateOne()` — update a single document
   - [x] `updateMany()` — update multiple documents
   - [x] Update operators: `$set`, `$unset`, `$inc`, `$push`, `$pull`
-  - [ ] `replaceOne()` — replace entire document
+  - [x] `replaceOne()` — replace entire document
   - [x] **Upsert** — `updateOne({ filter }, { $set: { data } }, { upsert: true })` — update if exists, insert if not
 
-- [ ] **Delete**
-  - [ ] `deleteOne()` — delete a single document
-  - [ ] `deleteMany()` — delete multiple documents
-  - [ ] `findOneAndDelete()` — delete and return the doc
+- [x] **Delete**
+  - [x] `deleteOne()` — delete a single document
+  - [x] `deleteMany()` — delete multiple documents
+  - [x] `findOneAndDelete()` — delete and return the doc
 
-- [ ] **Advanced Operations**
-  - [ ] Bulk inserts (ordered vs unordered)
-  - [ ] Updating multiple documents with conditions
-  - [ ] Complex querying, filtering, and limiting results
+- [x] **Advanced Operations**
+  - [x] Bulk inserts (ordered vs unordered)
+  - [x] Updating multiple documents with conditions
+  - [x] Complex querying, filtering, and limiting results
 
 ---
 

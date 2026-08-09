@@ -1,7 +1,11 @@
 # Main Checklist
 
+- [x] Do: the `project`
+- [ ] Understand the project
 - [ ] Complete: `MongoDB`
-- [ ] Do: the `project` and learn with it [Module 11\Task\README.md]
+
+- COMBINED REVISION
+
 - [ ] Do: `JavaScript.info` along with its roadmap
 - [ ] Do: `NodeJS` along with its roadmap
 - [ ] Do: `MongoDB` along with its roadmap

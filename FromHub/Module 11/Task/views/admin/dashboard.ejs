@@ -1,0 +1,54 @@
+<%- include("../partials/header", { title: "Admin Dashboard" }) %>
+  <div class="content">
+  <h1>Admin Dashboard</h1>
+
+  <% if (message) { %><p class="msg-success"><%= message %></p><% } %>
+  <% if (error) { %><p class="msg-error"><%= error %></p><% } %>
+
+  <form class="search-form" action="/admin/dashboard" method="GET">
+    <input type="text" name="search" placeholder="Search by email" value="<%= search || "" %>">
+    <button type="submit">Search</button>
+  </form>
+
+  <h2>Add User</h2>
+  <form action="/admin/add-user" method="POST">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Add User</button>
+  </form>
+
+  <% if (users.length === 0) { %>
+  <p class="empty">No users found.</p>
+  <% } else { %>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Email</th>
+        <th>ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach((user, index) => { %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= user.email %></td>
+        <td><%= user._id %></td>
+        <td class="actions">
+          <a class="edit" href="/admin/edit-user/<%= user._id %>">Edit</a>
+          <form action="/admin/delete-user/<%= user._id %>" method="POST" onsubmit="return confirm('Delete this user?')">
+            <button type="submit" class="link-btn">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } %>
+
+  <p><a href="/admin/logout">Logout</a></p>
+  </div>
+</body>
+
+</html>

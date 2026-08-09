@@ -1,0 +1,22 @@
+<%- include("../partials/header", { title: "Admin Login" }) %>
+  <div class="card">
+  <h1>Admin Login</h1>
+
+  <% if (message) { %>
+  <p class="msg-error"><%= message %></p>
+  <% } %>
+
+  <form action="/admin/login" method="POST">
+    <label>Email</label>
+    <input type="email" name="email" value="<%= email || "" %>" required>
+
+    <label>Password</label>
+    <input type="password" name="password" required>
+
+    <button type="submit">Login</button>
+  </form>
+  <p><a href="/user/login">User login</a></p>
+  </div>
+</body>
+
+</html>

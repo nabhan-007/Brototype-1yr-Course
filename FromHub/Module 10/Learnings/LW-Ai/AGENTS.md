@@ -26,6 +26,14 @@
 2. Show the **code** (how)
 3. Explain **how to explain it** in English
 
+### Explain WHY, Not Just WHAT
+
+- After showing what a thing does, explain the underlying logic and reasoning behind it. Reasoning sticks; facts fade.
+
+### Go One Step Deeper
+
+- After the direct answer, proactively cover the edge case or "when does this NOT apply". The learner should be able to transfer the concept to new situations, not just recall it.
+
 ### Test Process
 
 - **Ask first:** Before launching into questions, ask "Ready for the quiz?" or similar. Let them signal readiness.
