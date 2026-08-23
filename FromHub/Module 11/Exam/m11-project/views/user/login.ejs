@@ -1,0 +1,47 @@
+<%- include("../partials/header", { title: "Login" }) %>
+  <div class="card">
+  <h1>Login</h1>
+
+  <% if (message) { %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert"><%= message %><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+  <% } %>
+  <% if (error) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert"><%= error %><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+  <% } %>
+
+  <form action="/user/login" method="POST" novalidate>
+    <label>Email</label>
+    <input type="email" name="email" id="loginEmail" value="<%= email || "" %>" autocomplete="email">
+
+    <label>Password</label>
+    <input type="password" name="password" id="loginPassword" autocomplete="current-password">
+
+    <button type="submit">Login</button>
+  </form>
+
+  <p>Don't have an account? <a href="/user/register">Register</a></p>
+  </div>
+<script>
+  ["loginEmail", "loginPassword"].forEach(id => {
+    document.getElementById(id).addEventListener("input", function() {
+      this.setCustomValidity("");
+    });
+  });
+
+  document.querySelector("form").addEventListener("submit", function(e) {
+    const email = document.getElementById("loginEmail");
+    const password = document.getElementById("loginPassword");
+
+    if (!email.value.trim()) email.setCustomValidity("Email is required");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) email.setCustomValidity("Enter a valid email address");
+    else email.setCustomValidity("");
+
+    if (!password.value) password.setCustomValidity("Password is required");
+    else password.setCustomValidity("");
+
+    if (!this.reportValidity()) e.preventDefault();
+  });
+</script>
+</body>
+
+</html>

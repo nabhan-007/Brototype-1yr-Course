@@ -14,5 +14,4 @@ class Basket {
 let basket = new Basket("apple", "banana");
 
 let output = basket.items;
-
 console.log(output);

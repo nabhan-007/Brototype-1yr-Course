@@ -1,0 +1,63 @@
+<%- include("../partials/header", { title: "Register" }) %>
+<div class="card">
+  <h1>Create Account</h1>
+
+  <% if (message) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert"><%= message %><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+  <% } %>
+
+  <form action="/user/register" method="POST" novalidate>
+    <label>Name</label>
+    <input type="text" name="name" id="regName" value="<%= name || "" %>" autocomplete="name">
+
+    <label>Email</label>
+    <input type="email" name="email" id="regEmail" value="<%= email || "" %>" autocomplete="email">
+
+    <label>Password</label>
+    <input type="password" name="password" id="regPassword" autocomplete="new-password">
+
+    <label>Confirm Password</label>
+    <input type="password" name="confirmPassword" id="regConfirmPassword" autocomplete="new-password">
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p>Already have an account? <a href="/user/login">Login</a></p>
+</div>
+<script>
+  const regFields = ["regName", "regEmail", "regPassword", "regConfirmPassword"];
+  regFields.forEach(id => {
+    document.getElementById(id).addEventListener("input", function() {
+      this.setCustomValidity("");
+    });
+  });
+
+  document.querySelector("form").addEventListener("submit", function(e) {
+    const name = document.getElementById("regName");
+    const email = document.getElementById("regEmail");
+    const password = document.getElementById("regPassword");
+    const confirm = document.getElementById("regConfirmPassword");
+
+    if (!name.value.trim()) name.setCustomValidity("Name is required");
+    else if (name.value.trim().length < 2) name.setCustomValidity("Name must be at least 2 characters");
+    else if (!/[a-zA-Z]/.test(name.value.trim())) name.setCustomValidity("Name must contain at least one letter");
+    else name.setCustomValidity("");
+
+    if (!email.value.trim()) email.setCustomValidity("Email is required");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) email.setCustomValidity("Enter a valid email address");
+    else email.setCustomValidity("");
+
+    if (!password.value) password.setCustomValidity("Password is required");
+    else if (password.value.length < 8) password.setCustomValidity("Password must be at least 8 characters");
+    else password.setCustomValidity("");
+
+    if (!confirm.value) confirm.setCustomValidity("Please confirm your password");
+    else if (confirm.value !== password.value) confirm.setCustomValidity("Passwords do not match");
+    else confirm.setCustomValidity("");
+
+    if (!this.reportValidity()) e.preventDefault();
+  });
+</script>
+</body>
+
+</html>

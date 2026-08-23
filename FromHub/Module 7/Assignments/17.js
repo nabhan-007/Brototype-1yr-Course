@@ -19,3 +19,13 @@ function removeDigits(string) {
 
 let string = "abc123def45";
 console.log(removeDigits(string)); // Output: "abcdef"
+
+// ==========================================================
+
+// Using REGEX
+function removeDigits(string) {
+  return string.replace(/\d/g, "");
+}
+
+let string = "abc123def45";
+console.log(removeDigits(string)); // Output: "abcdef"

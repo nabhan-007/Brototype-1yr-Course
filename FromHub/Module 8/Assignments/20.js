@@ -20,5 +20,4 @@ let person = new Person({
 });
 
 let output = person.getCity();
-
 console.log(output);

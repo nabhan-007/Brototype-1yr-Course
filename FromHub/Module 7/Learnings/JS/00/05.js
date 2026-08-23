@@ -5,7 +5,7 @@ let add = (a, b) => a + b;
 console.log(add(arr[0], arr[1]));
 console.log("==========================================================");
 
-res = arr.map((x) => x * 2); // Returns [2, 4 , 6]
+res = arr.map((x) => x * 2); // Returns [2, 4, 6]
 console.log(res);
 console.log("==========================================================");
 

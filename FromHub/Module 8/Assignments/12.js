@@ -20,5 +20,4 @@ class Person {
 let person = new Person("Alice", 25);
 
 let output = person.greet();
-
 console.log(output);

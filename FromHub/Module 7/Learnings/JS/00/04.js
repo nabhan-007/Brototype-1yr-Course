@@ -5,3 +5,8 @@ function sum(...numbers) {
 }
 
 console.log(sum(1, 2, 3, 4));
+
+// ==========================================================
+
+const sum = (...nums) => nums.reduce((acc, val) => acc + val, 0);
+console.log(sum(1, 2, 3, 4));

@@ -1,5 +1,4 @@
 // Clousure Example
-
 function bankAccount() {
   let balance = 1000; // private variable
 

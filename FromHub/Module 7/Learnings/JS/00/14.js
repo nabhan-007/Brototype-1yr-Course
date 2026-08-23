@@ -114,11 +114,11 @@ function createAccount(initial = 0) {
 
 const colors = ["Red", "Green", "Blue", "Yellow"];
 
-const [first, second, ...third] = colors;
+const [first, second, ...others] = colors;
 
 console.log(first); // Red
 console.log(second); // Green
-console.log(third); // Blue
+console.log(others); // [ 'Blue', 'Yellow' ]
 
 // ==========================================================
 

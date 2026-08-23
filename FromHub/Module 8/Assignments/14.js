@@ -20,5 +20,4 @@ class Person {
 let person = new Person(25);
 
 let output = person.getAge();
-
 console.log(output);

@@ -20,5 +20,4 @@ class Dog extends Animal {
 let dog = new Dog();
 
 let output = dog.speak();
-
 console.log(output);

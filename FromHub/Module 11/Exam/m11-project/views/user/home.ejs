@@ -1,0 +1,11 @@
+<%- include("../partials/header", { title: "Home" }) %>
+<div class="card">
+  <h1>Welcome, <%= name %></h1>
+  <p>Email: <%= email %></p>
+  <form action="/user/logout" method="POST">
+    <button type="submit" class="logout-btn">Logout</button>
+  </form>
+</div>
+</body>
+
+</html>

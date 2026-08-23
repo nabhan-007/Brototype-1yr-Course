@@ -186,19 +186,19 @@
 
 > _Think of it like SQL's GROUP BY, but way more powerful._
 
-- [ ] **What is Aggregation?**
-  - [ ] Pipeline concept — documents pass through stages sequentially
-  - [ ] Each stage transforms the data and passes it to the next
+- [x] **What is Aggregation?**
+  - [x] Pipeline concept — documents pass through stages sequentially
+  - [x] Each stage transforms the data and passes it to the next
 
-- [ ] **Key Aggregation Stages**
-  - [ ] `$match` — filter documents (like WHERE)
-  - [ ] `$group` — group by a field (like GROUP BY)
-  - [ ] `$sort` — sort results
-  - [ ] `$project` — reshape documents (select/compute fields)
-  - [ ] `$limit` / `$skip` — pagination
-  - [ ] `$unwind` — flatten arrays into individual docs
-  - [ ] `$lookup` — join with another collection (like SQL JOIN)
-  - [ ] `$addFields` — add computed fields
+- [x] **Key Aggregation Stages**
+  - [x] `$match` — filter documents (like WHERE)
+  - [x] `$group` — group by a field (like GROUP BY)
+  - [x] `$sort` — sort results
+  - [x] `$project` — reshape documents (select/compute fields)
+  - [x] `$limit` / `$skip` — pagination
+  - [x] `$unwind` — flatten arrays into individual docs
+  - [x] `$lookup` — join with another collection (like SQL JOIN)
+  - [x] `$addFields` — add computed fields
 
 - [ ] **Practical Aggregation Operations**
   - [ ] Filtering data with `$match`
@@ -214,36 +214,36 @@
 
 > _Design your data right, and queries fly. Design it wrong, and they crawl._
 
-- [ ] **Schema Design Basics**
-  - [ ] Dynamic schema — documents in same collection can have different fields
-  - [ ] MongoDB vs RDBMS modeling differences
-  - [ ] No foreign keys — relationships are handled differently
+- [x] **Schema Design Basics**
+  - [x] Dynamic schema — documents in same collection can have different fields
+  - [x] MongoDB vs RDBMS modeling differences
+  - [x] No foreign keys — relationships are handled differently
 
-- [ ] **Embedding vs Referencing**
-  - [ ] **Embedding** — store related data inside the same document
-    - [ ] Use when: data is accessed together, 1-to-few relationships
-  - [ ] **Referencing** — store an ID pointing to another collection
-    - [ ] Use when: 1-to-many/many-to-many, data grows independently
-  - [ ] Know when to use each approach
+- [x] **Embedding vs Referencing**
+  - [x] **Embedding** — store related data inside the same document
+    - [x] Use when: data is accessed together, 1-to-few relationships
+  - [x] **Referencing** — store an ID pointing to another collection
+    - [x] Use when: 1-to-many/many-to-many, data grows independently
+  - [x] Know when to use each approach
 
-- [ ] **Indexes — What & Why**
-  - [ ] Indexes speed up read queries (like a book's index)
-  - [ ] Without indexes → MongoDB scans every document (COLLSCAN)
-  - [ ] With indexes → MongoDB jumps to the right spot (IXSCAN)
+- [x] **Indexes — What & Why**
+  - [x] Indexes speed up read queries (like a book's index)
+  - [x] Without indexes → MongoDB scans every document (COLLSCAN)
+  - [x] With indexes → MongoDB jumps to the right spot (IXSCAN)
 
-- [ ] **Index Types**
-  - [ ] **Single-field** — index on one field
-  - [ ] **Compound** — index on multiple fields
-  - [ ] **Text** — full-text search index
-  - [ ] **Geospatial** — index for location-based queries
-  - [ ] **Clustered vs Non-Clustered Indexes (RDBMS concept)** — clustered = data stored in index order (faster reads, one per table); non-clustered = separate structure pointing to rows. In MongoDB, analogous to **Clustered Collections** (stored in `_id` order, v6.0+) vs regular secondary indexes
+- [x] **Index Types**
+  - [x] **Single-field** — index on one field
+  - [x] **Compound** — index on multiple fields
+  - [x] **Text** — full-text search index
+  - [x] **Geospatial** — index for location-based queries
+  - [x] **Clustered vs Non-Clustered Indexes (RDBMS concept)** — clustered = data stored in index order (faster reads, one per table); non-clustered = separate structure pointing to rows. In MongoDB, analogous to **Clustered Collections** (stored in `_id` order, v6.0+) vs regular secondary indexes
 
-- [ ] **Index Best Practices**
-  - [ ] Create indexes on frequently queried fields
-  - [ ] Don't over-index — slows down writes
-  - [ ] Use `explain()` to check if index is being used
-  - [ ] Review and optimize slow queries
-  - [ ] **Covered Query** — query that can be fully answered using only the index (no need to touch the actual documents). Check with `explain()`
+- [x] **Index Best Practices**
+  - [x] Create indexes on frequently queried fields
+  - [x] Don't over-index — slows down writes
+  - [x] Use `explain()` to check if index is being used
+  - [x] Review and optimize slow queries
+  - [x] **Covered Query** — query that can be fully answered using only the index (no need to touch the actual documents). Check with `explain()`
 
 ---
 
@@ -251,14 +251,14 @@
 
 > _Wrap up and submit._
 
-- [ ] **Complete all MongoDB basics assignments**
-  - [ ] Finish all practice problems from the assignment document (`Module 10\Assignments\Basic exercise MongoDB.pdf`)
+- [x] **Complete all MongoDB basics assignments**
+  - [x] Finish all practice problems from the assignment document (`Module 10\Assignments\Basic exercise MongoDB.pdf`)
 
-- [ ] **Backups & Restore**
-  - [ ] `mongodump` — export database/collection to BSON files
-  - [ ] `mongorestore` — import BSON files back into MongoDB
-  - [ ] Backup strategies — regular scheduled backups, replication as redundancy
-  - [ ] Atlas backups — automated cloud backups (snapshots)
+- [x] **Backups & Restore**
+  - [x] `mongodump` — export database/collection to BSON files
+  - [x] `mongorestore` — import BSON files back into MongoDB
+  - [x] Backup strategies — regular scheduled backups, replication as redundancy
+  - [x] Atlas backups — automated cloud backups (snapshots)
 
 - [x] **Prepare & Record Video Presentation**
   - [x] Summarize learnings: databases, SQL vs NoSQL, MongoDB concepts

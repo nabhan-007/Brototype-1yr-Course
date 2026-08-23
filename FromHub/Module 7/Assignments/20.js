@@ -5,9 +5,7 @@ Write a program to display the factorial of a number using a loop
 function factorial(num) {
   let fact = 1;
 
-  for (let i = 1; i <= num; i++) {
-    fact *= i;
-  }
+  for (let i = 1; i <= num; i++) fact *= i;
 
   return fact;
 }
