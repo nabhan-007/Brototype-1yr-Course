@@ -1,0 +1,85 @@
+MODULE LIST : Fitpro Equips
+
+1. User Module
+
+Authentication
+
+User Registration
+Login
+OTP Verification
+Forgot Password
+Reset Password
+OTP Verification
+
+Home Module
+
+Landing Page
+Featured Products
+Categories
+
+Product Module
+
+Product Listing
+Product Details
+Search
+Filters
+Sorting
+
+Wishlist Module
+Cart Module
+Checkout Module
+Payment Module
+Order Module
+
+Order Success
+Order History
+Order Details
+
+User Profile Module
+
+Personal Information
+Address Management
+Change Password
+Contact Us
+About Us
+
+2. Admin Module
+
+Admin Authentication
+Dashboard
+User Management
+
+Add user
+Edit user
+Block user
+
+Product Management
+
+Add product
+Edit product
+Delete product
+
+Category Management
+
+Add category
+Edit category
+Delete category
+
+Brand Management
+
+Add brand
+Edit brand
+Delete brand
+
+Order Management
+
+Edit order
+
+Coupon Management
+
+Add coupon
+Edit coupon
+Delete coupon
+
+Sales Reports
+Settings
