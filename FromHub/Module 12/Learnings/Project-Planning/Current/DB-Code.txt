@@ -1,0 +1,197 @@
+users [icon: user, color: blue] {
+  _id objectId pk
+  name string
+  email string unique
+  phone string
+  passwordHash string
+  role string
+  isBlocked boolean
+  mustChangePassword boolean
+  walletBalance number
+  referralCode string unique
+  referredBy string
+  createdAt timestamp
+}
+
+addresses [icon: home, color: blue] {
+  _id objectId pk
+  userId objectId fk
+  label string
+  address string
+  city string
+  pin string
+  phone string
+  isDefault boolean
+}
+
+categories [icon: folder, color: green] {
+  _id objectId pk
+  name string
+  slug string unique
+  description string
+  image string
+  isActive boolean
+  showInNav boolean
+  displayOrder number
+  searchKeywords string[]
+  discountType string
+  discountValue number
+  createdAt timestamp
+}
+
+products [icon: box, color: green] {
+  _id objectId pk
+  name string
+  sku string unique
+  categoryId objectId fk
+  descriptionSections object[]
+  descriptionFile string
+  images object[]
+  specifications object[]
+  originalPrice number
+  price number
+  discountType string
+  discountValue number
+  isActive boolean
+  isFeatured boolean
+  createdAt timestamp
+}
+
+variants [icon: layers, color: green] {
+  _id objectId pk
+  productId objectId fk
+  colorName string
+  colorHex string
+  storage string
+  ram string
+  sku string unique
+  originalPrice number
+  price number
+  stock number
+  images object[]
+  isFeatured boolean
+}
+
+carts [icon: cart, color: blue] {
+  _id objectId pk
+  userId objectId fk unique
+  items object[]
+  savedForLater object[]
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+wishlists [icon: heart, color: blue] {
+  _id objectId pk
+  userId objectId fk
+  productId objectId fk
+  variantSku string fk
+  createdAt timestamp
+}
+
+coupons [icon: tag, color: yellow] {
+  _id objectId pk
+  code string unique
+  discountType string
+  discountValue number
+  minOrder number
+  maxUsers number
+  expiryDate timestamp
+  isActive boolean
+  createdAt timestamp
+}
+
+orders [icon: cart, color: red] {
+  _id objectId pk
+  userId objectId fk
+  items object[]
+  subtotal number
+  discount number
+  couponCode string fk
+  total number
+  paymentMethod string
+  txnId string
+  paymentDate timestamp
+  status string
+  shippedAt timestamp
+  deliveredAt timestamp
+  cancelledAt timestamp
+  shippingAddress object
+  createdAt timestamp
+}
+
+returns [icon: refresh, color: red] {
+  _id objectId pk
+  orderId objectId fk
+  productId objectId fk
+  variantSku string fk
+  refundAmount number
+  reason string
+  images string[]
+  status string
+  customerMessage string
+  createdAt timestamp
+}
+
+reviews [icon: star, color: yellow] {
+  _id objectId pk
+  userId objectId fk
+  productId objectId fk
+  rating number
+  title string
+  text string
+  images string[]
+  isHidden boolean
+  createdAt timestamp
+}
+
+walletTransactions [icon: wallet, color: blue] {
+  _id objectId pk
+  userId objectId fk
+  type string
+  amount number
+  balanceAfter number
+  reference string
+  createdAt timestamp
+}
+
+supportTickets [icon: help, color: yellow] {
+  _id objectId pk
+  userId objectId fk
+  name string
+  email string
+  phone string
+  subject string
+  orderId string
+  message string
+  status string
+  createdAt timestamp
+}
+
+referrals [icon: gift, color: yellow] {
+  _id objectId pk
+  referrerId objectId fk
+  refereeId objectId fk
+  status string
+  rewardAmount number
+  createdAt timestamp
+}
+
+addresses.userId > users._id
+carts.userId > users._id
+wishlists.userId > users._id
+wishlists.productId > products._id
+wishlists.variantSku > variants.sku
+orders.userId > users._id
+orders.couponCode > coupons.code
+reviews.userId > users._id
+reviews.productId > products._id
+walletTransactions.userId > users._id
+supportTickets.userId > users._id
+referrals.referrerId > users._id
+referrals.refereeId > users._id
+products.categoryId > categories._id
+variants.productId > products._id
+returns.orderId > orders._id
+returns.productId > products._id
+returns.variantSku > variants.sku
