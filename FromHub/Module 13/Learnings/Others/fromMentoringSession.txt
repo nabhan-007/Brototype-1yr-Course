@@ -1,0 +1,33 @@
+
+class based vs function
+
+state
+
+props - incase of child to parent diff
+props drilling
+
+map, spread, and other es6 features
+
+render array
+
+hook
+useState ⭐
+useEffect - callback func and dependency array - examples - ⭐
+
+
+controlled and uncontrolled components(useRef, useRef.current.xxx)
+
+key
+
+jsx vs html
+
+fragments vs dom
+
+virtaul DOM vs Actual DOM
+reconciliation
+diffing algorithm
+
+practice more practicals⭐
+
+Do the task only after clearing all the concepts needed
+in the todo task, all CRUD operations should be present and also no duplicates
