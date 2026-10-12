@@ -10,5 +10,5 @@
 ## Others
 
 - [x] Tick off everything in mentoring session notes
-- [ ] Learn the complete pre-built syntax of React. For Example: `createRoot(document.getElementById...`.
-- [ ] Undertand the meaning behind each word in the syntax. For Example: `StrictMode`.
+- [x] Learn the complete pre-built syntax of React. For Example: `createRoot(document.getElementById...`.
+- [x] Undertand the meaning behind each word in the syntax. For Example: `StrictMode`. 

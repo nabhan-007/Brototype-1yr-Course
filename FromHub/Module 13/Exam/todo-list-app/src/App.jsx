@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
-function TodoItem({ todo, error, onToggle, onEdit, onDelete, onSave, onError }) {
+function TodoItem({
+  todo,
+  error,
+  onToggle,
+  onEdit,
+  onDelete,
+  onSave,
+  onError,
+}) {
   const [draft, setDraft] = useState(todo.text);
   const [draftDeadline, setDraftDeadline] = useState(todo.deadline);
   const isEditing = todo.id === todo.editingId;
@@ -59,7 +67,7 @@ function TodoItem({ todo, error, onToggle, onEdit, onDelete, onSave, onError }) 
           {todo.overdue ? " (overdue)" : ""}
         </span>
       )}
-      <button onClick={() => onEdit(todo.id)}>Edit</button>
+      <button onClick={() => onEdit(todo.id)} hidden={todo.done}>Edit</button>
       <button onClick={() => onDelete(todo.id)}>Delete</button>
     </li>
   );
@@ -85,6 +93,16 @@ export default function App() {
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
   useEffect(() => {
+    let intervalId;
+
+    intervalId = setInterval(() => {
+      console.log("...");
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
@@ -96,7 +114,10 @@ export default function App() {
 
   function isOverdue(todo) {
     if (!todo.deadline || todo.done) return false;
-    return new Date(...parseDate(todo.deadline)) < new Date(new Date().toDateString());
+    return (
+      new Date(...parseDate(todo.deadline)) <
+      new Date(new Date().toDateString())
+    );
   }
 
   function parseDate(s) {
@@ -106,8 +127,7 @@ export default function App() {
 
   function daysOverdue(deadline) {
     const [y, m, d] = parseDate(deadline);
-    const diff =
-      new Date(new Date().toDateString()) - new Date(y, m, d);
+    const diff = new Date(new Date().toDateString()) - new Date(y, m, d);
     return Math.round(diff / 86400000);
   }
 
@@ -121,7 +141,12 @@ export default function App() {
       setError("Duplicate todo!");
       return;
     }
-    const newTodo = { id: Date.now(), text: text.trim(), done: false, deadline };
+    const newTodo = {
+      id: Date.now(),
+      text: text.trim(),
+      done: false,
+      deadline,
+    };
     setTodos([...todos, newTodo]);
     setText("");
     setDeadline("");
@@ -130,9 +155,7 @@ export default function App() {
   }
 
   function toggleTodo(id) {
-    setTodos(
-      todos.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
-    );
+    setTodos(todos.map((t) => (t.id === id ? { ...t, done: !t.done } : t)));
     setDismissed((d) => d.filter((x) => x !== id));
     showToast("Todo updated");
   }
@@ -153,7 +176,7 @@ export default function App() {
     if (
       todos.some(
         (t) =>
-          t.id !== id && t.text.toLowerCase() === newText.trim().toLowerCase()
+          t.id !== id && t.text.toLowerCase() === newText.trim().toLowerCase(),
       )
     ) {
       setError("Duplicate todo!");
@@ -161,8 +184,8 @@ export default function App() {
     }
     setTodos(
       todos.map((t) =>
-        t.id === id ? { ...t, text: newText.trim(), deadline: newDeadline } : t
-      )
+        t.id === id ? { ...t, text: newText.trim(), deadline: newDeadline } : t,
+      ),
     );
     setEditingId(null);
     setError("");
@@ -172,7 +195,7 @@ export default function App() {
 
   const visible = todos
     .filter((t) =>
-      filter === "all" ? true : filter === "done" ? t.done : !t.done
+      filter === "all" ? true : filter === "done" ? t.done : !t.done,
     )
     .sort((a, b) => {
       if (!a.deadline && !b.deadline) return 0;

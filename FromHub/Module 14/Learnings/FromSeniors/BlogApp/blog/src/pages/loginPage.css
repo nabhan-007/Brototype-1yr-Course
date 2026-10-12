@@ -1,0 +1,172 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: #fff4c2;
+}
+
+
+/* =========================
+   LOGIN BOX
+========================= */
+
+.login-box {
+    width: 400px;
+    max-width: 100%;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border: 4px solid #111;
+    border-radius: 25px;
+
+    box-shadow: 8px 8px 0 #111;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.login-box h1 {
+    margin: 0 0 25px;
+
+    text-align: center;
+
+    font-size: 38px;
+    font-weight: 900;
+
+    color: #111;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.login-box form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.login-box input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    background: #ffffff;
+
+    border: 3px solid #111;
+    border-radius: 14px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    outline: none;
+}
+
+.login-box input:focus {
+    background: #fffdf0;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-box button {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 5px;
+
+    background: #ffd447;
+    color: #111;
+
+    border: 3px solid #111;
+    border-radius: 14px;
+
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow: 5px 5px 0 #111;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.login-error {
+    margin: 18px 0 0;
+
+    padding: 10px;
+
+    background: #ffe0e0;
+
+    border: 2px solid #ff4d4d;
+    border-radius: 10px;
+
+    color: #d63030;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .login-container {
+        padding: 18px;
+    }
+
+    .login-box {
+        padding: 25px;
+    }
+
+    .login-box h1 {
+        font-size: 32px;
+    }
+
+}
