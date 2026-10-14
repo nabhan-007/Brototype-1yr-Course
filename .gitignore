@@ -9,3 +9,7 @@
 *.ilk
 *.exe
 *.pdb
+
+# Dependencies & build output (never commit — untracked 18,629 stray files 14 Oct 2026)
+node_modules/
+dist/
