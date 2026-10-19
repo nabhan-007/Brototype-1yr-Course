@@ -10,7 +10,7 @@ Built routing in a React blog application using **react-router-dom**. Used `Brow
 
 ## 2) Global State Management with Context API
 
-Implemented **global authentication state** with Context API: `createContext()` + `<AuthProvider>` Provider wrapping the app, consumed via a `useAuth()` custom hook built on `useContext`. Firebase's `onAuthStateChanged` keeps the user state in sync across pages (survives refresh). Used **useNavigate** for post-login redirection, **useParams** to read the edit-route id, **useCallback** to memoize the signup/login/logout functions passed through context (stable references, no extra re-renders), and **useMemo** to memoize computed values so expensive work only reruns when dependencies change.
+Implemented **global authentication state** with Context API: `createContext()` + `<AuthProvider>` Provider wrapping the app, consumed via a `useAuth()` custom hook built on `useContext`. Firebase's `onAuthStateChanged` keeps the user state in sync across pages (survives refresh). Used **useNavigate** for post-login redirection, **useParams** to read the edit-route id, **useCallback** to memoize the signup/login/logout functions passed through context (stable references, no extra re-renders), and **useMemo** to keep the Context value object stable so consumers re-render only when the auth state actually changes.
 
 ## 3) Advanced React Patterns
 
@@ -30,4 +30,4 @@ Ran `npm run build` to generate the production `dist/` folder (minified, hashed,
 
 ## 7) Project: Blog Posting Application
 
-Built a multi-page blog application with **Firebase Auth** (email/password) where the auth state is managed globally through a **Context API** `AuthProvider` + `useAuth` hook. Posts (text-only) are stored in **Firebase Firestore** with add (`addDoc`), edit (`updateDoc`), and delete (`deleteDoc`), with the list updating in real time via `onSnapshot`. **react-router-dom** handles pages — Login, Blog List, and an Add/Edit page driven by **route parameters** (`/edit/:id`), with a `ProtectedRoute` guarding the app and a shared `Layout` using `<Outlet/>`. Built for production with **Vite** and verified with `vite preview`.
+Built a multi-page blog application with **Firebase Auth** (email/password) where the auth state is managed globally through a **Context API** `AuthProvider` + `useAuth` hook. Posts (text-only) are stored in **Firebase Firestore** with add (`addDoc`), edit (`updateDoc`), and delete (`deleteDoc`), with the list updating in real time via `onSnapshot`. **react-router-dom** handles pages — Login, Blog List, and an Add/Edit page driven by **route parameters** (`/edit/:id`), with a `ProtectedRoute` guarding the app and a shared `Layout` using `<Outlet/>`. UX details: card previews are truncated with CSS `-webkit-line-clamp`, the login email field is autofocused with `useRef`, and edit/delete buttons only appear for a post's owner. Built for production with **Vite** and verified with `vite preview`.

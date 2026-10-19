@@ -35,30 +35,40 @@ export default function BlogList() {
 
   if (loading) return <p className="center">Loading posts…</p>;
 
+  // Fragment (<>): the note and the grid share a parent without an extra div
   return (
-    <div>
+    <>
       {posts.length === 0 && <p className="center">No posts yet — add one!</p>}
       <div className="post-grid">
         {posts.map((post) => (
-        <article className="card post" key={post.id}>
-          <h3>{post.title}</h3>
-          <p className="meta">
-            by {post.author} ·{" "}
-            {post.createdAt?.toDate?.().toLocaleDateString() ?? ""}
-          </p>
-          <p>{post.content}</p>
-          {/* only the owner can edit/delete */}
-          {post.authorId === user.uid && (
-            <div className="actions">
-              <button onClick={() => navigate(`/edit/${post.id}`)}>Edit</button>
-              <button className="danger" onClick={() => handleDelete(post.id)}>
-                Delete
-              </button>
-            </div>
-          )}
-        </article>
-      ))}
+          <article className="card post" key={post.id}>
+            <Link to={`/post/${post.id}`} className="post-link">
+              <h3>{post.title}</h3>
+              <p className="meta">
+                by {post.author} ·{" "}
+                {post.createdAt
+                  ? post.createdAt.toDate().toLocaleDateString()
+                  : ""}
+              </p>
+              <p className="content-preview">{post.content}</p>
+            </Link>
+            {/* only the owner can edit/delete */}
+            {post.authorId === user.uid && (
+              <div className="actions">
+                <button onClick={() => navigate(`/edit/${post.id}`)}>
+                  Edit
+                </button>
+                <button
+                  className="danger"
+                  onClick={() => handleDelete(post.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
+          </article>
+        ))}
       </div>
-    </div>
+    </>
   );
 }

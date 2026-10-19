@@ -7,12 +7,13 @@ Location: `Module 14/Exam/ForEXAM/BlogApp`
 
 ## 1. Folder structure & what each file does
 
-```
+```Flow
 BlogApp/
 ├── index.html              ← the ONE html file; Vite injects the built JS into <div id="root">
 ├── vite.config.js          ← registers the React plugin (JSX → JS)
 ├── package.json            ← deps: react, react-dom, react-router-dom, firebase
 ├── .env                    ← Firebase keys as VITE_* variables (never committed)
+├── .env.example            ← same keys with placeholders (committed, for teammates)
 ├── dist/                   ← OUTPUT of `npm run build` (production-ready, gitignored)
 └── src/
     ├── main.jsx            ← entry point: mounts <App/> into #root, wraps with AuthProvider + BrowserRouter
@@ -24,14 +25,15 @@ BlogApp/
     │   ├── Layout.jsx      ← navbar + <Outlet/> (nested-route shell)
     │   └── ProtectedRoute.jsx    ← redirects to /login if not logged in
     └── pages/
-        ├── Login.jsx       ← email/password login + signup toggle
-        ├── BlogList.jsx    ← live post list (onSnapshot), edit/delete buttons
+        ├── Login.jsx       ← email/password login + signup toggle (useRef autofocus)
+        ├── BlogList.jsx    ← live post list (onSnapshot), truncated preview, edit/delete buttons
+        ├── PostDetail.jsx  ← full post view at /post/:id (useParams + getDoc)
         └── AddEditBlog.jsx ← one page handles BOTH add and edit (useParams decides)
 ```
 
 ## 2. Data flow (login → context → routes → Firestore)
 
-```
+```Flow
 main.jsx
   └─ AuthProvider          ← Firebase onAuthStateChanged listener lives here
        └─ BrowserRouter
@@ -39,9 +41,10 @@ main.jsx
                  ├─ /login → Login page (calls signup/login from context)
                  └─ ProtectedRoute        ← reads context; no user? → Navigate to /login
                       └─ Layout          ← navbar (user email + logout from context) + <Outlet/>
-                           ├─ /          → BlogList   (onSnapshot on "posts" collection)
+                           ├─ /          → BlogList   (onSnapshot on "posts" collection; card previews clamped)
                            ├─ /add       → AddEditBlog (addDoc)
-                           └─ /edit/:id  → AddEditBlog (useParams → getDoc → updateDoc)
+                           ├─ /edit/:id  → AddEditBlog (useParams → getDoc → updateDoc)
+                           └─ /post/:id  → PostDetail  (useParams → getDoc → full content)
 ```
 
 Step by step:
@@ -56,6 +59,9 @@ Step by step:
 
 - Context triple: `const Ctx = createContext()` → `<Ctx.Provider value={...}>` → `useContext(Ctx)` (wrapped in `useAuth()`).
 - `useCallback` wraps `signup/login/logout` so context functions keep the **same reference** across renders → no extra re-renders of consumers.
+- `useMemo` keeps the Context `value` object stable the same way — consumers re-render only when `user`/`loading` actually change.
+- `useRef` gives a direct DOM handle with **no re-render** — `Login.jsx` autofocuses the email input with `emailRef.current.focus()`.
+- Fragment `<>...</>` groups siblings without adding a `<div>` — used in `Layout.jsx` and `BlogList.jsx`.
 - Route guard pattern: `<Route element={<ProtectedRoute><Layout/></ProtectedRoute>}>` — layout + protection in one.
 - Edit mode detection: `const { id } = useParams(); const isEdit = Boolean(id);`
 - Firestore CRUD: `addDoc`, `getDoc`, `updateDoc`, `deleteDoc`, `onSnapshot`, `serverTimestamp`.
@@ -110,7 +116,10 @@ Wrap the element in a guard component: `ProtectedRoute` reads the auth context; 
 `useCallback(fn, [])` returns a **memoized function** with a stable reference between renders. Our `signup/login/logout` never change, so their identity is fixed → context consumers don't re-render just because the Provider re-rendered. (Pairs with `React.memo` on children.)
 
 **Q: useMemo — what's the difference from useCallback?**
-`useMemo` memoizes a **computed VALUE**; `useCallback` memoizes a **FUNCTION**. Example: `const sorted = useMemo(() => [...posts].sort(...), [posts])` — recompute only when `posts` changes. Prevents **recalculation**, not re-render.
+`useMemo` memoizes a **computed VALUE**; `useCallback` memoizes a **FUNCTION**. Example: `const sorted = useMemo(() => [...posts].sort(...), [posts])` — recompute only when `posts` changes. Prevents **recalculation**, not re-render. In our app: `AuthContext` wraps the provider `value` object in `useMemo` so its identity changes only when `user`/`loading` do — consumers skip re-renders otherwise.
+
+**Q: useRef — what is it, and where is it used here?**
+`useRef(null)` returns an object `{ current: null }` that **persists across renders**; changing `.current` does **NOT trigger a re-render**. Uses: (1) direct DOM access — focus/scroll/video; (2) storing values that shouldn't cause renders (timer IDs). In our app: `Login.jsx` autofocuses the email input on mount — `emailRef.current.focus()` in a `useEffect(..., [])`. Why not `useState`? A DOM node isn't UI state; remembering it needs no re-render.
 
 **Q: useNavigate vs useParams?**
 
@@ -192,6 +201,9 @@ No — hiding buttons is **UI only**. Production must add **Firestore Security R
 **Q: Why is `serverTimestamp()` used instead of `new Date()`?**
 Firestore's server time is **consistent across all clients**; device clocks can be wrong. Also enables reliable `orderBy("createdAt")`.
 
+**Q: How do you show full content of a long post?**
+Card previews are truncated with CSS (`-webkit-line-clamp: 8` + `max-height` fallback). Clicking the card is a `<Link to={/post/:id}>` → `PostDetail` page reads `useParams()` + `getDoc` and renders the full text. Chose a **full page over a modal**: it's just another route (no focus-trap/scroll-lock code), the URL is shareable and refreshable, and the browser back button works natively.
+
 ---
 
 ## 5. Quick revision — 60 seconds before exam
@@ -199,7 +211,37 @@ Firestore's server time is **consistent across all clients**; device clocks can 
 - **Router**: BrowserRouter > Routes > Route; `:` = param; Outlet = child slot; Link = no reload.
 - **Context**: create → Provider → useContext; solves prop drilling; multiple contexts > one big one.
 - **useCallback** = memoized function, **useMemo** = memoized value, **React.memo** = skip re-render on same props.
+- **useRef** = DOM handle (`.current`, no re-render — focus/scroll); **Fragment** `<>` = group siblings with no extra div.
 - **Custom hook** = `use`-prefixed function using hooks, reusable logic. **HOC** = component in → component out; now mostly replaced by hooks.
 - **Babel** translates syntax (JSX), **Webpack** bundles modules; **Vite** = dev server (ESM, HMR) + Rollup build.
 - **Build** → `dist/` (minified, hashed, tree-shaken) → any **static host**; SPA rewrite for BrowserRouter.
 - **Firebase**: Auth (onAuthStateChanged) + Firestore (onSnapshot) + Context = global auth state; `.env` for config; security rules are the real gate.
+
+---
+
+## 6. Concept map — every M13/M14 feature and where it lives
+
+Audited 16 Oct 2026 — nothing in the app uses concepts outside M13/M14 (plus the required Firebase/Vite calls).
+
+| Concept | Module | Where in the app |
+|---|---|---|
+| JSX, components, props | M13 | everywhere; `ProtectedRoute` receives `children` |
+| useState | M13 | Login (form fields, error), BlogList (posts, loading), AddEditBlog (title, content, error, loading), PostDetail (post, loading) |
+| useEffect + cleanup | M13 | AuthContext (onAuthStateChanged), BlogList (onSnapshot → unsubscribe), AddEditBlog + PostDetail (load doc when `id` changes) |
+| useRef (DOM) | M13 | Login — autofocus email input on mount, no re-render |
+| Conditional rendering | M13 | loading / not-found views, owner-only buttons, ternaries |
+| Lists + keys | M13 | BlogList — `posts.map((post) => ...)` with `key={post.id}` |
+| Controlled forms | M13 | Login + AddEditBlog — `value`, `onChange`, `onSubmit` + `preventDefault` |
+| Fragment `<>` | M14 | Layout (nav + main), BlogList (note + grid) — no wrapper div |
+| Context (createContext → Provider → useContext) | M14 | AuthContext.jsx — global auth state, consumed via `useAuth()` |
+| Custom hook | M14 | `useAuth()` = `useContext(AuthContext)` one-liner |
+| useCallback | M14 | AuthContext — stable `signup`/`login`/`logout` |
+| useMemo | M14 | AuthContext — stable provider `value` object |
+| Router core: BrowserRouter, Routes, Route, index route, `*` fallback | M14 | main.jsx, App.jsx |
+| Nested routing + Outlet | M14 | App.jsx (pathless parent) + Layout.jsx |
+| Link / NavLink | M14 | BlogList card → PostDetail; Layout navbar |
+| useNavigate / Navigate / useParams | M14 | Login (after auth), ProtectedRoute (guard), `/edit/:id`, `/post/:id` |
+| Vite tooling: .env, `import.meta.env`, build, preview | M14 | firebase.js, `npm run build` → `dist/`, `vite preview` |
+| Firebase Auth | M14 (project) | AuthContext — signup/login/logout/onAuthStateChanged |
+| Firestore CRUD + live list | M14 (project) | addDoc/getDoc/updateDoc/deleteDoc, onSnapshot/orderBy/serverTimestamp |
+| Deliberately NOT used | — | useLayoutEffect, useReducer, HOC, TypeScript — nothing here needs them; JSX→createElement covered in Topic 4, createRoot in main.jsx |

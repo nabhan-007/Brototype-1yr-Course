@@ -1,6 +1,6 @@
 // Add / Edit in one page — topic 1: dynamic path + route params
 import { useEffect, useState } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom"; // useParams!
+import { useNavigate, useParams } from "react-router-dom"; // useParams!
 import {
   collection,
   addDoc,

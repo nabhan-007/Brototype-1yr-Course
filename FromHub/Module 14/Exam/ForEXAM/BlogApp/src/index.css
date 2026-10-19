@@ -26,11 +26,9 @@ main { margin: 1.5rem auto; padding: 0 1.5rem; }
   /* masonry: as many columns as fit, ~320px min each — fills gaps no matter what card heights */
   columns: 320px;
   column-gap: 1rem;
-  align-items: start;
 }
 .post-grid .post {
   break-inside: avoid; /* a card never splits across two columns */
-  margin-bottom: 1rem;
 }
 .card {
   background: #fff;
@@ -41,6 +39,22 @@ main { margin: 1.5rem auto; padding: 0 1.5rem; }
 }
 .post h3 { margin: 0 0 0.25rem; }
 .post { overflow-wrap: anywhere; } /* long URLs/text break instead of spilling out */
+.post-link { display: block; color: inherit; text-decoration: none; }
+.post-link:hover h3 { color: #2563eb; } /* clue that the card is clickable */
+
+/* truncated preview on cards — 8 lines max, then cut off */
+.content-preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 12em; /* 8 lines × 1.5 line-height, fallback if clamp unsupported */
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* full post text on the detail page — keeps the user's line breaks */
+.content-full { line-height: 1.5; white-space: pre-wrap; }
 .meta { font-size: 0.8rem; color: #888; margin-top: 0; }
 form { display: flex; flex-direction: column; gap: 0.75rem; }
 input, textarea {

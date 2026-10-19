@@ -5,8 +5,9 @@ import { useAuth } from "../context/AuthContext";
 export default function Layout() {
   const { user, logout } = useAuth();
 
+  // Fragment (<>): nav and main need a parent in JSX, but no extra <div> in the DOM
   return (
-    <div>
+    <>
       <nav className="navbar">
         <NavLink to="/">📝 Blog List</NavLink>
         <NavLink to="/add">➕ Add Post</NavLink>
@@ -20,6 +21,6 @@ export default function Layout() {
       <main>
         <Outlet />
       </main>
-    </div>
+    </>
   );
 }

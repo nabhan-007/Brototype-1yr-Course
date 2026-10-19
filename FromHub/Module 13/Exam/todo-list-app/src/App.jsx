@@ -67,7 +67,9 @@ function TodoItem({
           {todo.overdue ? " (overdue)" : ""}
         </span>
       )}
-      <button onClick={() => onEdit(todo.id)} hidden={todo.done}>Edit</button>
+      <button onClick={() => onEdit(todo.id)} hidden={todo.done}>
+        Edit
+      </button>
       <button onClick={() => onDelete(todo.id)}>Delete</button>
     </li>
   );
@@ -89,6 +91,9 @@ export default function App() {
   const [toast, setToast] = useState(null);
   const [dismissed, setDismissed] = useState([]);
   const timerRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => inputRef.current.focus(), []);
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
@@ -216,6 +221,7 @@ export default function App() {
         <input
           placeholder="What needs to be done?"
           value={text}
+          ref={inputRef}
           onChange={(e) => {
             setText(e.target.value);
             if (error) setError("");

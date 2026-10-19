@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import BlogList from "./pages/BlogList";
 import AddEditBlog from "./pages/AddEditBlog";
+import PostDetail from "./pages/PostDetail";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -21,8 +22,8 @@ export default function App() {
       >
         <Route index element={<BlogList />} /> {/* "/" */}
         <Route path="/add" element={<AddEditBlog />} />
-        <Route path="/edit/:id" element={<AddEditBlog />} />{" "}
-        {/* dynamic path */}
+        <Route path="/edit/:id" element={<AddEditBlog />} />
+        <Route path="/post/:id" element={<PostDetail />} /> {/* dynamic path */}
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

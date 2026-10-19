@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
   useCallback,
+  useMemo,
 } from "react";
 import {
   onAuthStateChanged,
@@ -43,10 +44,14 @@ export function AuthProvider({ children }) {
   );
   const logout = useCallback(() => signOut(auth), []);
 
+  // useMemo: keep the value object stable — consumers re-render only when user/loading change
+  const value = useMemo(
+    () => ({ user, loading, signup, login, logout }),
+    [user, loading, signup, login, logout]
+  );
+
   return (
-    <AuthContext.Provider value={{ user, loading, signup, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
   );
 }
 

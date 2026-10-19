@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 
+// createRoot: attach React to the #root div — the modern entry point (ReactDOM.render is legacy)
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* AuthProvider wraps everything so any page can read the user */}
