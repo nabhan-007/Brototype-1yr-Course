@@ -223,25 +223,25 @@ Card previews are truncated with CSS (`-webkit-line-clamp: 8` + `max-height` fal
 
 Audited 16 Oct 2026 — nothing in the app uses concepts outside M13/M14 (plus the required Firebase/Vite calls).
 
-| Concept | Module | Where in the app |
-|---|---|---|
-| JSX, components, props | M13 | everywhere; `ProtectedRoute` receives `children` |
-| useState | M13 | Login (form fields, error), BlogList (posts, loading), AddEditBlog (title, content, error, loading), PostDetail (post, loading) |
-| useEffect + cleanup | M13 | AuthContext (onAuthStateChanged), BlogList (onSnapshot → unsubscribe), AddEditBlog + PostDetail (load doc when `id` changes) |
-| useRef (DOM) | M13 | Login — autofocus email input on mount, no re-render |
-| Conditional rendering | M13 | loading / not-found views, owner-only buttons, ternaries |
-| Lists + keys | M13 | BlogList — `posts.map((post) => ...)` with `key={post.id}` |
-| Controlled forms | M13 | Login + AddEditBlog — `value`, `onChange`, `onSubmit` + `preventDefault` |
-| Fragment `<>` | M14 | Layout (nav + main), BlogList (note + grid) — no wrapper div |
-| Context (createContext → Provider → useContext) | M14 | AuthContext.jsx — global auth state, consumed via `useAuth()` |
-| Custom hook | M14 | `useAuth()` = `useContext(AuthContext)` one-liner |
-| useCallback | M14 | AuthContext — stable `signup`/`login`/`logout` |
-| useMemo | M14 | AuthContext — stable provider `value` object |
-| Router core: BrowserRouter, Routes, Route, index route, `*` fallback | M14 | main.jsx, App.jsx |
-| Nested routing + Outlet | M14 | App.jsx (pathless parent) + Layout.jsx |
-| Link / NavLink | M14 | BlogList card → PostDetail; Layout navbar |
-| useNavigate / Navigate / useParams | M14 | Login (after auth), ProtectedRoute (guard), `/edit/:id`, `/post/:id` |
-| Vite tooling: .env, `import.meta.env`, build, preview | M14 | firebase.js, `npm run build` → `dist/`, `vite preview` |
-| Firebase Auth | M14 (project) | AuthContext — signup/login/logout/onAuthStateChanged |
-| Firestore CRUD + live list | M14 (project) | addDoc/getDoc/updateDoc/deleteDoc, onSnapshot/orderBy/serverTimestamp |
-| Deliberately NOT used | — | useLayoutEffect, useReducer, HOC, TypeScript — nothing here needs them; JSX→createElement covered in Topic 4, createRoot in main.jsx |
+| Concept                                                              | Module        | Where in the app                                                                                                                     |
+| -------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| JSX, components, props                                               | M13           | everywhere; `ProtectedRoute` receives `children`                                                                                     |
+| useState                                                             | M13           | Login (form fields, error), BlogList (posts, loading), AddEditBlog (title, content, error, loading), PostDetail (post, loading)      |
+| useEffect + cleanup                                                  | M13           | AuthContext (onAuthStateChanged), BlogList (onSnapshot → unsubscribe), AddEditBlog + PostDetail (load doc when `id` changes)         |
+| useRef (DOM)                                                         | M13           | Login — autofocus email input on mount, no re-render                                                                                 |
+| Conditional rendering                                                | M13           | loading / not-found views, owner-only buttons, ternaries                                                                             |
+| Lists + keys                                                         | M13           | BlogList — `posts.map((post) => ...)` with `key={post.id}`                                                                           |
+| Controlled forms                                                     | M13           | Login + AddEditBlog — `value`, `onChange`, `onSubmit` + `preventDefault`                                                             |
+| Fragment `<>`                                                        | M14           | Layout (nav + main), BlogList (note + grid) — no wrapper div                                                                         |
+| Context (createContext → Provider → useContext)                      | M14           | AuthContext.jsx — global auth state, consumed via `useAuth()`                                                                        |
+| Custom hook                                                          | M14           | `useAuth()` = `useContext(AuthContext)` one-liner                                                                                    |
+| useCallback                                                          | M14           | AuthContext — stable `signup`/`login`/`logout`                                                                                       |
+| useMemo                                                              | M14           | AuthContext — stable provider `value` object                                                                                         |
+| Router core: BrowserRouter, Routes, Route, index route, `*` fallback | M14           | main.jsx, App.jsx                                                                                                                    |
+| Nested routing + Outlet                                              | M14           | App.jsx (pathless parent) + Layout.jsx                                                                                               |
+| Link / NavLink                                                       | M14           | BlogList card → PostDetail; Layout navbar                                                                                            |
+| useNavigate / Navigate / useParams                                   | M14           | Login (after auth), ProtectedRoute (guard), `/edit/:id`, `/post/:id`                                                                 |
+| Vite tooling: .env, `import.meta.env`, build, preview                | M14           | firebase.js, `npm run build` → `dist/`, `vite preview`                                                                               |
+| Firebase Auth                                                        | M14 (project) | AuthContext — signup/login/logout/onAuthStateChanged                                                                                 |
+| Firestore CRUD + live list                                           | M14 (project) | addDoc/getDoc/updateDoc/deleteDoc, onSnapshot/orderBy/serverTimestamp                                                                |
+| Deliberately NOT used                                                | —             | useLayoutEffect, useReducer, HOC, TypeScript — nothing here needs them; JSX→createElement covered in Topic 4, createRoot in main.jsx |

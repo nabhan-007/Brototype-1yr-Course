@@ -1,5 +1,11 @@
 # Notes
 
+- React is a library. The main difference between a library and a framework is the inversion of control. In a library, You call the library, versus the framework calls your code.
+
+- A component in React is a reusable, self-contained building block of a React UI. It is a JavaScript function that accepts props as inputs and returns React elements (JSX) describing what should appear on the UI.
+
+- StrictMode (dev-only): It is a wrapper that runs with no visual change, but in development, it deliberately double-invokes component functions to expose impure renders and missing cleanups.
+
 - Why use fragments?
   - Cleaner DOM: Avoids unnecessary wrapper elements.
   - CSS layouts: Extra `<div>` elements can interfere with Flexbox and Grid layouts.
@@ -15,3 +21,8 @@
     const style= { backgroundColor: "red", fontSize: "20px" }
     <div style={style}>
     ```
+
+- When to use index as a key?
+  - Your list items don't have a unique ID (If you have a unique ID, always use that).
+  - Your list is completely static - you never add or remove items.
+  - The list is never reordered or filtered.
