@@ -1,80 +1,60 @@
-# M15 Checklist — Redux & Global State
+# M15 Checklist — Redux & Global State (REPLANNED 2 Nov)
 
-Exam: **Fri 6 Nov 2026** (given — extended from 30 Oct). Chat started 29 Oct 2026.
-Sources: `RAW-Technical.md` (6 portal topics) + `fromPendingBucket.md` (depth/question selection only — order stays simple→complex).
-Notes files: `01-Why-Redux.md` → (new note per major topic as we pass it).
-Env: node v24.14.1 ✓ · mongod 8.3.7 ✓ (checked 29 Oct) — re-verify `mongod` actually running on project day.
-Carry-overs from M14 (⭐ = flagged in both attempts): `useContext` ⭐ · `useLayoutEffect` ⭐ · "global state management" · "what is a store?" · examiner: "improve the practical side more".
+Exam: **Fri 6 Nov 2026** (given). Rule override from 2 Nov: **agent writes the code first (deadline), teach phase follows — explain-backs 100% required.** Learner types again when mock exam (Thu) shows he's exam-ready; else typed reps Thu.
+Sources: `RAW-Technical.md` (6 topics) + `fromPendingBucket.md` (depth only; order simple→complex).
+Env: node v24.14.1 ✓ · mongod 8.3.7 ✓ · service check on build.
+Carry-overs M14: `useContext` ⭐ · `useLayoutEffect` ⭐ · "global state management" · "what is a store?" · "improve practical side more".
 
-## Day 1 — Thu 29 Oct (evening)
+## Mon 2 Nov (today) — BUILD DAY
 
-- [ ] B1 Why Redux? (capsule → explain back) — capsule delivered, explain-back pending
-- [ ] B2 (if energy) Redux building blocks: store / action / reducer / dispatch — the data flow
+- [x] B1 Why Redux capsule delivered (29 Oct) — explain-back still owed
+- [x] MongoDB running (service was Stopped; mongod launched manually, dbpath C:\Users\mhodn\data\db)
+- [x] Backend: Express + MongoDB (User, Product), JWT auth, products CRUD + filters, checkout (isSold), error middleware + status codes — 9/9 API checks green (401 no-token, 403 wrong-user edit included)
+- [x] Frontend: Vite + React Router + Redux Toolkit store (auth / products / cart / checkout slices), createAsyncThunk, RHF forms, Error Boundary, StrictMode
+- [x] Verified running: backend :5000 + frontend :5173 + real-browser flow login→sell→cart→checkout (cart cleared, "1 item(s) purchased")
+- [x] `02-Project-Walkthrough.md` written (per-file teaching doc + say-lines)
+- [x] 2 Nov review pass: 4 must-fix bugs found, fixed, verified (Register crash, junk-id 500, checkout race cart wipe, expired-token trap) — ledger in `02-Project-Walkthrough.md`
+- [x] Mock data seeded in BOTH accounts (`node seed.js`): demo 6 items (5 live + 1 SOLD badge) + test 5 items (4 live + 1 SOLD); category-colored placehold.co image tiles, browser-verified clean titles (fix: double-encoding showed literal `+` → now `%20`)
+- [x] Fix #5 (Nabhan's find): seller could buy own listing → backend checkout 400 + UI shows "Your listing" on own items; both layers verified live
+- [x] Review pass 2: full-file sweep (all 22 files) + junk-input probes (minPrice=abc, checkout junk-id, junk token — all 400/401, clean). Fix #6: cart + checkout "Checkout done" leaked across users on logout → extraReducers reset in cartSlice/checkoutSlice; browser proof Test cart(1) → logout → demo Cart(0)
+- [x] UX doubts fixed (2 Nov): Login↔Register cross-links added (were dead text); DELETE listing feature added beyond rubric via Nabhan's ask — full status family verified (200/403/400/404) + browser button live; seed re-run to restore demo state
+- [x] Review pass 3 (2 Nov): 4 more UX fixes, all browser-verified — register→login email prefill (location state), "Log in to add to cart" visitor hint on cards, honest empty-state (filters vs empty DB), two-click delete (Sure? arm → confirm + auto-disarm); say-lines added to walkthrough · Lesson: patchright snapshot refs die on re-render → click via CSS selectors (`.mine-list .card-row:nth-of-type(N) .btn-danger`); seed re-run after Air Fryer delete test
+- Notes: two build bugs fixed in-flight (db.js `#` comment syntax error — node --watch caught it; store.js missing default export — browser blank page caught it). Vite bg process must be launched with NO timeout (a 20s timeout killed dev server once).
 
-## Day 2 — Fri 30 Oct · Redux core + scaffold
+## Tue 3 Nov — Teach: Redux core + Toolkit (from the project's files)
 
-- [ ] Capsule: store + Provider + configureStore (raw Redux, no toolkit)
-- [ ] Capsule: actions, action creators, reducers = pure functions, immutability (pendings hits)
-- [ ] Typed: counter — useDispatch + useSelector
-- [ ] Typed: add-item list component (real examiner practical from pendings)
-- [ ] OLX scaffold: Vite frontend + Express skeleton + routes + empty pages + git repo (app EXISTS today)
-- [ ] Redux DevTools installed (capsule depth comes Day 4)
+- [x] Portal response boxes: USER wrote them himself + "1 attachment added" on T1 (+T2 visible); T1 text graded 2 Nov — keywords OK, told to add for the exam: single source of truth / pure functions / "Redux Toolkit" named
+- [ ] Capsule: Why Redux / store / global state management (M14 answers) → explain-back
+- [ ] Capsule: data flow — dispatch/action/reducer/subscribe, reducers = pure functions → explain-back
+- [ ] Capsule: Redux Toolkit — configureStore/createSlice/Immer vs raw Redux → explain-back
+- [ ] Capsule: Context vs Redux (kills `useContext` ⭐ + "global state mgmt") → explain-back
+- [ ] Capsule: `useLayoutEffect` vs `useEffect` ⭐ (with StrictMode double-render) → explain-back
+- [ ] Quiz batch 1 (pendings-frequency questions)
 
-## Day 3 — Sat 31 Oct · Redux Toolkit + carry-overs
+## Wed 4 Nov — Teach: JWT + RHF + errors + Zustand/MobX
 
-- [ ] Capsule: RTK — createSlice, configureStore, Immer; Redux vs Redux Toolkit (pendings hits)
-- [ ] Typed: rebuild counter as a slice; cart add/remove/qty slice (reused in project)
-- [ ] Capsule: Global state management + Context vs Redux — closes M14 `useContext` ⭐ + "global context" gaps
-- [ ] Typed: `useContext` demo from memory (M14 EXAM.md rule: rebuild, don't reread)
-- [ ] Capsule: `useLayoutEffect` vs `useEffect` ⭐
-- [ ] Portal response draft #1 (Redux topic) saved
+- [x] Redux DevTools browser extension — done 2 Nov (user's Chrome; verified by screenshot: @@INIT + products/fetch lifecycle visible)
+- [ ] Capsule: JWT — structure, verify vs decode, access vs refresh, localStorage vs httpOnly cookie → explain-back
+- [ ] Capsule: Thunk + createAsyncThunk/extraReducers lifecycle; thunk vs saga one-layer → explain-back
+- [ ] Capsule: RHF (register/handleSubmit/errors) + Express error middleware + HTTP 200/201/400/401/403 → explain-back
+- [ ] Capsule: Error Boundaries + StrictMode → explain-back
+- [ ] Capsule: Zustand + MobX (observables/actions/computed/reactions; makeObservable vs makeAutoObservable) — comparisons answer M14 "global state mgmt" from all sides → explain-back
+- [ ] Capsule: legacy connect API (mapStateToProps/mapDispatchToProps) — pendings-frequent → explain-back
+- [ ] Quiz batch 2
 
-## Day 4 — Sun 1 Nov · Async Redux
+## Thu 5 Nov — MOCK + reps
 
-- [ ] Capsule: middleware — what + why + applyMiddleware
-- [ ] Capsule: Thunk (how async actions work); Thunk vs Saga one-layer contrast (pendings-frequent)
-- [ ] Capsule: createAsyncThunk + extraReducers lifecycle (pending/fulfilled/rejected)
-- [ ] Typed: thunk fetch demo — loading/error/data states with DevTools time-travel
-- [ ] Project: GET /api/products (Express route + model) · productsSlice with createAsyncThunk · Listing page
-- [ ] Portal response draft #2 (middleware + DevTools)
-
-## Day 5 — Mon 2 Nov · Error handling + forms
-
-- [ ] Capsule: Error Boundaries (class component, getDerivedStateFromError / componentDidCatch, where they do NOT catch)
-- [ ] Capsule: StrictMode (double render/intent) — connects to useLayoutEffect block
-- [ ] Typed: ErrorBoundary wrapper demo
-- [ ] Capsule: React Hook Form — register / handleSubmit / formState.errors / validation rules
-- [ ] Typed: Sell-page form in project (title, description, price, category, image URL + validation)
-- [ ] Capsule: Express error middleware + HTTP status codes (400/401/403 — pendings-frequent)
-- [ ] Portal response draft #3 (error handling topic)
-
-## Day 6 — Tue 3 Nov · JWT + auth
-
-- [ ] Verify mongod running; seed data
-- [ ] Capsule: JWT — structure (header.payload.signature), how verify works, one-layer on access vs refresh + storage trade-offs (localStorage vs httpOnly cookie — pendings-frequent)
-- [ ] Typed: Express auth route + JWT sign/verify middleware
-- [ ] Typed: Login page + authSlice (token + user in Redux) + protected Sell flow
-- [ ] Light theory: selectors · combineReducers · legacy connect API (mapState/mapDispatchToProps — pendings-frequent)
-- [ ] Portal response draft #4 (project part 1)
-
-## Day 7 — Wed 4 Nov · Project completion
-
-- [ ] Data filters (category/price) via query params
-- [ ] Checkout endpoint (POST /api/checkout → isSold: true) + checkoutSlice status states
-- [ ] Cart page: qty update, remove, clear on checkout
-- [ ] Express error middleware wired on every route; full-flow test: login → sell → list → cart → checkout → item gone from listing
-- [ ] Portal response drafts #5–6 finish (all 6 topics ready to submit)
-
-## Day 8 — Thu 5 Nov · Zustand + MobX + mock exam
-
-- [ ] Capsule: Zustand — create(), store + hooks, why less boilerplate (vs Redux)
-- [ ] Typed: Zustand mini counter/store
-- [ ] Capsule: MobX — observables / actions / computed / reactions; makeObservable vs makeAutoObservable
-- [ ] Typed: MobX counter
-- [ ] Mock exam: I ask a full pendings-frequency question batch (theory + practicals) — answered in one go, then graded
+- [ ] Mock exam: theory + practical batch (pendings-frequency), one go, graded
+- [ ] Spoken 5-min project walkthrough (script ready)
+- [ ] Typed reps if needed: small store/slice edits, re-login flow
 - [ ] Walkthrough script for OLX project (spoken, 5 min)
-- [ ] Interview question bank exists in `Module 15\Learnings\LW-Ai\interview-question-bank.md` (parallel chat task — standing rule)
+- [ ] Interview question bank run in its own chat (`interview-question-bank.md`)
 
-## Fri 6 Nov · EXAM
+## Fri 6 Nov
 
-- [ ] Morning only: re-read notes files, top-frequency keywords list, no new topics
+- [ ] Morning only: notes files + keyword list. NO new topics. **EXAM** (hosting decision locked 2 Nov: LOCAL demo only — no cloud hosting; optional tunnel as on-the-spot backup. Demo DB: `node seed.js` right before walkthrough)
+
+## Notes files
+
+- `01-Why-Redux.md` (29 Oct)
+- `02-Project-Walkthrough.md` (build day)

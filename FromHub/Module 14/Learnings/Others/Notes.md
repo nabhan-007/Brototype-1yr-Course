@@ -26,3 +26,7 @@
   - Your list items don't have a unique ID (If you have a unique ID, always use that).
   - Your list is completely static - you never add or remove items.
   - The list is never reordered or filtered.
+
+- Two Golder rules of Hooks:
+  1. Only call hooks at the top level of your function
+  2. Only call hooks from React functions (React components and custom hooks)
