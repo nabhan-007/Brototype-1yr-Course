@@ -4,6 +4,9 @@
 # But keep the .gitignore file itself
 !.gitignore
 
+# But keep the env template shareable (real .env stays ignored)
+!.env.example
+
 # Others
 *.obj
 *.ilk
@@ -13,3 +16,6 @@
 # Dependencies & build output (never commit — untracked 18,629 stray files 14 Oct 2026)
 node_modules/
 dist/
+
+# Service run logs (backend/frontend out+err)
+logs/
