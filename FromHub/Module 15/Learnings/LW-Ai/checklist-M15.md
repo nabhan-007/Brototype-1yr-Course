@@ -1,6 +1,6 @@
 # M15 Checklist — Redux & Global State (REPLANNED 2 Nov)
 
-Exam: **Fri 6 Nov 2026** (given). Rule override from 2 Nov: **agent writes the code first (deadline), teach phase follows — explain-backs 100% required.** Learner types again when mock exam (Thu) shows he's exam-ready; else typed reps Thu.
+Exam: **Fri 6 Nov 2026** (given) — **ATTEMPT 2 FAILED: theory 4/10, practical 2/10 (cutoff 5 each).** One pending theory topic: `useReducer` vs `extraReducers`. Practical = insufficient typing reps. Retry **Sat 14 Nov** — attempt-3 plan lives in `checklist-M15-Retry.md` (practice-first: Nabhan types all code, agent coaches by questions only). Rule override from 2 Nov applies to ATTEMPT 2 ONLY: **agent writes the code first (deadline), teach phase follows — explain-backs 100% required.**
 Sources: `RAW-Technical.md` (6 topics) + `fromPendingBucket.md` (depth only; order simple→complex).
 Env: node v24.14.1 ✓ · mongod 8.3.7 ✓ · service check on build.
 Carry-overs M14: `useContext` ⭐ · `useLayoutEffect` ⭐ · "global state management" · "what is a store?" · "improve practical side more".
