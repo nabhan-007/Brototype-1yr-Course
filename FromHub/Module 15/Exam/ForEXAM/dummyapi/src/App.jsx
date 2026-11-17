@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProduct } from "./features/product/productSlice";
-import Test from "./Test";
 import { useEffect } from "react";
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
           <p>SKU: {productData.sku}</p>
         </div>
       )}
-      <Test />
     </>
   );
 }
