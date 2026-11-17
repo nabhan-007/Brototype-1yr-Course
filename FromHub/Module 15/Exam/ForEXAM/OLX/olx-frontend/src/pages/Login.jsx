@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Navigate, Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { login } from '../slices/authSlice';
 
 export default function Login() {
@@ -32,6 +33,10 @@ export default function Login() {
 
   return (
     <div className="auth-card">
+      <Helmet>
+        <title>Log in — OLX Clone</title>
+        <meta name="description" content="Log in to buy and sell locally on OLX Clone." />
+      </Helmet>
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <input type="email" placeholder="Email"

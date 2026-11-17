@@ -58,3 +58,37 @@ body { margin: 0; font-family: system-ui, sans-serif; background: #f4f5f7; color
 .cart-footer { display: flex; justify-content: space-between; align-items: center;
              background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 16px 18px; }
 .cart-footer h3 { font-size: 20px; margin: 0; }
+
+/* Image upload (pending 5) + listing thumbnails */
+.file-label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #555; }
+.file-label input[type="file"] { padding: 10px; border: 1px dashed #bbb; border-radius: 6px;
+             background: #fafafa; font-size: 14px; width: 100%; }
+.preview { width: 100%; max-height: 180px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd; }
+.thumb { width: 56px; height: 56px; object-fit: cover; border-radius: 6px;
+             border: 1px solid #ddd; margin-right: 12px; flex: none; }
+/* .card img is width:100% — this selector outranks it so the row thumbnail stays 56px */
+.card .thumb { width: 56px; height: 56px; }
+.card-row img.thumb + div { flex: 1; }
+
+/* Product modal — click a card, read the full listing */
+.card-click { cursor: pointer; transition: box-shadow .15s, transform .15s; }
+.card-click:hover { box-shadow: 0 6px 18px rgba(0,0,0,.12); transform: translateY(-2px); }
+.card-click:focus-visible { outline: 3px solid #0054a6; outline-offset: 2px; }
+
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 50;
+             display: flex; align-items: center; justify-content: center; padding: 24px; }
+.modal { position: relative; background: #fff; border-radius: 10px; width: 100%; max-width: 560px;
+             max-height: 85vh; overflow: auto; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.modal img, .modal .noimg { width: 100%; height: 240px; object-fit: cover; border-radius: 8px; }
+.modal h2 { margin: 0; font-size: 22px; }
+.modal .desc { font-size: 16px; }
+/* Circular close pill: the button floats over the photo, so it needs its own surface to stay legible */
+.modal-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; padding: 0;
+             display: grid; place-items: center; border: none; border-radius: 50%;
+             background: rgba(255, 255, 255, .92); color: #222; font-size: 20px; line-height: 1;
+             cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+             transition: background .15s, transform .15s; }
+.modal-close:hover { background: #fff; transform: scale(1.08); }
+.modal-close:focus-visible { outline: 3px solid #0054a6; outline-offset: 2px; }
+
+

@@ -33,10 +33,10 @@ export const createProduct = createAsyncThunk('products/create', async (payload,
   }
 });
 
-// Update a listing (Sell page "Edit")
-export const updateProduct = createAsyncThunk('products/update', async ({ id, ...payload }, { rejectWithValue }) => {
+// Update a listing (Sell page "Edit"). `body` is FormData — the photo may be a new file.
+export const updateProduct = createAsyncThunk('products/update', async ({ id, body }, { rejectWithValue }) => {
   try {
-    const { data } = await api.put(`/api/products/${id}`, payload); // path param /entity/<id>
+    const { data } = await api.put(`/api/products/${id}`, body); // path param /entity/<id>
     return data.data;
   } catch (err) {
     return rejectWithValue(err.response?.data?.message || 'Could not update product');

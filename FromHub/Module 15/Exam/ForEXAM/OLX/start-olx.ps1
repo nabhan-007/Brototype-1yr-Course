@@ -68,7 +68,7 @@ if ($Seed) {
 }
 
 try   { $count = (Invoke-RestMethod 'http://localhost:5000/api/products' -TimeoutSec 5).data.Count; $api = "API OK - $count live listings" }
-catch { $api = 'API NOT RESPONDING — check logs\backend.err.log' }
+catch { $api = 'API NOT RESPONDING - check logs\backend.err.log' }
 
 '---'
 if ((Test-Port 27017) -and (Test-Port 5000) -and (Test-Port 5173) -and ($api -like 'API OK*')) {

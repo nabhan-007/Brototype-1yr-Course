@@ -2,6 +2,7 @@
 const express = require('express');
 const Product = require('../models/Product');
 const auth = require('../middleware/authMiddleware');
+const upload = require('../middleware/upload');
 
 const router = express.Router();
 
@@ -38,12 +39,14 @@ router.get('/mine', auth, async (req, res, next) => {
 });
 
 // POST /api/products — create a listing (PROTECTED: needs a valid JWT)
-router.post('/', auth, async (req, res, next) => {
+router.post('/', auth, upload.single('image'), async (req, res, next) => {
   try {
-    const { title, description, price, category, image } = req.body;
+    const { title, description, price, category } = req.body;
     if (!title || !description || !price || !category) {
       return res.status(400).json({ success: false, message: 'title, description, price, category are required' });
     }
+    // A real uploaded file wins; otherwise a pasted link; otherwise undefined → the model's placeholder kicks in.
+    const image = req.file ? `/uploads/${req.file.filename}` : (req.body.image || undefined);
     const product = await Product.create({ title, description, price, category, image, seller: req.user.id });
     res.status(201).json({ success: true, data: product });
   } catch (err) {
@@ -52,7 +55,7 @@ router.post('/', auth, async (req, res, next) => {
 });
 
 // PUT /api/products/:id — update own listing. Uses PATH PARAMS for the id (pendings: /entity/<id>, not /update)
-router.put('/:id', auth, async (req, res, next) => {
+router.put('/:id', auth, upload.single('image'), async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id);
     if (!product) return res.status(404).json({ success: false, message: 'Product not found' });
@@ -62,10 +65,11 @@ router.put('/:id', auth, async (req, res, next) => {
       return res.status(403).json({ success: false, message: 'Not your listing' });
     }
 
-    const { title, description, price, category, image } = req.body;
+    const { title, description, price, category } = req.body;
     if (price !== undefined && (price <= 0)) {
       return res.status(400).json({ success: false, message: 'price must be positive' });
     }
+    const image = req.file ? `/uploads/${req.file.filename}` : req.body.image;
     const updated = await Product.findByIdAndUpdate(
       req.params.id,
       { title, description, price, category, image },

@@ -24,6 +24,13 @@ export const login = createAsyncThunk('auth/login', async (payload, { rejectWith
 });
 
 export const logout = createAsyncThunk('auth/logout', async () => {
+  try {
+    // Clears the httpOnly refresh cookie on the server. Without this, clearing localStorage only
+    // hides the login: the next 401 would silently refresh and log the user straight back in.
+    await api.post('/api/auth/logout');
+  } catch {
+    // offline or already expired — clearing local storage still ends the session in this tab
+  }
   localStorage.removeItem('olx-token');
   localStorage.removeItem('olx-user');
 });

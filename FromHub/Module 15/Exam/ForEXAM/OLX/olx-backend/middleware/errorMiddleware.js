@@ -17,6 +17,11 @@ const errorHandler = (err, req, res, next) => {
   if (err.name === 'CastError') { status = 400; message = 'Invalid ID format'; }
   // duplicate key (unique email raced past the findOne) → 400
   if (err.code === 11000) { status = 400; message = 'Duplicate field value'; }
+  // multer's own errors (file too large, wrong field) → 400, never a 500
+  if (err.name === 'MulterError') {
+    status = 400;
+    message = err.code === 'LIMIT_FILE_SIZE' ? 'Image must be under 2 MB' : err.message;
+  }
   // bad JSON body → 400
   if (err.type === 'entity.parse.failed') status = 400;
 
