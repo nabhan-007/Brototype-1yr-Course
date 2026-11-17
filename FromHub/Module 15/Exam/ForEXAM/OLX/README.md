@@ -75,8 +75,8 @@ olx-frontend/src/
 - **Neither**: the product model fills `image` with `/placeholder.svg`, served by this API from `public/` — a local file, so the "no photo" tile works offline and never depends on an external host.
 - Seed listings use real product photos from Wikimedia Commons (CC-licensed, 960 px thumbs). All shapes render through the same `fileUrl()` helper.
 
-## Why the cart is empty after reload
-MongoDB persists to disk — listings and accounts survive restarts. The **cart lives only in the Redux store (RAM)**, so it resets on page reload; login survives because the JWT is kept in `localStorage`. Persisting the cart would be a deliberate feature (localStorage sync or a backend cart collection) — intentionally skipped here.
+## Cart survives reload
+MongoDB persists listings and accounts; the **cart** is client state, so `store.js` mirrors `cart.items` into `localStorage` on every dispatch and reloads it as `preloadedState` at startup. Logging out clears both the Redux cart and the stored copy, so one user's cart never leaks to the next.
 
 ## Troubleshooting
 | Symptom | Fix |

@@ -123,8 +123,8 @@ Morning only: keywords file + the 9 one-liners re-read. **NO new code, no new to
 | 6 React Helmet | **closed** | `react-helmet-async`, per-route title + meta description; verified `Register — OLX Clone`, `Sell — OLX Clone`, home title |
 | 7 access vs refresh token | **closed** | access 15m (`ACCESS_TOKEN_TTL`), refresh 7d in an httpOnly cookie scoped to `/api/auth`, `POST /refresh`, axios interceptor retries once then logs out; **verified live with a 10s TTL — session survived past expiry** |
 | 4 UI polish | **light pass** | thumbnails in "Your listings", file-input styling, live preview, per-page titles, **product modal** (click/Enter opens, Esc + backdrop + × close, Add-to-cart inside) |
-| 1 state management incomplete | **open, definition unknown** | 4 slices + Provider already exist; logout now clears the server cookie too. Ask the examiner what was missing before claiming it |
-| 2 dummy-API fetch + display | **untouched** | `dummyapi` still has its 5 defects — separate artifact |
+| 1 state management incomplete | **closed (interpreted)** | cart now persists across reload: `store.js` mirrors `cart.items` to `localStorage` on every dispatch and restores it as `preloadedState`; logout clears both. Verified: add → reload → `Cart (1)` + item + total; logout → storage `[]` |
+| 2 dummy-API fetch + display | **closed** | `dummyapi` runs: axios thunk → `productSlice` extraReducers (loading/error/data) → App renders title, description, price+currency, category, rating, stock, SKU. Verified live (`Portable Headphones`) and with the request blocked (`Could not load the product: Network Error`). Runtime port: 5174/5180 via `npm run dev` |
 
 **Bug fixed on the way:** logout cleared localStorage but not the httpOnly cookie → the next 401 would have silently logged the user back in. `logout` now posts to `/api/auth/logout` first.
 
