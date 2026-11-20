@@ -3,7 +3,7 @@
 A small OLX-style marketplace built for a MERN + Redux course module.
 Express + MongoDB API · React + Vite + Redux Toolkit frontend · JWT auth.
 
-**Features:** register/login (**access + refresh tokens**) · browse listings with category + price filters · sell (create/update/delete own listings, ownership enforced) · **image upload from your machine** · cart with quantities · checkout that marks listings SOLD · server-side + client-side error handling · React Hook Form validation **+ confirm-password / no-digits-in-name checks** · **React Helmet page titles** · four Redux slices (auth, products, cart, checkout).
+**Features:** register/login (**access + refresh tokens**) · browse listings with category + price filters · sell (create/update/delete own listings, ownership enforced) · **image upload from your machine** · cart with quantities · checkout that marks listings SOLD · server-side + client-side error handling · React Hook Form validation **+ confirm-password / no-digits-in-name checks** · **React Helmet page titles** · four Redux slices (auth, products, cart, checkout). Destructive actions use two-click confirm (logout, delete listing) and `−` is disabled at quantity 1.
 
 ## Quick start (Windows)
 

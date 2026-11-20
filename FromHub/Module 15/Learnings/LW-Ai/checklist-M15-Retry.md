@@ -8,7 +8,7 @@
 ## Attempt 4 — Sprint Scoreboard (persistent; update every block)
 
 **Sprint:** Tue 17 Nov → Sat 21 Nov · **Review:** Sat 21 Nov (19 Nov pre-pone switch armed: drops E + D part 10, never F)
-**Day 1/5 · XP 0 · Streak 0 · Bosses cleared 0/6 · Bosses left 6**
+**Day 3/5 · XP 8 · Streak 3 · Bosses cleared 0/6 · Bosses left 6**
 
 Scoring: quiz = 5 Qs, **+2 correct · −1 skip · +1 bonus** for each correct after the 3rd consecutive. Boss = /10, beat at **≥7**; below → returns as mini-boss next session. Dodged twice → format changes, target does not.
 
@@ -25,8 +25,12 @@ Pending 4 (UI polish) is not a boss — it lands inside Friday's mock + final pa
 
 ### Log
 - 17 Nov: watched F parts 1+2 (`given`). Quiz round 1 fired, parked unanswered. Sprint revised to 3 days, no prepone.
+- 17 Nov 21:37 — **Round A (Redux Toolkit) 3.5/5**, XP 6. ✔ Q2 store/slice · ✔ Q3 useSelector/useDispatch (thin) · ✔ Q5 thunk lifecycle (thin). Half Q1 (named re-render precision, missed **prop drilling** as the primary problem). ✘ Q4 — said `createSlice` returns `slice.reducers`; it returns `{ reducer, actions }` (`reducers` is the input field). Immer ✔.
+- 19 Nov 10:44 — **Round B (failed topic) 1/5**: only Q4 salvageable ("complex state"). Q1/Q2 IDK, Q3 IDK, Q5 half (thunk, missed cross-slice). Taught from zero: hook vs store layer + `reducers` vs `extraReducers`. **Wording confirmed:** `EXAM.md:114` says literally *"Difference between `useReducer` and `extraReducers` in Redux Toolkit"* — so `useReducer` is the target; `reducers` vs `extraReducers` is the neighbour that usually causes the confusion, so both get answered together.
 
 ## Attempt 4 — 3-day plan (Wed 18 → Fri 20 Nov)
+
+> **SUPERSEDED 19 Nov 18:15** — replaced by `topic-checklist-M13-15.md` (all 17 RAW-Technical topics across M13/14/15 with time estimates; the pre-Sat line is drawn at M15's 6 items). This block stays only as the attempt-3 archive.
 
 > **SUPERSEDED 17 Nov 15:00** — user chose agent authorship ("You do all the typing. I will later understand the project."), so the 3-day typed plan below is parked, not cancelled. What landed instead is in *OLX pendings — 17 Nov* at the bottom.
 
@@ -122,7 +126,7 @@ Morning only: keywords file + the 9 one-liners re-read. **NO new code, no new to
 | 5 image upload | **closed** | multer disk storage, images only, 2 MB cap, safe filenames, `/uploads` static; **both file and URL** supported (file > link > previous photo); no photo → `/placeholder.svg` default; seed listings use real Wikimedia Commons photos |
 | 6 React Helmet | **closed** | `react-helmet-async`, per-route title + meta description; verified `Register — OLX Clone`, `Sell — OLX Clone`, home title |
 | 7 access vs refresh token | **closed** | access 15m (`ACCESS_TOKEN_TTL`), refresh 7d in an httpOnly cookie scoped to `/api/auth`, `POST /refresh`, axios interceptor retries once then logs out; **verified live with a 10s TTL — session survived past expiry** |
-| 4 UI polish | **light pass** | thumbnails in "Your listings", file-input styling, live preview, per-page titles, **product modal** (click/Enter opens, Esc + backdrop + × close, Add-to-cart inside) |
+| 4 UI polish | **light pass** | thumbnails in "Your listings", file-input styling, live preview, per-page titles, **product modal** (click/Enter opens, Esc + backdrop + × close, Add-to-cart inside), **two-click logout**, **`−` disabled at qty 1** |
 | 1 state management incomplete | **closed (interpreted)** | cart now persists across reload: `store.js` mirrors `cart.items` to `localStorage` on every dispatch and restores it as `preloadedState`; logout clears both. Verified: add → reload → `Cart (1)` + item + total; logout → storage `[]` |
 | 2 dummy-API fetch + display | **closed** | `dummyapi` runs: axios thunk → `productSlice` extraReducers (loading/error/data) → App renders title, description, price+currency, category, rating, stock, SKU. Verified live (`Portable Headphones`) and with the request blocked (`Could not load the product: Network Error`). Runtime port: 5174/5180 via `npm run dev` |
 

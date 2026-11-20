@@ -4,6 +4,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useState } from 'react';
 import { logout } from '../slices/authSlice';
 
 const TITLES = {
@@ -18,8 +19,10 @@ export default function Layout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [confirmOut, setConfirmOut] = useState(false); // two-click logout, same friction as the delete buttons
 
   const handleLogout = () => {
+    if (!confirmOut) return setConfirmOut(true);
     dispatch(logout());
     navigate('/login');
   };
@@ -38,7 +41,9 @@ export default function Layout() {
               <NavLink to="/sell">Sell</NavLink>
               <NavLink to="/cart">Cart ({cartCount})</NavLink>
               <span className="user-name">{user.name}</span>
-              <button className="btn btn-sm" onClick={handleLogout}>Logout</button>
+              <button className="btn btn-sm" onClick={handleLogout} onBlur={() => setConfirmOut(false)}>
+                {confirmOut ? 'Sure?' : 'Logout'}
+              </button>
             </>
           ) : (
             <NavLink to="/login">Login</NavLink>

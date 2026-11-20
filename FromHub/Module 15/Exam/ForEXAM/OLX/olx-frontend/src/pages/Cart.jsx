@@ -44,7 +44,7 @@ export default function Cart() {
             <p className="price">₹ {i.price} × {i.qty} = ₹ {i.price * i.qty}</p>
           </div>
           <div className="qty-controls">
-            <button className="btn btn-sm" onClick={() => dispatch(updateQty({ _id: i._id, qty: i.qty - 1 }))}>−</button>
+            <button className="btn btn-sm" disabled={i.qty <= 1} onClick={() => dispatch(updateQty({ _id: i._id, qty: i.qty - 1 }))}>−</button>
             <span>{i.qty}</span>
             <button className="btn btn-sm" onClick={() => dispatch(updateQty({ _id: i._id, qty: i.qty + 1 }))}>+</button>
             <button className="btn btn-sm btn-danger" onClick={() => dispatch(removeItem(i._id))}>Remove</button>
