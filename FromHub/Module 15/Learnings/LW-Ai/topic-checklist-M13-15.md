@@ -38,8 +38,8 @@
 | 15.2 | Middleware & DevTools — Thunk, what middleware sits between, time-travel debugging | 25 m | 20 m | **45 m** | [x] |
 | 15.3 | Errors & validation — Error Boundaries, StrictMode, React Hook Form (state + basic validation) | 50 m | 40 m | **1 h 30** | [ ] — ErrorBoundary ✔ verified, StrictMode ✔ theory, **RHF parked** |
 | 15.4 | **OLX-like e-commerce** — auth+JWT in Redux, sell, listing+filters, cart, checkout, RHF, Express error middleware | — | 1 h (already built; from scratch 6 h) | **1 h** | [ ] |
-| 15.5 | Zustand — `create`, no boilerplate, read/update via hooks | 25 m | 20 m | **45 m** | [ ] |
-| 15.6 | MobX — why, observables/actions/computed/reactions, React integration, `makeObservable` vs `makeAutoObservable` | 30 m | 15 m | **45 m** | [ ] |
+| 15.5 | Zustand — `create`, no boilerplate, read/update via hooks | 25 m | 20 m | **45 m** | [ ] — theory ✔, no practical |
+| 15.6 | MobX — why, observables/actions/computed/reactions, React integration, `makeObservable` vs `makeAutoObservable` | 30 m | 15 m | **45 m** | [ ] — theory ✔, no practical |
 
 ---
 
