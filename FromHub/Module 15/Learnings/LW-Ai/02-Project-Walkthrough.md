@@ -3,7 +3,8 @@
 **Read this in order:** §1 model → §2 demo path → §3–4 file maps → §5 flows → §6 pendings → §7 Q&A → §8 limits.
 **Rule for every section:** if you can't explain a row out loud in one sentence, that row is your next study item.
 **Stack:** React 19 + Redux Toolkit + React Hook Form + react-helmet-async ↔ Express + MongoDB + JWT + Multer.
-**Code:** `Module 15/Exam/ForEXAM/OLX/` — `olx-frontend/src/` (17 files), `olx-backend/` (17 files).
+**Code:** `Module 15/Exam/ForEXAM/OLX/` - `olx-frontend/src/` (17 files), `olx-backend/` (17 files).
+**Status:** **M15 PASSED 5.8/10** (Theory 6, Practical 5.5) - attempt 4, Sat 21 Nov 2026. Doc kept as the reference for M16+.
 
 ---
 

@@ -3,6 +3,8 @@
 **Built:** 19 Nov 2026 · **Sources:** `Module 13/14/15 → Learnings/RAW/RAW-Technical.md` (read verbatim, not from memory)
 **Purpose:** one linear list — revise the theory, do the practical, tick it, move on. No more jumping between sources.
 
+**M15 STATUS: PASSED 5.8/10** (Theory 6, Practical 5.5; cutoff 5) - attempt 4, Sat 21 Nov 2026. **Module 15 closed.** M13/M14 items below are still open.
+
 **How to tick:** an item is done only when (a) you said the definition out loud in your own words, and (b) the practical ran in the browser/terminal. Reading alone does not tick.
 
 **Time basis (`assumed`):** minutes = revise the theory once + type the practical once, for someone who has already built that module's project. First-time learning is ~50% more. Estimates are my calibration, not measured.

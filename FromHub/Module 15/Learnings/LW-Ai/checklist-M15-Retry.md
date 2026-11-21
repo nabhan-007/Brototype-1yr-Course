@@ -1,4 +1,17 @@
-# M15 Retry — Attempt 3 archive + Attempt 4 sprint (review Sat 21 Nov 2026)
+# M15 - PASSED (attempt 4)
+
+**RESULT: PASSED 5.8/10** - Theory **6/10**, Practical **5.5/10** (cutoff 5). Attempt 4, Sat 21 Nov 2026, 10:00-10:54. **Module 15 CLOSED.**
+
+Examiner left open (verbatim, carries into M16):
+1. Add proper labels in signup and login forms.
+2. How to optimise the performance of a React application.
+3. Limitations of Redux - refer more.
+
+Communication note: "able to convey things, but can improve more".
+
+---
+
+# Attempt 3 archive + Attempt 4 sprint (closed)
 
 **Attempt 2 (6 Nov): FAILED** — Theory 4/10, Practical 2/10 (cutoff 5). One pending theory topic: **`useReducer` vs `extraReducers`**. Practical verdict: insufficient reps.
 **REVISED 10 Nov:** 7–9 Nov missed entirely → 3 practice sessions left (Wed 11, Thu 12, Fri 13) + Sat-morning review. Zero buffer: every session must land a working implementation.
