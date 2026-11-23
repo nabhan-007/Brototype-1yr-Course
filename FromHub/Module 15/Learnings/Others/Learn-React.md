@@ -100,7 +100,6 @@ Every link below was opened and its facts read off the page on **23 Nov 2026** �
 | | 🎬 How To Maximize Performance In Your React Apps — Web Dev Simplified | 13 min · 2023 · 189K · `https://www.youtube.com/watch?v=Qwb-Za6cBws` |
 | **Why not always Redux** (state-management limits) | 🎬 Redux in 100 Seconds — Fireship<br>`https://www.youtube.com/watch?v=_shA5Xwe8_4` | 3 min · 2022 · 998K — when Redux is overkill, in 3 minutes |
 | | 🎬 Redux vs Context API — Code Bless You | 3 min · 3y · 30K · `https://www.youtube.com/watch?v=n0Cvo2MrJbk` |
-| **Next.js** | — | Nothing verified yet. Add one only after it is checked. |
 
 ---
 
