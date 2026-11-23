@@ -1,60 +1,114 @@
-# Learn React
+# Learn React — resources mapped to the course
 
-Every link below was opened on 23 Nov 2026 and its facts read off the page (title, channel, video count, upload date, views) — not from memory. "Dated" means made before React 18/19 patterns; "dead" means it no longer exists.
+A shared list for anyone learning React through the Brototype path (Module 13 → 14 → 15).
+Every link below was opened and its facts read off the page on **23 Nov 2026** — channel, length, upload date and view count are real, not remembered.
 
-**Rule:** a video is a *supplement*. Type the code yourself first, watch the video only where you got stuck.
+**Legend:** 🎬 video · 📄 docs · ⚠️ dated (concept still correct, syntax may not be) · 🇮🇳 Malayalam
+
+**Rule that matters more than any link:** watch *after* you have tried the topic yourself. A video you watch before typing is entertainment.
 
 ---
 
-## Tier 1 — use these first
+## Start here (new to React)
 
-| Resource | Facts | Why it earns the slot |
+1. 🎬 **React 19 Complete Tutorial — Codevolution** — 38 videos · Oct–Nov 2025 · 525K views
+   `https://www.youtube.com/playlist?list=PLC3y8-rFHvwg9D7EOSEBabuutIdKZN5V3`
+   The spine of the whole course. Short videos (4–8 min), current API, matches what you actually write. Work through it in parallel with modules 13–15.
+2. 🎬 **Vite in 100 Seconds — Fireship** — 2 min · Feb 2022 · 1.15M views
+   `https://www.youtube.com/watch?v=KCrXgy8qtjM`
+   Why the project starts with `npm create vite`, not `create-react-app` — the exact question Module 13 asks.
+3. 📄 **react.dev/learn** — the official docs, free.
+   When a video and the docs disagree, the docs win.
+
+---
+
+## Module 13 — Vite, core React, hooks, To-Do app
+
+| Portal topic | Pick | Facts | Why this one |
+|---|---|---|---|
+| **1. Vite setup** (`vite.config.js`, why not CRA) | 🎬 Vite in 100 Seconds — Fireship<br>`https://www.youtube.com/watch?v=KCrXgy8qtjM` | 2 min · 2022 · 1.15M | The 2-minute answer to "what is Vite and why faster than CRA" |
+| | 🎬 Vite Crash Course — freeCodeCamp | 40 min · May 2025 · 105K<br>`https://www.youtube.com/watch?v=do62-z3z6FM` | Goes through config, plugins and the production build for real |
+| **2. Core React** (SPA, components, render cycle, props/state, lifecycle, JSX, events) | 🎬 React 19 Complete Tutorial — Codevolution | 38 vids · Oct–Nov 2025 · 525K<br>`https://www.youtube.com/playlist?list=PLC3y8-rFHvwg9D7EOSEBabuutIdKZN5V3` | Current, ordered exactly like the topics |
+| | 🇮🇳 🎬 React JS Full Course in Malayalam — codeSchool Malayalam | 2 h 25 m · Jan 2025 · 55K<br>`https://www.youtube.com/watch?v=0UxJ3Uc-Dd0` | Whole React basics in Malayalam, 2025-recorded |
+| | ⚠️ 🇮🇳 🎬 React Challenge — Brototype Malayalam | 12 vids · May–Jun 2021 · 669K<br>`https://www.youtube.com/playlist?list=PLY-ecO2csVHfgVM9sChmUirqK7BXUBX9P` | Your own course's channel; great for virtual DOM / components explained in Malayalam. **2021** — class components and pre-18 patterns, take the idea, not the syntax |
+| **3. Hooks** (`useState`, `useEffect`, `useRef`) | 🎬 Learn React Hooks: useEffect — Cosden Solutions | 14 min · 2023 · 316K<br>`https://www.youtube.com/watch?v=-4XpG5_Lj_o` | The clearest useEffect explainer; dependencies, cleanup, mistakes |
+| | ⚠️ 🎬 useEffect with cleanup — Codevolution | 6 min · 2019 · 290K<br>`https://www.youtube.com/watch?v=DTlmk6QeOHY` | The cleanup + StrictMode double-mount case examiners like to poke |
+| | 🇮🇳 🎬 React All Hooks — Code Malayalam | 10 vids · 2021 · 33K<br>`https://www.youtube.com/playlist?list=PLQzJEzrRmXOXg39-jbEsrUQWGB2Mhv0gI` | useState → useEffect → useContext → useMemo/useCallback → useRef → custom hooks → useReducer, all in Malayalam. Hooks API has not changed since |
+| **4. Project: To-Do app** | 🎬 Build this to-do-list app with React — Bro Code | 23 min · Dec 2023 · 184K<br>`https://www.youtube.com/watch?v=9wiWzu_tRB0` | Same scope as the portal project: add / update / delete / complete |
+
+> Known gap in the Codevolution playlist: it has **no `useEffect`/data-fetching video**. The two useEffect links above plus 🎬 **Modern Data Fetching in React — Cosden** (17 min · 2024 · 141K, `https://www.youtube.com/watch?v=MBlZ8Wzkbi4`) cover it.
+
+---
+
+## Module 14 — Router, Context, patterns, bundling, Firebase blog
+
+| Portal topic | Pick | Facts | Why this one |
+|---|---|---|---|
+| **1. react-router-dom** (routes, params, nested + `Outlet`, dynamic paths) | 🎬 React Router — Complete Tutorial — Cosden Solutions | 24 min · Jan 2024 · 269K<br>`https://www.youtube.com/watch?v=oTIJunBa6MA` | One video, whole router: nested routes, params, loaders, protected routes |
+| | 🇮🇳 🎬 React Router 6 — Code Malayalam | 9 vids · Jan–Jun 2022 · Code Malayalam<br>`https://www.youtube.com/playlist?list=PLQzJEzrRmXOVOLz1b3g6u1Z3eD34yM3WM` | Malayalam, and it happens to cover every portal bullet: `useParams`, `useSearchParams`, nested + `Outlet`, dynamic routes, `React.lazy` + `Suspense`, protected routes |
+| **2. Context API + `useContext`/`useNavigate`/`useParams`/`useMemo`/`useCallback`** | 🎬 React 19 Tutorial — Context videos (#33–36) — Codevolution | 4 videos · 2025<br>`https://www.youtube.com/playlist?list=PLC3y8-rFHvwg9D7EOSEBabuutIdKZN5V3` | Context created, provided and consumed with the current API |
+| | 🇮🇳 🎬 useContext (#12) + useMemo/useCallback (#14) — Code Malayalam | 16 min + 20 min · 2021<br>`https://www.youtube.com/playlist?list=PLQzJEzrRmXOXg39-jbEsrUQWGB2Mhv0gI` | Same two hooks in Malayalam, incl. when `React.memo` pays off |
+| **3A. Custom hooks** | 🎬 Custom Hooks in React — Cosden Solutions | 13 min · Feb 2024 · 110K<br>`https://www.youtube.com/watch?v=I2Bgi0Qcdvc` | Teaches the *design* rule: hooks extract logic, not markup |
+| **3B. HOC** | ⚠️ 🎬 Higher Order Components (Part 1) — Codevolution | 7 min · 2019 · 450K<br>`https://www.youtube.com/watch?v=B6aNv8nkUSw` | Old but HOC is a frozen pattern — this is still the standard explanation |
+| **4. Babel & Webpack** | 🎬 Module Bundlers Explained — Fireship | 10 min · 2020 · 557K<br>`https://www.youtube.com/watch?v=5IG4UmULyoA` | What a bundler even is, and why Webpack/Rollup/Parcel/Vite differ |
+| | 🎬 Webpack 5 Crash Course — Traversy Media | 41 min · Mar 2022 · 337K<br>`https://www.youtube.com/watch?v=IZGNcSuwBZs` | Entry → output → loaders → plugins, i.e. where Babel sits in the chain |
+| **5. Production build & serve** | 📄 Vite docs — Build & Preview<br>`https://vite.dev/guide/build` | — | `npm run build` → `dist/`, `npm run preview` to serve it. No video does this better than the two-command docs |
+| **6. Blog app (Firebase Auth + Firestore + Router)** | 🎬 Firebase Crash Course (Auth & Firestore) — Net Ninja | 13 vids · Jul–Aug 2026 · fresh<br>`https://www.youtube.com/playlist?list=PLQ_-wTi3ayEg` | Newest Firebase material found; auth + firestore in the v9+ modular API you will write |
+| | 🎬 Firebase React Course — PedroTech | 1 h 39 m · Jan 2023 · 333K<br>`https://www.youtube.com/watch?v=2hR-uWjBAgw` | Deeper single-sitting alternative if the crash course is too fast |
+
+---
+
+## Module 15 — Redux, middleware, errors & forms, Zustand, MobX
+
+| Portal topic | Pick | Facts | Why this one |
+|---|---|---|---|
+| **1. Redux core** (store, actions, reducers, dispatch) | 🎬 Redux — Complete Tutorial (with Redux Toolkit) — Cosden Solutions | 37 min · Oct 2023 · 433K<br>`https://www.youtube.com/watch?v=5yEG6GhoJBs` | Modern RTK, no legacy `switch`-reducer ceremony. Best single video |
+| | 🎬 React Redux Full Course — Dave Gray | 4 h · May 2022 · 502K<br>`https://www.youtube.com/watch?v=NqzdVN2tyvQ` | Slow, project-paced; use as reference, not wall-to-wall |
+| | 🇮🇳 🎬 Redux Malayalam — Debug Media | 3 vids · Aug–Sep 2022 · 12K<br>`https://www.youtube.com/playlist?list=PL4KwFGqvN4ntuJhFqC18WWytOJKFmpqGd` | Malayalam, and the 3 parts map 1:1 onto the portal: RTK basics → `useSelector`/`useDispatch` → `createAsyncThunk` + `useMemo` |
+| **2. Middleware + DevTools** | 🎬 Redux Toolkit Tutorial — Codevolution | 15 vids · Apr 2022<br>`https://www.youtube.com/playlist?list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3` | Dedicated videos for `createAsyncThunk`, `extraReducers` and DevTools setup |
+| | 🎬 Redux & RTK with Async Operations — freeCodeCamp | 7 h 48 m · Nov 2024 · 102K<br>`https://www.youtube.com/watch?v=SlC8941Wwrk` | Jump only to the thunk chapters — do not watch end to end |
+| | ⚠️ 🎬 Redux Devtools (#14) — Jinson Abraham | 5 min · Jun 2021 · 2K<br>`https://www.youtube.com/watch?v=ZXbjegpcoFg` | Malayalam, but it is episode 14 of 14 — only useful as the DevTools demo |
+| **3A. Error Boundaries** | 🎬 Error Handling in React — Cosden Solutions | 11 min · Feb 2025 · 52K<br>`https://www.youtube.com/watch?v=OQQAv8t3bfc` | Current, and covers recovery + what boundaries do *not* catch |
+| | ⚠️ 🎬 Learn React Error Boundaries in 7 Minutes — Web Dev Simplified | 7 min · 2023 · 165K<br>`https://www.youtube.com/watch?v=_FuDMEgIy7I` | Fastest pass over the class-component boundary |
+| **3C. React Hook Form** | 🎬 React Hook Form — Complete Tutorial — Cosden Solutions | 28 min · Jan 2024 · 262K<br>`https://www.youtube.com/watch?v=cc_xmawJ8Kg` | `register`, rules, `handleSubmit`, `formState` — the exact vocabulary examiners ask for. Skip the Zod half if short on time |
+| **4. OLX-style project (JWT + Express + Mongo)** | 🎬 MERN Stack Tutorial for Beginners with Deployment — freeCodeCamp | 3 h 35 m · Aug 2025<br>`https://www.youtube.com/watch?v=F9gB5b4jgOI` | Whole app, deployed; closest thing to the OLX project end to end |
+| | 🎬 React Login with JWT Access + Refresh Tokens, Cookies, Axios — Dave Gray | 41 min · Jan 2022 · 926K<br>`https://www.youtube.com/watch?v=nI8PYZNFtac` | Exactly the auth model the project needs: access vs refresh, httpOnly cookies, interceptors |
+| **5. Zustand** | 🎬 Zustand — Complete Tutorial — Cosden Solutions | 19 min · Dec 2023 · 243K<br>`https://www.youtube.com/watch?v=_ngCLZ5Iz-0` | `create`, selectors, slices, persist — and why there is no `Provider` |
+| **6. MobX** | 🎬 MobX state management explained — Learnersbucket | 17 min · Aug 2026 · 385<br>`https://www.youtube.com/watch?v=3bv3GXScukg` | The only current MobX video found. **Small channel, few views** — watch it, then confirm every claim against 📄 `mobx.js.org` |
+| | 📄 MobX docs + `mobx-react-lite`<br>`https://mobx.js.org/README.html` | — | The 5 topics in the portal (observables, actions, computed, reactions, `makeAutoObservable`) are all one page each |
+
+---
+
+## Malayalam index
+
+| Resource | Covers |
+|---|---|
+| React JS Full Course — codeSchool Malayalam (2 h 25 m, 2025) | M13 entire |
+| ⚠️ React Challenge — Brototype Malayalam (12 vids, 2021) | M13 concepts |
+| React All Hooks — Code Malayalam (10 vids, 2021) | M13 hooks, M14 `useContext`/`useMemo`/`useCallback`, custom hooks, `useReducer` |
+| React Router 6 — Code Malayalam (9 vids, 2022) | M14 routing, protected routes, code splitting |
+| Redux Malayalam — Debug Media (3 vids, 2022) | M15 Redux + thunk |
+| ⚠️ Redux Devtools #14 — Jinson Abraham (5 min, 2021) | M15 DevTools only |
+
+---
+
+## After Module 15 — what to learn next
+
+| Topic | Pick | Facts |
 |---|---|---|
-| **React 19 Complete Tutorial** — Codevolution<br>`https://www.youtube.com/playlist?list=PLC3y8-rFHvwg9D7EOSEBabuutIdKZN5V3` | 38 videos · Oct–Nov 2025 · 525,463 views | The only **current** React 19 series in your list. Short videos (4–8 min), modern API, matches what you actually write. **Best primary resource.** |
-| **MERN Stack Tutorial for Beginners with Deployment – 2025** — freeCodeCamp<br>`https://www.youtube.com/watch?v=F9gB5b4jgOI` | 3 h 35 m · ~Aug 2025 | One full build: React + Express + Mongo + deploy. The closest thing to the OLX project end to end. Watch after the tier-1 series, as a whole-project revision. |
-
-**Known gap in the Codevolution playlist** (checked 4 Nov): no `useEffect`/data-fetching video. Use `../LW-Ai/youtube-supplements.md` → "Gap-patch queue" (6 videos, ~91 min) to cover it.
-
----
-
-## Tier 2 — Malayalam (same concepts, in your first language)
-
-| Resource | Facts | Verdict |
-|---|---|---|
-| **React Challenge** — Brototype Malayalam<br>`https://www.youtube.com/playlist?list=PLY-ecO2csVHfgVM9sChmUirqK7BXUBX9P` | 12 videos · May–Jun 2021 · 669,217 views | Your own course's channel. Good for **concepts** (virtual DOM, components, hooks intro) in Malayalam. **Dated**: uses class components and pre-18 patterns — do not copy its code style into new work. |
-| **React All Hooks – Malayalam** — Code Malayalam<br>`https://www.youtube.com/playlist?list=PLQzJEzrRmXOXg39-jbEsrUQWGB2Mhv0gI` | 10 videos · Jul–Oct 2021 · 33,595 views | Hooks semantics have not changed since 2021, so this still teaches correctly: `useState`, `useEffect`, `useContext`, `useMemo`, `useCallback`, `useRef`. Good for hearing a hook explained in Malayalam once. |
-| **Redux Malayalam** — Debug Media<br>`https://www.youtube.com/playlist?list=PL4KwFGqvN4ntuJhFqC18WWytOJKFmpqGd` | 3 videos · Aug–Sep 2022 · 12,201 views | **Exactly the M15 syllabus**: RTK basics → `useSelector`/`useDispatch` → `createAsyncThunk` + `useMemo`. 2022 = RTK 1-era, but the concepts (store, slice, thunk, dispatch) are unchanged. Best Malayalam Redux option. |
+| **React performance** (`memo`, `useMemo`/`useCallback`, `lazy`+`Suspense`, keys, bundle size) | 🎬 The Best Ways To Optimize Performance in Modern React — Cosden Solutions<br>`https://www.youtube.com/watch?v=LuQ8VWh6eYE` | 20 min · May 2025 · 29K — the modern answer (React Compiler included) |
+| | 🎬 How To Maximize Performance In Your React Apps — Web Dev Simplified | 13 min · 2023 · 189K · `https://www.youtube.com/watch?v=Qwb-Za6cBws` |
+| **Why not always Redux** (state-management limits) | 🎬 Redux in 100 Seconds — Fireship<br>`https://www.youtube.com/watch?v=_shA5Xwe8_4` | 3 min · 2022 · 998K — when Redux is overkill, in 3 minutes |
+| | 🎬 Redux vs Context API — Code Bless You | 3 min · 3y · 30K · `https://www.youtube.com/watch?v=n0Cvo2MrJbk` |
+| **Next.js** | — | Nothing verified yet. Add one only after it is checked. |
 
 ---
 
-## Tier 3 — partial or broken
+## How to add a link to this file
 
-| Resource | Facts | Problem |
-|---|---|---|
-| **React Router – Malayalam** — Code Malayalam<br>`https://www.youtube.com/playlist?list=PLQzEzrRmXOVOLz1b3g6u1Z3eD34yM3WM` | — | **DEAD.** Playlist returns 404 and YouTube redirects to the home page. The whole playlist was removed. Replace it or drop the row — see "Next step". |
-| **React Redux in malayalam #14 – Redux Devtools** — Jinson Abraham<br>`https://www.youtube.com/watch?v=ZXbjegpcoFg` | 5 m 27 s · 15 Jun 2021 · 2,068 views | It is **part 14 of a 14-part series**, not a standalone lesson — starting at 14 skips the setup. Series: `PLlgautmz_01NsoLPRur0MsRZ9WnLztqc2`. Only useful as a 5-minute DevTools walkthrough. |
+1. Open it. If it 404s or redirects to the YouTube home page, do not add it.
+2. Record four facts: **channel · length · upload date · view count**.
+3. Say in one clause *which portal topic* it teaches.
+4. Mark ⚠️ if it is older than ~2 years, so nobody copies dated syntax.
 
----
-
-## What these links do NOT cover
-
-No video in this list teaches **Zustand**, **MobX**, **React Hook Form**, or **Next.js**. If you need them:
-
-- Zustand / MobX / RHF → `../LW-Ai/youtube-supplements.md` (Cosden Solutions + Learnersbucket picks, already verified).
-- Next.js → nothing verified yet; the Codevolution playlist stops at React 19 core.
-
----
-
-## How to use this file
-
-1. Stuck on a **concept** → tier 1 (Codevolution), the matching short video.
-2. Concept still unclear in English → tier 2, same topic in Malayalam.
-3. Need the **whole picture / revision** → freeCodeCamp MERN, 3 h 35 m, once.
-4. Anything marked **dated** → take the idea, never the syntax.
-
----
-
-## Next step
-
-- Replace the dead React Router (Malayalam) link with a working one — say the word and I'll verify candidates on the page before adding them.
-- Add any new link under the right tier with its facts (video count · date · views), so this file stays checkable instead of becoming a link dump.
+Checked 23 Nov 2026. One correction to an earlier version of this file: the **React Router — Malayalam** playlist was reported dead; it is alive (9 videos) and is now in Module 14 above.
